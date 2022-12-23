@@ -1,13 +1,13 @@
+This step reuses the configuration provided in the previous step except for the scenario configuration.
+
 
 ## Callback on scenarios
 
 To have an action after the change of status of a job, we can subscribe a function to a scenario. This function will be called each time a job has its status changed.
 
-
 ```python
-def callback_scenario_state(scenario, job):
+def callback_scenario(scenario, job):
     """All the scenarios are subscribed to the callback_scenario_state function. It means whenever a job is done, it is called.
-    Depending on the job and the status, it will update the message stored in a json that is then displayed on the GUI.
 
     Args:
         scenario (Scenario): the scenario of the job changed
