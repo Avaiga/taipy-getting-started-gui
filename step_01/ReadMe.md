@@ -29,7 +29,7 @@ Configuration is the structure or model of what is our scenario. It represents o
 
 There are two ways to configure Taipy Core, either by Python code or with Taipy Studio. We strongly recommend using Taipy Studio. 
 
-Taipy Studio is a VS Code extension that provides a graphical editor to describe pipelines. Everything can be done easily and faster through Taipy Studio. 
+Taipy Studio is a VS Code extension that provides a graphical editor to describe pipelines. Everything can be done more easily and quickly through Taipy Studio.
 
 
 Let's create our first configuration and then create our entities to submit.
