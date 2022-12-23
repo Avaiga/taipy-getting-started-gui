@@ -50,7 +50,7 @@ The task links the two scenarios through the Python function _double_.
 
 The pipeline will contain this one task and the scenario will contain this one pipeline.
 
-______________________ Taipy Studio ______________________
+=== "Taipy Studio/TOML configuration"
 - Create new file: 'config.toml'
 - Open Taipy Studio view
 - Go to the 'Config files' section of Taipy Studio
@@ -70,7 +70,14 @@ ______________________ Taipy Studio ______________________
 - Add a pipeline and link it to the task
 - Add a scenario and link to the pipeline
 
-_______ Taipy Core _______
+```python
+Config.load('config.toml')
+
+# my_scenario is the id of the scenario configured
+scenario_cfg = Config.scenarios('my_scenario')
+```
+
+=== "python configuration"
 
 Here is the code to configure a simple scenario.
 
