@@ -37,8 +37,9 @@ def count_values(df):
     return len(df)
 ```
 
-=== "Taipy Studio/TOML configuration"- Create new file: 'config.toml'
+=== "Taipy Studio/TOML configuration"
 
+        - Create new file: 'config.toml'
         - Open Taipy Studio view
         - Go to the 'Config files' section of Taipy Studio
         - Right click on the right configuration
@@ -63,6 +64,7 @@ def count_values(df):
 
 
 === "Python configuration"
+
         ```python
         historical_data_cfg = Config.configure_csv_data_node(id="historical_data",
                                                              default_path="time_series.csv")
