@@ -26,7 +26,25 @@ One pipeline in a scenario gathering these two tasks
 
 ![](config.png)
 
-______________________ Taipy Studio ______________________
+```python
+import datetime as dt
+import pandas as pd
+```
+
+```python
+def filter_current(df):
+    current_month = dt.datetime.now().month
+    df['Date'] = pd.to_datetime(df['Date']) 
+    df = df[df['Date'].dt.month == current_month]
+    return df
+
+def count_values(df):
+    return len(df)
+```
+
+
+=== "Taipy Studio/TOML configuration"
+
 - Create new file: 'config.toml'
 - Open Taipy Studio view
 - Go to the 'Config files' section of Taipy Studio
@@ -48,23 +66,15 @@ ______________________ Taipy Studio ______________________
 - Add a scenario and link to the pipeline
 
 
-```python
-import datetime as dt
-import pandas as pd
-```
-
 
 ```python
-def filter_current(df):
-    current_month = dt.datetime.now().month
-    df['Date'] = pd.to_datetime(df['Date']) 
-    df = df[df['Date'].dt.month == current_month]
-    return df
+Config.load('config.toml')
 
-def count_values(df):
-    return len(df)
+# my_scenario is the id of the scenario configured
+scenario_cfg = Config.scenarios('my_scenario')
 ```
 
+=== "python configuration"
 
 ```python
 # here is a CSV Data Node
