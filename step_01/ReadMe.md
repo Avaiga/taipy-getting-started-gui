@@ -51,52 +51,51 @@ The task links the two scenarios through the Python function _double_.
 The pipeline will contain this one task and the scenario will contain this one pipeline.
 
 === "Taipy Studio/TOML configuration"
-- Create new file: 'config.toml'
-- Open Taipy Studio view
-- Go to the 'Config files' section of Taipy Studio
-- Right click on the right configuration
-- Choose 'Taipy: Show View'
-- Add your first Data Node by clicking the button on the right above corner of the windows
-- Create a name for it and change its details in the 'Details' section of Taipy Studio
-        - name: input
-        - Details: default_data=21, storage_type:pickle
-- Do the same for the output
-        - name: output
-        - Details: storage_type:pickle
-- Add a task and choose a function to associate with `<module>.<name>:function`
-        - name: double
-        - Details: function=`__main__.double:function`
-- Link the Data Nodes and the task
-- Add a pipeline and link it to the task
-- Add a scenario and link to the pipeline
+    - Create new file: 'config.toml'
+    - Open Taipy Studio view
+    - Go to the 'Config files' section of Taipy Studio
+    - Right click on the right configuration
+    - Choose 'Taipy: Show View'
+    - Add your first Data Node by clicking the button on the right above corner of the windows
+    - Create a name for it and change its details in the 'Details' section of Taipy Studio
+            - name: input
+            - Details: default_data=21, storage_type:pickle
+    - Do the same for the output
+            - name: output
+            - Details: storage_type:pickle
+    - Add a task and choose a function to associate with `<module>.<name>:function`
+            - name: double
+            - Details: function=`__main__.double:function`
+    - Link the Data Nodes and the task
+    - Add a pipeline and link it to the task
+    - Add a scenario and link to the pipeline
 
-```python
-Config.load('config.toml')
+    ```python
+    Config.load('config.toml')
 
-# my_scenario is the id of the scenario configured
-scenario_cfg = Config.scenarios('my_scenario')
-```
+    # my_scenario is the id of the scenario configured
+    scenario_cfg = Config.scenarios('my_scenario')
+    ```
 
 === "python configuration"
 
-Here is the code to configure a simple scenario.
+    Here is the code to configure a simple scenario.
 
+    ```python
+    # Configuration of Data Nodes
+    input_data_node_cfg = Config.configure_data_node("input", default_data=21)
+    output_data_node_cfg = Config.configure_data_node("output")
 
-```python
-# Configuration of Data Nodes
-input_data_node_cfg = Config.configure_data_node("input", default_data=21)
-output_data_node_cfg = Config.configure_data_node("output")
+    # Configuration of tasks
+    task_cfg = Config.configure_task("double",
+                                     double,
+                                     input_data_node_cfg,
+                                     output_data_node_cfg)
 
-# Configuration of tasks
-task_cfg = Config.configure_task("double",
-                                 double,
-                                 input_data_node_cfg,
-                                 output_data_node_cfg)
-
-# Configuration of the pipeline and scenario
-pipeline_cfg = Config.configure_pipeline("my_pipeline", [task_cfg])
-scenario_cfg = Config.configure_scenario("my_scenario", [pipeline_cfg])
-```
+    # Configuration of the pipeline and scenario
+    pipeline_cfg = Config.configure_pipeline("my_pipeline", [task_cfg])
+    scenario_cfg = Config.configure_scenario("my_scenario", [pipeline_cfg])
+    ```
 
 
 ```python
