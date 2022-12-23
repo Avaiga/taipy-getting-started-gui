@@ -51,6 +51,7 @@ The task links the two scenarios through the Python function _double_.
 The pipeline will contain this one task and the scenario will contain this one pipeline.
 
 === "Taipy Studio/TOML configuration"
+
     - Create new file: 'config.toml'
     - Open Taipy Studio view
     - Go to the 'Config files' section of Taipy Studio
