@@ -123,7 +123,7 @@ def create_steps(notebook, execution_count):
         for line in split_text:
             if cell == "markdown":
                 line=line.replace("    ","")
-            elif cell == "code" and (line[:4] == "    " or len(line)<1) and for_studio == 2:
+            elif cell == "code" and (line[:4] == "    " or len(line)<=1) and for_studio == 2:
                 line=line[4:]
             else:
                 for_studio = 0
