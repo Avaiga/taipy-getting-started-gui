@@ -23,15 +23,14 @@ import time
 
 
 ```python
-def filter_by_month(df, month):
-    df['Date'] = pd.to_datetime(df['Date']) 
-    df = df[df['Date'].dt.month == month]
-    return df
+# Normal function used by Taipy
+def double(nb):
+    return nb * 2
 
-def count_values(df):
-    print("Wait 10 seconds")
+def add(nb):
+    print("Wait 10 seconds in add function")
     time.sleep(10)
-    return len(df)
+    return nb + 10
 ```
 
 
@@ -70,39 +69,29 @@ def count_values(df):
 === "Python configuration"
 
     ```python
-    historical_data_cfg = Config.configure_csv_data_node(id="historical_data",
-                                                     default_path="time_series.csv",
-                                                     scope=Scope.GLOBAL)
-    month_cfg =  Config.configure_data_node(id="month", scope=Scope.CYCLE)
-    month_values_cfg =  Config.configure_data_node(id="month_data",
-                                                   scope=Scope.CYCLE,
-                                                   cacheable=True)
 
-    nb_of_values_cfg = Config.configure_data_node(id="nb_of_values",
-                                                  cacheable=True)
+    # Configuration of Data Nodes
+    input_data_node_cfg = Config.configure_data_node("input", default_data=21)
+    intermediate_data_node_cfg = Config.configure_data_node("input", default_data=21)
+    output_data_node_cfg = Config.configure_data_node("output")
 
+    # Configuration of tasks
+    first_task_cfg = Config.configure_task("double",
+                                        double,
+                                        input_data_node_cfg,
+                                        intermediate_data_node_cfg)
 
-    task_filter_by_month_cfg = Config.configure_task(id="filter_by_month",
-                                                     function=filter_by_month,
-                                                     input=[historical_data_cfg, month_cfg],
-                                                     output=month_values_cfg)
+    second_task_cfg = Config.configure_task("add",
+                                        add,
+                                        intermediate_data_node_cfg,
+                                        output_data_node_cfg)
 
-    task_count_values_cfg = Config.configure_task(id="count_values",
-                                                     function=count_values,
-                                                     input=month_values_cfg,
-                                                     output=nb_of_values_cfg)
-
-    pipeline_cfg = Config.configure_pipeline(id="my_pipeline",
-                                             task_configs=[task_filter_by_month_cfg,
-                                                           task_count_values_cfg])
-
-    scenario_cfg = Config.configure_scenario(id="my_scenario",
-                                             pipeline_configs=[pipeline_cfg],
-                                             frequency=Frequency.MONTHLY)
+    # Configuration of the pipeline and scenario
+    pipeline_cfg = Config.configure_pipeline("my_pipeline", [first_task_cfg, second_task_cfg])
+    scenario_cfg = Config.configure_scenario("my_scenario", [pipeline_cfg])
 
     #scenario_cfg = Config.configure_scenario_from_tasks(id="my_scenario",
-    #                                                    task_configs=[task_filter_by_month_cfg,
-    #                                                    task_count_values_cfg])
+    #                                                    task_configs=[first_task_cfg, second_task_cfg])
     ```
 
 
