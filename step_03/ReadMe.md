@@ -45,7 +45,7 @@ def count_values(df):
 
 === "Taipy Studio/TOML configuration"
 
-    - Create new file: 'config.toml'
+    - Create new file: 'config_03.toml'
     - Open Taipy Studio view
     - Go to the 'Config files' section of Taipy Studio
     - Right click on the right configuration
@@ -68,7 +68,7 @@ def count_values(df):
 
 
     ```python
-    Config.load('config.toml')
+    Config.load('config_03.toml')
 
     # my_scenario is the id of the scenario configured
     scenario_cfg = Config.scenarios('my_scenario')

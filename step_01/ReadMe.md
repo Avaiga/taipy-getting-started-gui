@@ -52,7 +52,7 @@ The pipeline will contain this one task and the scenario will contain this one p
 
 === "Taipy Studio/TOML configuration"
 
-    - Create new file: 'config.toml'
+    - Create new file: 'config_01.toml'
     - Open Taipy Studio view
     - Go to the 'Config files' section of Taipy Studio
     - Right click on the right configuration
@@ -72,7 +72,7 @@ The pipeline will contain this one task and the scenario will contain this one p
     - Add a scenario and link to the pipeline
 
     ```python
-    Config.load('config.toml')
+    Config.load('config_01.toml')
 
     # my_scenario is the id of the scenario configured
     scenario_cfg = Config.scenarios('my_scenario')

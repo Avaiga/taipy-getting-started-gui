@@ -39,7 +39,7 @@ def count_values(df):
 
 === "Taipy Studio/TOML configuration"
 
-        - Create new file: 'config.toml'
+        - Create new file: 'config_0.toml'
         - Open Taipy Studio view
         - Go to the 'Config files' section of Taipy Studio
         - Right click on the right configuration
@@ -59,6 +59,14 @@ def count_values(df):
         - Add a pipeline and link it to the tasks
         - Add a scenario and link to the pipeline
         - Add the frequency property and put "WEEKLY:FREQUENCY" (DAYLY, WEEKLY, MONTHLY, YEARLY)
+
+
+    ```python
+    Config.load('config_04.toml')
+
+    # my_scenario is the id of the scenario configured
+    scenario_cfg = Config.scenarios('my_scenario')
+    ```
 
 
 
