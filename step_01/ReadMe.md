@@ -1,15 +1,4 @@
-# Taipy Core
-
-Taipy Core is one of the components of Taipy to facilitate pipeline orchestration. There are a lot of reasons for using Taipy Core:
-
-- Taipy Core efficiently manages the execution of your functions/pipelines.
-
-- Taipy Core manages data sources and monitors KPIs.
-
-- Taipy Core provides easy management of multiple pipelines and end-user scenarios, which comes in handy in the context of Machine Learning or Mathematical optimization.
-
-To apprehend the Scenario Management aspect of Taipy, you need to understand four essential concepts.
-
+# Configuration and execution
 ## Four fundamental concepts in Taipy Core:
 - Data Nodes: are the translation of variables in Taipy. Data Nodes don't contain the data but know how to retrieve it. They can refer to any data: any Python object (string, int, list, dict, model, dataframe, etc), a Pickle file, a CSV file, an SQL database, etc. They know how to read and write data. You can even write your own custom Data Node if needed to access a particular data format.
 
@@ -25,14 +14,7 @@ To apprehend the Scenario Management aspect of Taipy, you need to understand fou
 Configuration is the structure or model of what is our scenario. It represents our Direct Acyclic Graph but also how we want our data to be stored or how our code is run. Taipy is able to create multiple instances of this structure with different data thus, we need a way to define it through this configuration step.
 
 
-## Taipy Studio for configuration
-
-There are two ways to configure Taipy Core, either by Python code or with Taipy Studio. We strongly recommend using Taipy Studio. 
-
-Taipy Studio is a VS Code extension that provides a graphical editor to describe pipelines. Everything can be done more easily and quickly through Taipy Studio.
-
-
-Let's create our first configuration and then create our entities to submit.
+Let's create our first configuration and then create our entities to submit either through Taipy Studio or through direct Python Code.
 
 
 ```python

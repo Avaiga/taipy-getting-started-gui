@@ -1,4 +1,4 @@
-## Basic functions
+# Basic functions
 
 Let's discuss about the basic functions that comes along with Taipy.
 

@@ -1,5 +1,5 @@
 
-## Caching
+# Caching
 
 Caching is an important feature of Taipy. Tasks can be skipped depending if input data nodes of tasks have changed or not. If none of the input data nodes have been changed after a first submission, tasks will be skipped saving time and ressources.
 

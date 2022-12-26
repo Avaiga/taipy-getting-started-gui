@@ -3,9 +3,11 @@ import json
 
 def add_line(source, line, step):
 
-    line = line.replace('Getting Started with Taipy', 'Getting Started with Taipy on Notebooks')
+    line = line.replace('Getting Started with Taipy Core', 'Getting Started with Taipy Core on Notebooks')
     line = line.replace('(../src/', '(https://docs.taipy.io/en/latest/getting_started/src/')
-    line = line.replace('(dataset.csv)', '(https://docs.taipy.io/en/latest/getting_started/step_01/dataset.csv)')
+    line = line.replace('(time_series.csv)', '(https://docs.taipy.io/en/latest/getting_started/step_01/time_series.csv)') #!!!!!
+    line = line.replace('(time_series_2.csv)', '(https://docs.taipy.io/en/latest/getting_started/step_01/time_series_2.csv)')
+
 
     if line.startswith('!['):
         if step != 'index':
@@ -21,17 +23,7 @@ def add_line(source, line, step):
         source.append(f' <img src={img_src} {width}>\n')
         source.append('</div>\n')
 
-    elif step == 'step_00' and line.startswith('Gui(page='):
 
-        source.append('\n')
-        source.append('Gui("# Getting Started with Taipy").run(dark_mode=False)\n')
-
-    elif line.startswith('Gui(page=') and step != 'step_00':
-        search_for_md = line.split(')')
-        name_of_md = search_for_md[0][9:]
-
-        source.append(f'gui = Gui({name_of_md})\n')
-        source.append(f'gui.run()\n')
 
     elif step == 'step_00' and line.startswith('from taipy'):
         source.append("from taipy.gui import Gui, Markdown\n")
@@ -94,9 +86,7 @@ def create_introduction(notebook, execution_count):
         "metadata": {},
         "outputs": [],
         "execution_count": execution_count,
-        "source": ['# !pip install taipy\n',
-                   '# !pip install scikit-learn\n',
-                   '# !pip install statsmodels']
+        "source": ['# !pip install taipy\n']
     })
 
     notebook['cells'].append({
@@ -110,7 +100,7 @@ def create_introduction(notebook, execution_count):
 
 
 def create_steps(notebook, execution_count):
-    steps = ['step_0' + str(i) for i in range(0, 10)] + ['step_10', 'step_11', 'step_12']
+    steps = ['step_0' + str(i) for i in range(1, 8)]
     source = []
 
     for step in steps:
@@ -128,9 +118,17 @@ def create_steps(notebook, execution_count):
         split_text = text.split('\n')
         cell = "markdown"
 
+        for_studio = False
+
         for line in split_text:
-            add_line(source, line, step)
-            cell, source, notebook, execution_count = detect_new_cell(notebook, source, cell, line, execution_count)
+            if '=== "Taipy Studio' in line:
+                for_studio = True
+            if '=== "Python configuration"' in line:
+                for_studio = False
+                
+            if not for_studio:
+                add_line(source, line, step)
+                cell, source, notebook, execution_count = detect_new_cell(notebook, source, cell, line, execution_count)
 
     return notebook, execution_count
 

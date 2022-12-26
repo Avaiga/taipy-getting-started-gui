@@ -1,5 +1,5 @@
 
-## Scoping 
+# Scoping 
 
 Scoping determines how Data Nodes are shared between cycles, scenarios, and pipelines. Indeed, multiple scenarios can have their own Data Nodes or share the same one. For example, the initial/historical dataset is usually shared by all the scenarios/pipelines/cycles. It has a Global Scope and will be unique in the entire application.
 
@@ -111,7 +111,7 @@ scenario_3 = tp.create_scenario(scenario_cfg,
 
 Scenario 1 and 2 belongs to the same cycle so I can define the month just once for scenario 1 and 2 because month has a Cycle scope.
 
-![]()
+![](sommething.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 
 ```python

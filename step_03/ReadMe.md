@@ -1,5 +1,5 @@
 
-## Different types of Data Nodes:
+# Different types of Data Nodes:
 
 - *Pickle* (default): Taipy can store and read anykind of data that can be serializable.
 
@@ -24,7 +24,7 @@ Two tasks linking these Data Nodes:
 
 One pipeline in a scenario gathering these two tasks
 
-![](config.png)
+![](config.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 ```python
 import datetime as dt
