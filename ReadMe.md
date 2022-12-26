@@ -15,13 +15,13 @@ specific language governing permissions and limitations under the License.
 
 - [License](#license)
 - [Usage](#usage)
-- [Taipy Getting Started](#what-is-taipy-getting-started for Core)
+- [Taipy Getting Started](##what-is-taipy-getting-started-for-core)
 - [Installation](#installation)
 - [Contributing](#contributing)
 - [Code of conduct](#code-of-conduct)
 - [Directory Structure](#directory-structure)
 
-## What is Taipy Getting started for Taipy Core
+## What is Taipy Getting started for Core
 
 Taipy is a Python library for creating Business Applications. More information on our [website](https://www.taipy.io).
 
