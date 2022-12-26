@@ -60,7 +60,7 @@ The pipeline will contain this one task and the scenario will contain this one p
     scenario_cfg = Config.scenarios('my_scenario')
     ```
 
-=== "python configuration"
+=== "Python configuration"
 
     Here is the code to configure a simple scenario.
 
