@@ -115,6 +115,8 @@ if __name__=="__main__":
 
     scenario_1.month.write(10)
     scenario_2.month.write(8)
+    
+    
     print("Scenario 1: month", scenario_1.month.read())
     print("Scenario 2: month", scenario_2.month.read())
 
