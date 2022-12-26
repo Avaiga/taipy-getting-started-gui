@@ -6,23 +6,7 @@ So far, we have talked about how having different scenarios helps us to oversee 
 A cycle can be thought of as a place to store different and recurrent scenarios within a time frame. In Taipy Core, each Cycle will have a unique primary scenario representing the reference scenario for a time period.
 
 
-Typically, in a Machine Learning problem, many scenarios are created daily to predict the next day, for example. Among all those scenarios, there is only one primary scenario. In the step's example, scenarios are attached to a MONTHLY cycle. Using Cycles is useful because some specific Taipy's functions exist to navigate through these Cycles. Taipy can get all the scenarios created in a month by providing the Cycle. You can also get every primary scenario ever made to see their progress over time quickly.
-
-Moreover, nothing is more straightforward than creating a Cycle. The frequency parameter in a scenario configuration will produce the desired type of Cycle. In the code below, the scenario has a monthly cycle. When it is created, it will be attached to the correct period (month).
-
-As you can see, a Cycle can be made very easily once you have the desired frequency. In this snippet of code, since we have specified frequency=Frequency.MONTHLY, the corresponding scenario will be automatically attached to the correct period (month) once it is created.
-
-
-```python
-#[2022-12-15 10:12:40,104][Taipy][INFO] job JOB_filter_by_month_9d986a1d-63fd-4eb1-8f75-2544eb34424b is completed.
-#[2022-12-15 10:12:40,155][Taipy][INFO] job JOB_count_values_3b515b56-21b6-40f6-94dd-32e4a3da35dd is completed.
-#[2022-12-15 10:12:40,345][Taipy][INFO] job JOB_filter_by_month_d540c831-9d73-4555-8d69-a2a546a77467 is completed.
-#[2022-12-15 10:12:40,400][Taipy][INFO] job JOB_count_values_ec296987-6178-43cd-8f28-1a990893733a is completed.
-#[2022-12-15 10:12:40,590][Taipy][INFO] job JOB_filter_by_month_42d4f0db-d911-40f5-b820-02e750f77ba5 is completed.
-#[2022-12-15 10:12:40,643][Taipy][INFO] job JOB_count_values_53caf39c-0060-46c1-8d48-3dc6b5e74d02 is completed.
-```
-
-Also, as you can see every scenario has been submitted and executed entirely. However, the result for these tasks are all the same. Caching will help to skip certain redundant task.
+In the step's example, scenarios are attached to a MONTHLY cycle. Using Cycles is useful because some specific Taipy's functions exist to navigate through these Cycles. Taipy can get all the scenarios created in a month by providing the Cycle. You can also get every primary scenario ever made to see their progress over time quickly.
 
 
 ```python
@@ -106,6 +90,11 @@ def count_values(df):
         ```
 
 
+
+As you can see, a Cycle can be made very easily once you have the desired frequency. In this snippet of code, since we have specified frequency=Frequency.MONTHLY, the corresponding scenario will be automatically attached to the correct period (month) once it is created.
+
+
+
 ```python
 tp.Core().run()
 
@@ -154,4 +143,4 @@ scenario_3.submit()
     {'PIPELINE_my_pipeline_8f1e1475-9294-41be-a9da-70539491524a': [<taipy.core.job.job.Job at 0x21940433580>,
       <taipy.core.job.job.Job at 0x21940431750>]}
 
-
+Also, as you can see every scenario has been submitted and executed entirely. However, the result for these tasks are all the same. Caching will help to skip certain redundant task.
