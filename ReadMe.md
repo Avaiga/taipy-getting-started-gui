@@ -21,7 +21,7 @@ specific language governing permissions and limitations under the License.
 - [Code of conduct](#code-of-conduct)
 - [Directory Structure](#directory-structure)
 
-## What is Taipy Getting started for Taipy for Core
+## What is Taipy Getting started for Core
 
 Taipy is a Python library for creating Business Applications. More information on our [website](https://www.taipy.io).
 
