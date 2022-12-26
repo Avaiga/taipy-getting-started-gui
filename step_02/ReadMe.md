@@ -6,7 +6,7 @@ Let's discuss about the basic functions that comes along with Taipy.
 
 -_tp.get_scenarios()_: this function returns a list of all the scenarios
 
--_tp.get()_: this function returns an entity based on the id of the entity
+-_tp.get(ID)_: this function returns an entity based on the id of the entity
 
 -_tp.delete(ID)_: this function deletes the entity and nested elements based on the id of the entity
 
