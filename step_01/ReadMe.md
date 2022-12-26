@@ -42,10 +42,10 @@ The pipeline will contain this one task and the scenario will contain this one p
     - Add your first Data Node by clicking the button on the right above corner of the windows
     - Create a name for it and change its details in the 'Details' section of Taipy Studio
             - name: input
-            - Details: default_data=21, storage_type:pickle
+            - Details: default_data=21, storage_type=pickle
     - Do the same for the output
             - name: output
-            - Details: storage_type:pickle
+            - Details: storage_type=pickle
     - Add a task and choose a function to associate with `<module>.<name>:function`
             - name: double
             - Details: function=`__main__.double:function`
