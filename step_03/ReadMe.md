@@ -56,10 +56,10 @@ def count_values(df):
             - Details: default_path='xxxx/yyyy.csv', storage_type=csv
     - Do the same for the month_data and nb_of_values
             - name: output
-            - Details: storage_type:pickle
+            - Details: storage_type=pickle
     - Add a task and choose a function to associate with `<module>.<name>:function`
             -name: filter_current
-            -Details: function=`__main__.filter_current:function`
+            -Details: function=__main__.filter_current:function
     - Do the same for count_values
     - Link the Data Nodes and the tasks
     - Add a pipeline and link it to the tasks
@@ -74,7 +74,7 @@ def count_values(df):
     scenario_cfg = Config.scenarios('my_scenario')
     ```
 
-=== "python configuration"
+=== "Python configuration"
 
     ```python
     # here is a CSV Data Node
