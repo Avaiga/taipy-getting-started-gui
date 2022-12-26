@@ -42,34 +42,30 @@ $ pip install taipy
 
 ## Using Notebooks
 
-This **Getting Started** is for Python scripts (*.py*) only. If you want to use **Jupyter Notebooks**, download this [notebook](https://docs.taipy.io/en/latest/getting_started/getting_started.ipynb) that deals with the [specific functions](https://docs.taipy.io/en/latest/manuals/gui/notebooks/) for Notebooks.
+This **Getting Started** is for Python scripts (*.py*) only. If you want to use **Jupyter Notebooks**, download this [notebook](https://docs.taipy.io/en/latest/getting_started/getting_started.ipynb).
+
+## Taipy Studio
+
+There are two ways to configure Taipy Core, either by Python code or with Taipy Studio. We strongly recommend using Taipy Studio. 
+
+Taipy Studio is a VS Code extension that provides a graphical editor to describe pipelines. The configuration of Taipy Core can be done more easily and quickly through Taipy Studio.
 
 So, without further delay, let's begin to code!
 
 ## Steps
 
-0. [First web page](step_00/ReadMe.md)
+1. [Configuration and execution](step_01/ReadMe.md)
 
-1. [Visual elements](step_01/ReadMe.md)
+2. [Basic functions](step_02/ReadMe.md)
 
-2. [Interactive GUI](step_02/ReadMe.md)
+3. [Data Nodes](step_03/ReadMe.md)
 
-3. [Introducing Taipy Core](step_03/ReadMe.md)
+4. [Cycles](step_04/ReadMe.md)
 
-4. [Pipeline Management](step_04/ReadMe.md)
+5. [Caching](step_05/ReadMe.md)
 
-5. [GUI & Pipeline](step_05/ReadMe.md)
+6. [Scoping](step_06/ReadMe.md)
 
-6. [Creation of Scenarios](step_06/ReadMe.md)
+7. [Execution modes](step_07/ReadMe.md)
 
-7. [GUI & Scenarios](step_07/ReadMe.md)
-
-8. [Modify Data Nodes content](step_08/ReadMe.md)
-
-9. [Manage Scenarios](step_09/ReadMe.md)
-
-10. [Embellish your APP](step_10/ReadMe.md)
-
-11. [Introducing Cycles](step_11/ReadMe.md)
-
-12. [Compare Scenarios](step_12/ReadMe.md)
+8. [Other features](step_08/ReadMe.md)
