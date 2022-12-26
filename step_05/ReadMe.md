@@ -140,20 +140,12 @@ print("Value", scenario_1.nb_of_values.read())
 
 
 ```python
-print("\nScenario 2: first submit")
-scenario_2.submit()
-print("Value", scenario_2.nb_of_values.read())
-print("Scenario 2: second submit")
+print("Scenario 2: submit")
 scenario_2.submit()
 print("Value", scenario_2.nb_of_values.read())
 ```
 
-    
-    Scenario 2: first submit
-    [2022-12-22 16:20:06,101][Taipy][INFO] job JOB_filter_by_month_2e474e1b-dc0b-464c-8d14-d64a59535717 is completed.
-    [2022-12-22 16:20:06,162][Taipy][INFO] job JOB_count_values_259039e2-20ed-4400-b11a-06119939f081 is completed.
-    Value 849
-    Scenario 2: second submit
+    Scenario 2: submit
     [2022-12-22 16:20:06,356][Taipy][INFO] job JOB_filter_by_month_705fcb69-64fc-4f66-a5f3-90169e09f8bf is completed.
     [2022-12-22 16:20:06,426][Taipy][INFO] job JOB_count_values_5a8eea88-4477-48ab-a401-8036bada2267 is completed.
     Value 849
@@ -174,16 +166,4 @@ print("Value", scenario_3.nb_of_values.read())
     Value 1012
     
 
-
-```python
-print("Scenario 3: change in historical data")
-scenario_3.historical_data.write(pd.read_csv('time_series_2.csv'))
-scenario_3.submit()
-print("Value", scenario_3.nb_of_values.read())
-```
-
-    Scenario 3: change in historical data
-    [2022-12-22 16:20:08,150][Taipy][INFO] job JOB_filter_by_month_8bab73fb-733b-4d8e-93fb-c550213bb2f1 is completed.
-    [2022-12-22 16:20:08,300][Taipy][INFO] job JOB_count_values_909c5bfa-a622-4959-aa2e-864abef8a0b8 is completed.
-    Value 1012
-    
+Each `nb_of_values` has their own value for each scenario, they have a Scenario scope.
