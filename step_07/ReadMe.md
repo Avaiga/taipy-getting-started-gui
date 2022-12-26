@@ -96,8 +96,10 @@ def add(nb):
 Config.configure_job_executions(mode="standalone", max_nb_of_workers=2)
 ```
 
+Results:
+```
     <taipy.core.config.job_config.JobConfig at 0x2193e63c3d0>
-
+```
 
 
 ```python

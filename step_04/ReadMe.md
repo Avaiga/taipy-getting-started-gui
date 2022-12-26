@@ -83,7 +83,7 @@ def count_values(df):
                                                  pipeline_configs=[pipeline_cfg],
                                                  frequency=Frequency.MONTHLY)
 
-        
+
         #scenario_cfg = Config.configure_scenario_from_tasks(id="my_scenario",
         #                                                    task_configs=[task_filter_by_month_cfg,
         #                                                    task_count_values_cfg])
@@ -127,6 +127,8 @@ scenario_3.month.write(9)
 scenario_3.submit()
 ```
 
+Results:
+```
     Month Data Node of Scenario 1 10
     Month Data Node of Scenario 2 10
     [2022-12-22 16:20:04,746][Taipy][INFO] job JOB_filter_by_month_a4d3c4a7-5ec9-4cca-8a1b-578c910e255a is completed.
@@ -142,5 +144,6 @@ scenario_3.submit()
 
     {'PIPELINE_my_pipeline_8f1e1475-9294-41be-a9da-70539491524a': [<taipy.core.job.job.Job at 0x21940433580>,
       <taipy.core.job.job.Job at 0x21940431750>]}
+```
 
 Also, as you can see every scenario has been submitted and executed entirely. However, the result for these tasks are all the same. Caching will help to skip certain redundant task.

@@ -23,10 +23,11 @@ scenario = tp.create_scenario(scenario_cfg, name="Scenario")
 tp.submit(scenario)
 print("First submit", scenario.output.read())
 ```
-
+Results:
+```
     [2022-12-22 16:20:02,874][Taipy][INFO] job JOB_double_a5ecfa4d-1963-4776-8f68-0859d22970b9 is completed.
     First submit 42
-    
+```
 
 By using _write_, data of a Data Node can be changed. The syntax is `<Scenario>.<Pipeline>.<Data Node>.write(value)`. If there is just one pipeline, we can just write `<Scenario>.<Data Node>.write(value)`.
 
@@ -37,9 +38,11 @@ scenario.input.write(54)
 print("After write",scenario.input.read())
 ```
 
+Results:
+```
     Before write 21
     After write 54
-    
+```
 
 The submission of the scenario will update the output values.
 
@@ -48,9 +51,11 @@ The submission of the scenario will update the output values.
 tp.submit(scenario)
 print("Second submit",scenario.output.read())
 ```
-
+Results:
+```
     [2022-12-22 16:20:03,011][Taipy][INFO] job JOB_double_7eee213f-062c-4d67-b0f8-4b54c04e45e7 is completed.
     Second submit 108
+```
     
 
 
@@ -65,5 +70,7 @@ scenario = tp.get(scenario.id)
 # how to delete a scenario
 tp.delete(scenario.id)
 ```
-
+Results:
+```
     [21, 54]
+```

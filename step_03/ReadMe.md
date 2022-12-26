@@ -121,7 +121,8 @@ scenario_1.submit()
 scenario_2 = tp.create_scenario(scenario_cfg, creation_date=dt.datetime(2022,10,7), name="Scenario 2022/10/7")
 scenario_2.submit()
 ```
-
+Results:
+```
     [2022-12-22 16:20:03,424][Taipy][INFO] job JOB_filter_current_257edf8d-3ca3-46f5-aec6-c8a413c86c43 is completed.
     [2022-12-22 16:20:03,510][Taipy][INFO] job JOB_count_values_90c9b3c7-91e7-49ef-9064-69963d60f52a is completed.
     [2022-12-22 16:20:03,755][Taipy][INFO] job JOB_filter_current_4adc91ee-cd64-4ebf-819b-8643da0282fd is completed.
@@ -133,3 +134,4 @@ scenario_2.submit()
 
     {'PIPELINE_my_pipeline_b751f808-87de-4de1-866f-c1b3dd7bba19': [<taipy.core.job.job.Job at 0x219403b6080>,
       <taipy.core.job.job.Job at 0x219403b7c40>]}
+```

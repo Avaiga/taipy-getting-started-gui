@@ -87,7 +87,7 @@ def count_values(df):
     scenario_cfg = Config.configure_scenario(id="my_scenario",
                                              pipeline_configs=[pipeline_cfg],
                                              frequency=Frequency.MONTHLY)
-    
+
 
     #scenario_cfg = Config.configure_scenario_from_tasks(id="my_scenario",
     #                                                    task_configs=[task_filter_by_month_cfg,
@@ -119,10 +119,11 @@ scenario_1.month.write(10)
 print("Scenario 1: month", scenario_1.month.read())
 print("Scenario 2: month", scenario_2.month.read())
 ```
-
+Results:
+```
     Scenario 1: month 10
     Scenario 2: month 10
-    
+```
 
 
 ```python
@@ -131,12 +132,13 @@ scenario_1.submit()
 print("Value", scenario_1.nb_of_values.read())
 ```
 
-    
+Results:
+```
     Scenario 1: submit
     [2022-12-22 16:20:05,810][Taipy][INFO] job JOB_filter_by_month_d71cfd10-f674-40c8-b7a5-c66bea8773ef is completed.
     [2022-12-22 16:20:05,902][Taipy][INFO] job JOB_count_values_cbe0b3b3-2531-440a-9413-48845c9cfdf1 is completed.
     Value 849
-    
+```  
 
 
 ```python
@@ -145,11 +147,13 @@ scenario_2.submit()
 print("Value", scenario_2.nb_of_values.read())
 ```
 
+Results:
+```
     Scenario 2: submit
     [2022-12-22 16:20:06,356][Taipy][INFO] job JOB_filter_by_month_705fcb69-64fc-4f66-a5f3-90169e09f8bf is completed.
     [2022-12-22 16:20:06,426][Taipy][INFO] job JOB_count_values_5a8eea88-4477-48ab-a401-8036bada2267 is completed.
     Value 849
-    
+```
 
 
 ```python
@@ -158,12 +162,12 @@ scenario_3.month.write(9)
 scenario_3.submit()
 print("Value", scenario_3.nb_of_values.read())
 ```
-
-    
+Results:
+``` 
     Scenario 3: submit
     [2022-12-22 16:20:07,404][Taipy][INFO] job JOB_filter_by_month_d0eefd6f-af96-46b8-b916-7cb94303ae4d is completed.
     [2022-12-22 16:20:07,578][Taipy][INFO] job JOB_count_values_469f6ae3-7a8a-4b65-9175-899399013f60 is completed.
     Value 1012
-    
+```
 
 Each `nb_of_values` has their own value for each scenario, they have a Scenario scope.

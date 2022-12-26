@@ -93,7 +93,8 @@ tp.submit(scenario)
 
 print("Value at the end of task", scenario.output.read())
 ```
-
+Results:
+```
     [2022-12-22 16:20:02,740][Taipy][INFO] job JOB_double_699613f8-7ff4-471b-b36c-d59fb6688905 is completed.
     Value at the end of task 42
-    
+```    
