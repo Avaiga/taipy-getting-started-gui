@@ -9,18 +9,13 @@ Options of submit:
 - wait: if wait is True, the submit is synchronous and will wait for the end of all the jobs (if timeout is not defined)
 - timeout: if wait is True, Taipy will wait for the end of the submit until a certain amount of time
 
-
-
-
 ```python
-#  Taipy Core Data nodes - CSV, pickle
-from taipy.core.config import Config, Scope, Frequency
+from taipy.core.config import Config
 import taipy as tp
 import datetime as dt
 import pandas as pd
 import time
 ```
-
 
 ```python
 # Normal function used by Taipy
@@ -33,7 +28,7 @@ def add(nb):
     return nb + 10
 ```
 
-
+![](config_07.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 
 === "Taipy Studio/TOML configuration"
@@ -72,7 +67,7 @@ def add(nb):
 
     # Configuration of Data Nodes
     input_data_node_cfg = Config.configure_data_node("input", default_data=21)
-    intermediate_data_node_cfg = Config.configure_data_node("input", default_data=21)
+    intermediate_data_node_cfg = Config.configure_data_node("intermediate", default_data=21)
     output_data_node_cfg = Config.configure_data_node("output")
 
     # Configuration of tasks
@@ -105,12 +100,10 @@ Config.configure_job_executions(mode="standalone", max_nb_of_workers=2)
 
 
 
-
 ```python
 if __name__=="__main__":
     tp.Core().run()
-    scenario_1 = tp.create_scenario(scenario_cfg, creation_date=dt.datetime(2022,10,7), name="Scenario 2022/10/7")
-    scenario_1.month.write(10)
+    scenario_1 = tp.create_scenario(scenario_cfg)
     scenario_1.submit()
     scenario_1.submit()
 
@@ -118,12 +111,10 @@ if __name__=="__main__":
 ```
 
 
-
 ```python
 if __name__=="__main__":
     tp.Core().run()
-    scenario_1 = tp.create_scenario(scenario_cfg, creation_date=dt.datetime(2022,10,7), name="Scenario 2022/10/7")
-    scenario_1.month.write(10)
+    scenario_1 = tp.create_scenario(scenario_cfg)
     scenario_1.submit(wait=True)
     scenario_1.submit(wait=True, timeout=5)
 ```

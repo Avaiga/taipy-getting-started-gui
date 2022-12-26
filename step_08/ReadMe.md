@@ -2,6 +2,7 @@
 
 This step reuses the configuration provided in the previous step except for the scenario configuration.
 
+![](config_08.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 ## Callback on scenarios
 
@@ -19,15 +20,6 @@ def callback_scenario(scenario, job):
     if job.status.value == 7:
         for data_node in job.task.output.values():
             print(data_node.read())
-
-
-if __name__=="__main__":
-    tp.Core().run()
-    scenario_1 = tp.create_scenario(scenario_cfg, creation_date=dt.datetime(2022,10,7), name="Scenario 2022/10/7")
-    scenario_1.subscribe(callback_scenario_state)
-
-    scenario_1.submit(wait=True)
-    scenario_1.submit(wait=True, timeout=5)
 
 ```
 
@@ -72,25 +64,17 @@ The Data Node that will be compared here is the 'month' Data Node. It is indicat
 ```python
 tp.Core().run()
 
-scenario_1 = tp.create_scenario(scenario_cfg,
-                                creation_date=dt.datetime(2022,10,7),
-                                name="Scenario 2022/10/7")
-scenario_2 = tp.create_scenario(scenario_cfg,
-                                creation_date=dt.datetime(2022,8,5),
-                                name="Scenario 2022/8/5")
+scenario_1 = tp.create_scenario(scenario_cfg)
+scenario_2 = tp.create_scenario(scenario_cfg)
 
-scenario_1.month.write(10)
-scenario_2.month.write(8)
-print("Scenario 1: month", scenario_1.month.read())
-print("Scenario 2: month", scenario_2.month.read())
 
 print("\nScenario 1: submit")
 scenario_1.submit()
-print("Value", scenario_1.nb_of_values.read())
+print("Value", scenario_1.output.read())
 
 print("\nScenario 2: first submit")
 scenario_2.submit()
-print("Value", scenario_2.nb_of_values.read())
+print("Value", scenario_2.output.read())
 
 
 print(tp.compare_scenarios(scenario_1, scenario_2))

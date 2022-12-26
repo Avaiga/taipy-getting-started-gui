@@ -74,7 +74,7 @@ The pipeline will contain this one task and the scenario will contain this one p
                                      double,
                                      input_data_node_cfg,
                                      output_data_node_cfg)
-
+    
     # Configuration of the pipeline and scenario
     pipeline_cfg = Config.configure_pipeline("my_pipeline", [task_cfg])
     scenario_cfg = Config.configure_scenario("my_scenario", [pipeline_cfg])

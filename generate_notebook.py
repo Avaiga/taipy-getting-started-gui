@@ -118,15 +118,22 @@ def create_steps(notebook, execution_count):
         split_text = text.split('\n')
         cell = "markdown"
 
-        for_studio = False
+        for_studio = 0
 
         for line in split_text:
+            if cell == "markdown":
+                line=line.replace("    ","")
+            elif cell == "code" and (line[:4] == "    " or len(line)<1) and for_studio == 2:
+                line=line[4:]
+            else:
+                for_studio = 0
+            
             if '=== "Taipy Studio' in line:
-                for_studio = True
+                for_studio = 1
             if '=== "Python configuration"' in line:
-                for_studio = False
+                for_studio = 2
                 
-            if not for_studio:
+            if for_studio != 1:
                 add_line(source, line, step)
                 cell, source, notebook, execution_count = detect_new_cell(notebook, source, cell, line, execution_count)
 

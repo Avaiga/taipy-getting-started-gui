@@ -87,7 +87,7 @@ def count_values(df):
     scenario_cfg = Config.configure_scenario(id="my_scenario",
                                              pipeline_configs=[pipeline_cfg],
                                              frequency=Frequency.MONTHLY)
-
+    
 
     #scenario_cfg = Config.configure_scenario_from_tasks(id="my_scenario",
     #                                                    task_configs=[task_filter_by_month_cfg,

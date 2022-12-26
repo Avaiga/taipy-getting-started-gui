@@ -30,16 +30,16 @@ cacheable = "False:bool"
 inputs = []
 outputs = []
 
-[TASK.double_task]
+[TASK.double]
 inputs = [ "input:SECTION",]
-function = "<function double at 0x0000024613643E20>"
+function = "<function double at 0x0000021641BA3E20>"
 outputs = [ "output:SECTION",]
 
 [PIPELINE.default]
 tasks = []
 
 [PIPELINE.my_pipeline]
-tasks = [ "double_task:SECTION",]
+tasks = [ "double:SECTION",]
 
 [SCENARIO.default]
 pipelines = []

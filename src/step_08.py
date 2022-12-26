@@ -1,61 +1,42 @@
 #  Taipy Core Data nodes - CSV, pickle
-from taipy.core.config import Config, Scope, Frequency
+from taipy.core.config import Config, Frequency
 import taipy as tp
 import datetime as dt
-import pandas as pd
 import time
-
-
-def filter_by_month(df, month):
-    df['Date'] = pd.to_datetime(df['Date']) 
-    df = df[df['Date'].dt.month == month]
-    return df
-
-def count_values(df):
-    print("Wait 10 seconds")
-    time.sleep(10)
-    return len(df)
 
 
 Config.configure_job_executions(mode="standalone", max_nb_of_workers=2)
 
+# Normal function used by Taipy
+def double(nb):
+    return nb * 2
 
-historical_data_cfg = Config.configure_csv_data_node(id="historical_data",
-                                                 default_path="time_series.csv",
-                                                 scope=Scope.GLOBAL)
+def add(nb):
+    print("Wait 10 seconds in add function")
+    time.sleep(10)
+    return nb + 10
 
-month_cfg = Config.configure_data_node(id="month",
-                                       scope=Scope.CYCLE)
+Config.configure_job_executions(mode="standalone", max_nb_of_workers=2)
 
-month_values_cfg =  Config.configure_data_node(id="month_data",
-                                               scope=Scope.CYCLE,
-                                               cacheable=True)
+# Configuration of Data Nodes
+input_data_node_cfg = Config.configure_data_node("input", default_data=21)
+intermediate_data_node_cfg = Config.configure_data_node("intermediate")
+output_data_node_cfg = Config.configure_data_node("output")
 
-nb_of_values_cfg = Config.configure_data_node(id="nb_of_values",
-                                              cacheable=True)
+# Configuration of tasks
+first_task_cfg = Config.configure_task("double",
+                                    double,
+                                    input_data_node_cfg,
+                                    intermediate_data_node_cfg)
 
+second_task_cfg = Config.configure_task("add",
+                                    add,
+                                    intermediate_data_node_cfg,
+                                    output_data_node_cfg)
 
-task_filter_by_month_cfg = Config.configure_task(id="filter_by_month",
-                                                 function=filter_by_month,
-                                                 input=[historical_data_cfg, month_cfg],
-                                                 output=month_values_cfg)
+# Configuration of the pipeline and scenario
+pipeline_cfg = Config.configure_pipeline("my_pipeline", [first_task_cfg, second_task_cfg])
 
-task_count_values_cfg = Config.configure_task(id="count_values",
-                                                 function=count_values,
-                                                 input=month_values_cfg,
-                                                 output=nb_of_values_cfg)
-
-pipeline_cfg = Config.configure_pipeline(id="my_pipeline",
-                                         task_configs=[task_filter_by_month_cfg,
-                                                       task_count_values_cfg])
-
-scenario_cfg = Config.configure_scenario(id="my_scenario",
-                                         pipeline_configs=[pipeline_cfg],
-                                         frequency=Frequency.MONTHLY)
-
-#scenario_cfg = Config.configure_scenario_from_tasks(id="my_scenario",
-#                                                    task_configs=[task_filter_by_month_cfg,
-#                                                    task_count_values_cfg])
 
 
 def callback_scenario_state(scenario, job):
@@ -86,47 +67,38 @@ def compare_function(*data_node_results):
     return compare_result
 
 
-scenario_cfg = Config.configure_scenario("multiply_scenario",
+scenario_cfg = Config.configure_scenario("my_scenario",
                                          [pipeline_cfg],
-                                         comparators={month_cfg.id: compare_function},
-                                         frequency=Frequency.MONTHLY)
+                                         comparators={intermediate_data_node_cfg.id: compare_function})
 
 #scenario_cfg = Config.configure_scenario_from_tasks(id="my_scenario",
 #                                                    task_configs=[task_filter_by_month_cfg,
 #                                                                  task_count_values_cfg])
 
-
+Config.export("src/config_08.toml")
 
 if __name__=="__main__":
     tp.Core().run()
-    scenario_1 = tp.create_scenario(scenario_cfg, creation_date=dt.datetime(2022,10,7), name="Scenario 2022/10/7")
+    scenario_1 = tp.create_scenario(scenario_cfg)
     scenario_1.subscribe(callback_scenario_state)
 
     scenario_1.submit(wait=True)
     scenario_1.submit(wait=True, timeout=5)
      
 
-    scenario_1 = tp.create_scenario(scenario_cfg,
-                                    creation_date=dt.datetime(2022,10,7),
-                                    name="Scenario 2022/10/7")
-    scenario_2 = tp.create_scenario(scenario_cfg,
-                                    creation_date=dt.datetime(2022,8,5),
-                                    name="Scenario 2022/8/5")
+    scenario_1 = tp.create_scenario(scenario_cfg)
+    scenario_2 = tp.create_scenario(scenario_cfg)
 
-    scenario_1.month.write(10)
-    scenario_2.month.write(8)
-    
-    
-    print("Scenario 1: month", scenario_1.month.read())
-    print("Scenario 2: month", scenario_2.month.read())
+    scenario_1.input.write(10)
+    scenario_2.input.write(8)
 
     print("\nScenario 1: submit")
     scenario_1.submit()
-    print("Value", scenario_1.nb_of_values.read())
+    print("Value", scenario_1.output.read())
 
     print("\nScenario 2: first submit")
     scenario_2.submit()
-    print("Value", scenario_2.nb_of_values.read())
+    print("Value", scenario_2.output.read())
 
 
     print(tp.compare_scenarios(scenario_1, scenario_2))
