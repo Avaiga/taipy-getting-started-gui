@@ -112,9 +112,11 @@ print("Scenario 1: month", scenario_1.month.read())
 print("Scenario 2: month", scenario_2.month.read())
 ```
 
+Results:
+```
     Scenario 1: month 10
     Scenario 2: month 10
-    
+```
 
  No task has already been submitted so everything will be submitted
 
@@ -125,12 +127,12 @@ scenario_1.submit()
 print("Value", scenario_1.nb_of_values.read())
 ```
 Results:
-
+```
     Scenario 1: submit
     [2022-12-22 16:20:09,079][Taipy][INFO] job JOB_filter_by_month_0d7836eb-70eb-4fe6-b954-0e56967831b6 is completed.
     [2022-12-22 16:20:09,177][Taipy][INFO] job JOB_count_values_91214241-ce81-42d8-9025-e83509652133 is completed.
     Value 849
-    
+```
 
 When the second scenario is being executed, the first task will be skipped. Indeed, the two scenarios shares the same data nodes for this task and no input data nodes have been changed. node
 
@@ -142,12 +144,12 @@ scenario_2.submit()
 print("Value", scenario_2.nb_of_values.read())
 ```
 Results:
-
+```
     Scenario 2: first submit
     [2022-12-22 16:20:09,317][Taipy][INFO] job JOB_filter_by_month_c1db1f0c-6e0a-4691-b0a3-331d473c4c42 is skipped.
     [2022-12-22 16:20:09,371][Taipy][INFO] job JOB_count_values_271cefd0-8648-47fa-8948-ed49e93e3eee is completed.
     Value 849
-    
+```
 
 Resubmitting the same scenario without any change will just skip every task.
 
@@ -160,12 +162,12 @@ print("Value", scenario_2.nb_of_values.read())
 ```
 
 Results:
-
+```
     Scenario 2: second submit
     [2022-12-22 16:20:09,516][Taipy][INFO] job JOB_filter_by_month_da2762d1-6f24-40c1-9bd1-d6786fee7a8d is skipped.
     [2022-12-22 16:20:09,546][Taipy][INFO] job JOB_count_values_9071dff4-37b2-4095-a7ed-34ef81daad27 is skipped.
     Value 849
-    
+```
 
 This scenario is not in the same cycle. We change the month to 9 and every task will be completed. 
 
