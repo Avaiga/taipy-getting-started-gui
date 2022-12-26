@@ -16,6 +16,8 @@ Configuration is the structure or model of what is our scenario. It represents o
 
 Let's create our first configuration and then create our entities to submit either through Taipy Studio or through direct Python Code.
 
+![](config_01.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+
 
 ```python
 from taipy import Config
@@ -74,7 +76,7 @@ The pipeline will contain this one task and the scenario will contain this one p
                                      double,
                                      input_data_node_cfg,
                                      output_data_node_cfg)
-    
+
     # Configuration of the pipeline and scenario
     pipeline_cfg = Config.configure_pipeline("my_pipeline", [task_cfg])
     scenario_cfg = Config.configure_scenario("my_scenario", [pipeline_cfg])
