@@ -19,6 +19,7 @@ task_cfg = Config.configure_task("double",
 pipeline_cfg = Config.configure_pipeline("my_pipeline", [task_cfg])
 scenario_cfg = Config.configure_scenario("my_scenario", [pipeline_cfg])
 
+
 # Run of the Core
 tp.Core().run()
 

@@ -42,7 +42,6 @@ scenario_cfg = Config.configure_scenario(id="my_scenario",
 #                                                    task_configs=[task_filter_current_cfg,
 #                                                    task_count_values_cfg])
 
-
 tp.Core().run()
 
 scenario_1 = tp.create_scenario(scenario_cfg, creation_date=dt.datetime(2022,10,7), name="Scenario 2022/10/7")

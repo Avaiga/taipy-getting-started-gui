@@ -17,46 +17,12 @@ def count_values(df):
     return len(df)
 
 
+Config.load('config_08.toml')
+
 Config.configure_job_executions(mode="standalone", max_nb_of_workers=2)
 
-
-historical_data_cfg = Config.configure_csv_data_node(id="historical_data",
-                                                 default_path="time_series.csv",
-                                                 scope=Scope.GLOBAL)
-
-month_cfg = Config.configure_data_node(id="month",
-                                       scope=Scope.CYCLE)
-
-month_values_cfg =  Config.configure_data_node(id="month_data",
-                                               scope=Scope.CYCLE,
-                                               cacheable=True)
-
-nb_of_values_cfg = Config.configure_data_node(id="nb_of_values",
-                                              cacheable=True)
-
-
-task_filter_by_month_cfg = Config.configure_task(id="filter_by_month",
-                                                 function=filter_by_month,
-                                                 input=[historical_data_cfg, month_cfg],
-                                                 output=month_values_cfg)
-
-task_count_values_cfg = Config.configure_task(id="count_values",
-                                                 function=count_values,
-                                                 input=month_values_cfg,
-                                                 output=nb_of_values_cfg)
-
-pipeline_cfg = Config.configure_pipeline(id="my_pipeline",
-                                         task_configs=[task_filter_by_month_cfg,
-                                                       task_count_values_cfg])
-
-scenario_cfg = Config.configure_scenario(id="my_scenario",
-                                         pipeline_configs=[pipeline_cfg],
-                                         frequency=Frequency.MONTHLY)
-
-#scenario_cfg = Config.configure_scenario_from_tasks(id="my_scenario",
-#                                                    task_configs=[task_filter_by_month_cfg,
-#                                                    task_count_values_cfg])
-
+# my_scenario is the id of the scenario configured
+scenario_cfg = Config.scenarios('my_scenario')
 
 def callback_scenario_state(scenario, job):
     """All the scenarios are subscribed to the callback_scenario_state function. It means whenever a job is done, it is called.
@@ -70,6 +36,15 @@ def callback_scenario_state(scenario, job):
     if job.status.value == 7:
         for data_node in job.task.output.values():
             print(data_node.read())
+
+
+if __name__=="__main__":
+    tp.Core().run()
+    scenario_1 = tp.create_scenario(scenario_cfg, creation_date=dt.datetime(2022,10,7), name="Scenario 2022/10/7")
+    scenario_1.subscribe(callback_scenario_state)
+
+    scenario_1.submit(wait=True)
+    scenario_1.submit(wait=True, timeout=5)
 
 
 def compare_function(*data_node_results):
@@ -95,16 +70,8 @@ scenario_cfg = Config.configure_scenario("multiply_scenario",
 #                                                    task_configs=[task_filter_by_month_cfg,
 #                                                                  task_count_values_cfg])
 
-
-
-if __name__=="__main__":
+if __name__=="__main__":   
     tp.Core().run()
-    scenario_1 = tp.create_scenario(scenario_cfg, creation_date=dt.datetime(2022,10,7), name="Scenario 2022/10/7")
-    scenario_1.subscribe(callback_scenario_state)
-
-    scenario_1.submit(wait=True)
-    scenario_1.submit(wait=True, timeout=5)
-     
 
     scenario_1 = tp.create_scenario(scenario_cfg,
                                     creation_date=dt.datetime(2022,10,7),

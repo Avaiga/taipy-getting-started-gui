@@ -1,0 +1,77 @@
+[TAIPY]
+root_folder = "./taipy/"
+storage_folder = ".data/"
+clean_entities_enabled = "ENV[TAIPY_CLEAN_ENTITIES_ENABLED]"
+repository_type = "filesystem"
+
+[JOB]
+mode = "standalone"
+max_nb_of_workers = "2:int"
+
+[gui]
+
+[DATA_NODE.default]
+storage_type = "pickle"
+scope = "SCENARIO:SCOPE"
+cacheable = "False:bool"
+
+[DATA_NODE.historical_data]
+storage_type = "csv"
+scope = "GLOBAL:SCOPE"
+cacheable = "False:bool"
+default_path = "time_series.csv"
+has_header = "True:bool"
+exposed_type = "pandas"
+
+[DATA_NODE.month]
+storage_type = "pickle"
+scope = "CYCLE:SCOPE"
+cacheable = "False:bool"
+
+[DATA_NODE.month_data]
+storage_type = "pickle"
+scope = "CYCLE:SCOPE"
+cacheable = "True:bool"
+
+[DATA_NODE.nb_of_values]
+storage_type = "pickle"
+scope = "SCENARIO:SCOPE"
+cacheable = "True:bool"
+
+[TASK.default]
+inputs = []
+outputs = []
+
+[TASK.filter_by_month]
+inputs = [ "historical_data:SECTION", "month:SECTION",]
+function = "<function filter_by_month at 0x00000204D9CA9870>"
+outputs = [ "month_data:SECTION",]
+
+[TASK.count_values]
+inputs = [ "month_data:SECTION",]
+function = "<function count_values at 0x00000204D9CA9D80>"
+outputs = [ "nb_of_values:SECTION",]
+
+[PIPELINE.default]
+tasks = []
+
+[PIPELINE.my_pipeline]
+tasks = [ "filter_by_month:SECTION", "count_values:SECTION",]
+
+[SCENARIO.default]
+pipelines = []
+
+[SCENARIO.my_scenario]
+pipelines = [ "my_pipeline:SECTION",]
+frequency = "MONTHLY:FREQUENCY"
+
+[SCENARIO.multiply_scenario]
+pipelines = [ "my_pipeline:SECTION",]
+frequency = "MONTHLY:FREQUENCY"
+
+[SCENARIO.default.comparators]
+
+[SCENARIO.my_scenario.comparators]
+
+[SCENARIO.multiply_scenario.comparators]
+month = [ "<function compare_function at 0x00000204FDC6CD30>",]
