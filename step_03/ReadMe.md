@@ -127,11 +127,4 @@ Results:
     [2022-12-22 16:20:03,510][Taipy][INFO] job JOB_count_values_90c9b3c7-91e7-49ef-9064-69963d60f52a is completed.
     [2022-12-22 16:20:03,755][Taipy][INFO] job JOB_filter_current_4adc91ee-cd64-4ebf-819b-8643da0282fd is completed.
     [2022-12-22 16:20:03,901][Taipy][INFO] job JOB_count_values_968c8c34-2ed4-4f89-995c-a4137af82beb is completed.
-    
-
-
-
-
-    {'PIPELINE_my_pipeline_b751f808-87de-4de1-866f-c1b3dd7bba19': [<taipy.core.job.job.Job at 0x219403b6080>,
-      <taipy.core.job.job.Job at 0x219403b7c40>]}
 ```
