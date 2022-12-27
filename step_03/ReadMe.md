@@ -43,6 +43,9 @@ def count_values(df):
 ```
 
 
+![](config_03.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+
+
 === "Taipy Studio/TOML configuration"
 
     - Create new file: 'config_03.toml'
