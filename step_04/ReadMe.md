@@ -122,13 +122,8 @@ print("Month Data Node of Scenario 2", scenario_2.month.read())
 
 scenario_1.submit()
 scenario_2.submit()
-
-scenario_3 = tp.create_scenario(scenario_cfg,
-                                creation_date=dt.datetime(2021,9,1),
-                                name="Scenario 2022/9/1")
-scenario_3.month.write(9)
-scenario_3.submit()
 ```
+
 
 Results:
 ```
@@ -140,13 +135,23 @@ Results:
     [2022-12-22 16:20:05,084][Taipy][INFO] job JOB_count_values_a52b910a-4024-443e-8ea2-f3cdda6c1c9d is completed.
     [2022-12-22 16:20:05,317][Taipy][INFO] job JOB_filter_by_month_8643e5cf-e863-434f-a1ba-18222d6faab8 is completed.
     [2022-12-22 16:20:05,376][Taipy][INFO] job JOB_count_values_72ab71be-f923-4898-a8a8-95ec351c24d9 is completed.
-    
+```
 
+Scenario 3 will be alone in another Cycle due to its creation date.
 
+```python
+scenario_3 = tp.create_scenario(scenario_cfg,
+                                creation_date=dt.datetime(2021,9,1),
+                                name="Scenario 2022/9/1")
+scenario_3.month.write(9)
+scenario_3.submit()
+```
 
+Results:
 
-    {'PIPELINE_my_pipeline_8f1e1475-9294-41be-a9da-70539491524a': [<taipy.core.job.job.Job at 0x21940433580>,
-      <taipy.core.job.job.Job at 0x21940431750>]}
+```
+    [2022-12-22 16:20:05,317][Taipy][INFO] job JOB_filter_by_month_8643e5cf-e863-434f-a1ba-18222d6faab8 is completed.
+    [2022-12-22 16:20:05,376][Taipy][INFO] job JOB_count_values_72ab71be-f923-4898-a8a8-95ec351c24d9 is completed.
 ```
 
 Also, as you can see every scenario has been submitted and executed entirely. However, the result for these tasks are all the same. Caching will help to skip certain redundant task.
