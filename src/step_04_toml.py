@@ -41,8 +41,20 @@ print("Month Data Node of Scenario 2", scenario_2.month.read())
 scenario_1.submit()
 scenario_2.submit()
 
+
+print("Scenario 1 before", scenario_1.is_primary)
+print("Scenario 2 before", scenario_1.is_primary)
+
+tp.set_primary(scenario_2)
+
+print("Scenario 1 after", scenario_1.is_primary)
+print("Scenario 2 after", scenario_1.is_primary)
+
+
 scenario_3 = tp.create_scenario(scenario_cfg,
                                 creation_date=dt.datetime(2021,9,1),
                                 name="Scenario 2022/9/1")
 scenario_3.month.write(9)
 scenario_3.submit()
+
+print("Is scenario 3 primary?", scenario_3.is_primary)

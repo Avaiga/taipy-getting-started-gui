@@ -137,7 +137,30 @@ Results:
     [2022-12-22 16:20:05,376][Taipy][INFO] job JOB_count_values_72ab71be-f923-4898-a8a8-95ec351c24d9 is completed.
 ```
 
-Scenario 3 will be alone in another Cycle due to its creation date.
+## Primary scenarios
+
+In each cycle, there is a primary scenario. Having a primary scenario is interesting because it will be the important one of the cycle, the one that is the reference. By default, the first scenario created for a cycle will be primary. `tp.set_primary()` allows to change which scenario is the primary scenario in a cycle. `<Scenario>.is_primary` will return a boolean whether the scenario is primary or not.
+
+```python
+print("Scenario 1 before", scenario_1.is_primary)
+print("Scenario 2 before", scenario_1.is_primary)
+
+tp.set_primary(scenario_2)
+
+
+print("Scenario 1 after", scenario_1.is_primary)
+print("Scenario 2 after", scenario_1.is_primary)
+```
+Results:
+
+```
+    Scenario 1 before True
+    Scenario 2 before False
+    Scenario 2 after False
+    Scenario 2 after True
+```
+
+Scenario 3 will be alone in another Cycle due to its creation date and will be the default primary scenarrio.
 
 ```python
 scenario_3 = tp.create_scenario(scenario_cfg,
@@ -145,6 +168,8 @@ scenario_3 = tp.create_scenario(scenario_cfg,
                                 name="Scenario 2022/9/1")
 scenario_3.month.write(9)
 scenario_3.submit()
+
+print("Is scenario 3 primary?", scenario_3.is_primary)
 ```
 
 Results:
@@ -152,6 +177,8 @@ Results:
 ```
     [2022-12-22 16:20:05,317][Taipy][INFO] job JOB_filter_by_month_8643e5cf-e863-434f-a1ba-18222d6faab8 is completed.
     [2022-12-22 16:20:05,376][Taipy][INFO] job JOB_count_values_72ab71be-f923-4898-a8a8-95ec351c24d9 is completed.
+
+    Is scenario 3 primary? True
 ```
 
 Also, as you can see every scenario has been submitted and executed entirely. However, the result for these tasks are all the same. Caching will help to skip certain redundant task.
