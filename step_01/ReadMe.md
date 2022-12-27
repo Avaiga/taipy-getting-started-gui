@@ -34,6 +34,9 @@ The task links the two Data Nodes through the Python function _double_.
 
 The pipeline will contain this one task and the scenario will contain this one pipeline.
 
+![](config_01.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+
+
 === "Taipy Studio/TOML configuration"
 
     - Create new file: 'config_01.toml'
