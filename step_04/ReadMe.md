@@ -21,7 +21,7 @@ def count_values(df):
     return len(df)
 ```
 
-![](config_04.jpg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![](config_04.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 
 === "Taipy Studio/TOML configuration"

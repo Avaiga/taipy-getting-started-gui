@@ -16,7 +16,7 @@ Taipy lets the user create multiple instances of the same configuration. Datas c
 
 Datas can be naturally different depending on the input data nodes or the randomness of functions. Moreover, the user can change them with the _write_ function.
 
-![](config_02.jpg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![](config_02.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 ```python
 scenario = tp.create_scenario(scenario_cfg, name="Scenario")

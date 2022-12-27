@@ -24,7 +24,7 @@ Two tasks linking these Data Nodes:
 
 One pipeline in a scenario gathering these two tasks
 
-![](config_03.jpg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![](config_03.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 ```python
 import datetime as dt
