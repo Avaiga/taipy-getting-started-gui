@@ -16,9 +16,6 @@ Configuration is the structure or model of what is our scenario. It represents o
 
 Let's create our first configuration and then create our entities to submit either through Taipy Studio or through direct Python Code.
 
-![](config_01.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
-
-
 ```python
 from taipy import Config
 import taipy as tp
@@ -27,6 +24,8 @@ import taipy as tp
 def double(nb):
     return nb * 2
 ```
+
+![](config_01.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 Two Data Nodes are being configured 'input' and 'output'. The 'input' Data Node has a _default_data_ put at 21. They will be stored as Pickle files automatically and they are unique to their scenario.
 
