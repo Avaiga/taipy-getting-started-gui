@@ -16,7 +16,7 @@ Configuration is the structure or model of what is our scenario. It represents o
 
 Let's create our first configuration and then create our entities to submit either through Taipy Studio or through direct Python Code.
 
-![](config_01.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![](config_01.jpg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 
 ```python

@@ -2,7 +2,7 @@
 
 This step reuses the configuration provided in the previous step except for the scenario configuration.
 
-![](config_08.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![](config_08.jpg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 ## Callback on scenarios
 
