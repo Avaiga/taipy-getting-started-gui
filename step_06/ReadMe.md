@@ -87,7 +87,7 @@ def count_values(df):
 
 The configuration is the same. `cacheabable=True` are added to the output Data Nodes that we want to be cached.
 
-Here we create three different scenarios with different creation dates and names. Scenario 1 and scenario 2 belongs to the same cycle.
+Here we create three different scenarios with different creation dates and names. Scenario 1 and scenario 2 belong to the same cycle.
 
 
 ```python
