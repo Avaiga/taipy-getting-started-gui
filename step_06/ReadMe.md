@@ -85,7 +85,7 @@ def count_values(df):
     #                                                    task_count_values_cfg])
     ```
 
-The configuration is the same. 'cacheabable' are added to the output Data Nodes that we want to be cached.
+The configuration is the same. `cacheabable=True` are added to the output Data Nodes that we want to be cached.
 Creation of three different scenarios with different creation dates and names.
 
 
