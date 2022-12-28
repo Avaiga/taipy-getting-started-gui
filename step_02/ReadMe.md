@@ -29,6 +29,8 @@ Results:
     First submit 42
 ```
 
+## _write_ function
+
 By using _write_, data of a Data Node can be changed. The syntax is `<Scenario>.<Pipeline>.<Data Node>.write(value)`. If there is just one pipeline, we can just write `<Scenario>.<Data Node>.write(value)`.
 
 
@@ -57,20 +59,29 @@ Results:
     Second submit 108
 ```
     
+## Other useful functions
 
+- how to access all the scenarios
 
 ```python
-# Basic functions of Taipy Core 
-# how to access all the scenarios
 print([s.input.read() for s in tp.get_scenarios()])
-
-# how to get a scenario from its id
-scenario = tp.get(scenario.id)
-
-# how to delete a scenario
-tp.delete(scenario.id)
 ```
+
 Results:
 ```
     [21, 54]
 ```
+
+- get an entity from its id
+
+```python
+scenario = tp.get(scenario.id)
+```
+
+- delete an entity though its id
+
+```python
+# how to delete a scenario
+tp.delete(scenario.id)
+```
+
