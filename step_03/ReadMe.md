@@ -1,15 +1,15 @@
 
 # Different types of Data Nodes:
 
-- *Pickle* (default): Taipy can store and read anykind of data that can be serializable.
+- *[Pickle}(https://docs.taipy.io/en/latest/manuals/core/config/data-node-config/#pickle)* (default): Taipy can store and read anykind of data that can be serializable.
 
-- *CSV*: Taipy can read and store any dataframe as a CSV.
+- *[CSV](https://docs.taipy.io/en/latest/manuals/core/config/data-node-config/#csv)*: Taipy can read and store any dataframe as a CSV.
 
-- *JSON*: Taipy can read and store any JSONable data as a JSON file.
+- *[JSON](https://docs.taipy.io/en/latest/manuals/core/config/data-node-config/#json)*: Taipy can read and store any JSONable data as a JSON file.
 
-- *SQL*: Taipy can read and store a table or data base.
+- *[SQL](https://docs.taipy.io/en/latest/manuals/core/config/data-node-config/#sql)*: Taipy can read and store a table or data base.
 
-- *Generic*: Taipy provides a generic Data Node that can read and store any data based on the reding and writing function created by the user.
+- *[Generic](https://docs.taipy.io/en/latest/manuals/core/config/data-node-config/#generic)*: Taipy provides a generic Data Node that can read and store any data based on the reding and writing function created by the user.
 
 The execution graph used to explain the different concepts is quite simple.
 
