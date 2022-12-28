@@ -27,11 +27,11 @@ def double(nb):
 
 ![](config_01.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
-- Two Data Nodes are being configured ('input' and 'output'). The 'input' Data Node has a _default_data_ put at 21. They will be stored as Pickle files automatically and they are unique to their scenario.
+- Two Data Nodes are being configured ('input' and 'output'). The 'input' Data Node has a _default_data_ put at 21. They will be stored as Pickle files automatically, and are unique to their scenario.
 
 - The task links the two Data Nodes through the Python function _double_.
 
-- The pipeline will contain this one task and the scenario will contain this one pipeline.
+- The pipeline will contain this one task, and the scenario will contain this one pipeline.
 
 ![](config_01.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
