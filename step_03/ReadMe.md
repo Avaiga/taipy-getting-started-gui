@@ -1,7 +1,7 @@
 
 # Different types of Data Nodes:
 
-- *[Pickle}(https://docs.taipy.io/en/latest/manuals/core/config/data-node-config/#pickle)* (default): Taipy can store and read anykind of data that can be serializable.
+- *[Pickle](https://docs.taipy.io/en/latest/manuals/core/config/data-node-config/#pickle)* (default): Taipy can store and read anykind of data that can be serializable.
 
 - *[CSV](https://docs.taipy.io/en/latest/manuals/core/config/data-node-config/#csv)*: Taipy can read and store any dataframe as a CSV.
 
