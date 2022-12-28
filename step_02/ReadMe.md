@@ -1,8 +1,8 @@
 # Basic functions
 
-Let's discuss about the basic functions that comes along with Taipy.
+Let's discuss the basic functions that come along with Taipy.
 
--_write_: this is how data can be changed through Taipy. _write_ will change the _last_edit_date_ of the data node which will influence if a task can be skipped or not.
+-_write_: this is how data can be changed through Taipy. _write_ will change the _last_edit_date_ of the data node, which will influence if a task can be skipped or not.
 
 -_tp.get_scenarios()_: this function returns a list of all the scenarios
 
@@ -12,9 +12,9 @@ Let's discuss about the basic functions that comes along with Taipy.
 
 ## Utility of having scenarios
 
-Taipy lets the user create multiple instances of the same configuration. Datas can differ between instances and can be used to compare different scenarios.
+Taipy lets the user create multiple instances of the same configuration. Data can differ between instances and can be used to compare different scenarios.
 
-Datas can be naturally different depending on the input data nodes or the randomness of functions. Moreover, the user can change them with the _write_ function.
+Data can naturally differ depending on the input Data Nodes or the randomness of functions. Moreover, the user can change them with the _write_ function.
 
 ![](config_02.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
@@ -31,7 +31,7 @@ Results:
 
 ## _write_ function
 
-By using _write_, data of a Data Node can be changed. The syntax is `<Scenario>.<Pipeline>.<Data Node>.write(value)`. If there is just one pipeline, we can just write `<Scenario>.<Data Node>.write(value)`.
+Using _write_, data of a Data Node can be changed. The syntax is `<Scenario>.<Pipeline>.<Data Node>.write(value)`. If there is just one pipeline, we can just write `<Scenario>.<Data Node>.write(value)`.
 
 
 ```python
