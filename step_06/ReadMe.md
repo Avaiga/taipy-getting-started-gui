@@ -1,8 +1,6 @@
-
 # Caching
 
 Caching is an important feature of Taipy. Tasks can be skipped if input Data Nodes of tasks have changed or not. If none of the input Data Nodes have been changed after a first submission, tasks will be skipped. Time and ressources are saved thanks to this mechanism.
-
 
 ```python
 def filter_by_month(df, month):
@@ -121,13 +119,14 @@ Results:
 
  No task has already been submitted so everything will be completed.
 
-
 ```python
 print("Scenario 1: submit")
 scenario_1.submit()
 print("Value", scenario_1.nb_of_values.read())
 ```
+
 Results:
+
 ```
     Scenario 1: submit
     [2022-12-22 16:20:09,079][Taipy][INFO] job JOB_filter_by_month_0d7836eb-70eb-4fe6-b954-0e56967831b6 is completed.
@@ -144,6 +143,7 @@ print("Scenario 2: first submit")
 scenario_2.submit()
 print("Value", scenario_2.nb_of_values.read())
 ```
+
 Results:
 ```
     Scenario 2: first submit
