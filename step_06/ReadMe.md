@@ -118,7 +118,7 @@ Results:
     Scenario 2: month 10
 ```
 
- No task has already been submitted so everything will be submitted
+ No task has already been submitted so everything will be completed.
 
 
 ```python
