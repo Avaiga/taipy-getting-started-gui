@@ -2,7 +2,7 @@
 # Execution modes
 
 Taipy has different ways to execute the code. There is two different job execution modes:
-- _standalone_ mode: asynchronous. Jobs can be runned in parallel depending on the graph of execution if max_nb_of_workers > 1
+- _standalone_ mode: asynchronous. Jobs can be runned in parallel depending on the graph of execution if _max_nb_of_workers_ > 1
 - _development_ mode: synchronous
 
 Options of submit:
