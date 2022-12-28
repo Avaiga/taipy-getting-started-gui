@@ -109,7 +109,7 @@ scenario_3 = tp.create_scenario(scenario_cfg,
                                 name="Scenario 2021/9/1")
 ```
 
-Scenario 1 and 2 belongs to the same cycle so I can define the month just once for scenario 1 and 2 because month has a Cycle scope.
+Scenario 1 and 2 belongs to the same cycle so we can define the month just once for scenario 1 and 2 because month has a Cycle scope.
 
 ![](sommething.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
