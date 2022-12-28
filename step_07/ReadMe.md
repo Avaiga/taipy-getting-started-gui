@@ -2,12 +2,12 @@
 # Execution modes
 
 Taipy has different ways to execute the code. There is two different job execution modes:
-- standalone: asynchronous. Jobs can be runned in parallel depending on the graph of execution if max_nb_of_workers > 1
-- development mode: synchronous
+- _standalone_ mode: asynchronous. Jobs can be runned in parallel depending on the graph of execution if max_nb_of_workers > 1
+- _development_ mode: synchronous
 
 Options of submit:
-- wait: if wait is True, the submit is synchronous and will wait for the end of all the jobs (if timeout is not defined)
-- timeout: if wait is True, Taipy will wait for the end of the submit until a certain amount of time
+- _wait_: if wait is True, the submit is synchronous and will wait for the end of all the jobs (if timeout is not defined)
+- _timeout_: if wait is True, Taipy will wait for the end of the submit until a certain amount of time
 
 ```python
 from taipy.core.config import Config
