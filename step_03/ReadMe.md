@@ -14,13 +14,13 @@
 The execution graph used to explain the different concepts is quite simple.
 
 Three Data Nodes:
-- historical data: initial CSV DataFrame
-- month_data: DataFrame after the filtering on the month (pd.DataFrame as a Pickle file)
-- nb_of_values: number of values in this month (int as a Pickle file)
+- _historical data_: initial CSV DataFrame
+- _month_data_: DataFrame after the filtering on the month (pd.DataFrame as a Pickle file)
+- _nb_of_values_: number of values in this month (int as a Pickle file)
 
 Two tasks linking these Data Nodes:
-- filter: filters on the months of the dataframe
-- count_values: calculates the number of elements in this month
+- _filter_: filters on the months of the dataframe
+- _count_values_: calculates the number of elements in this month
 
 One pipeline in a scenario gathering these two tasks
 
