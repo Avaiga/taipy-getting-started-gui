@@ -91,14 +91,10 @@ def add(nb):
 
 
 
+This line of code will change the execution mode. The default execution mode is _developement_. Changing it to _standalone_ will make Taipy Core asynchronous.
 
 ```python
 Config.configure_job_executions(mode="standalone", max_nb_of_workers=2)
-```
-
-Results:
-```
-    <taipy.core.config.job_config.JobConfig at 0x2193e63c3d0>
 ```
 
 
