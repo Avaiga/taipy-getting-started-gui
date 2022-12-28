@@ -6,7 +6,7 @@ This step reuses the configuration provided in the previous step except for the 
 
 ## Callback on scenarios
 
-To have an action after the change of status of a job, we can subscribe a function to a scenario. This function will be called each time a job has its status changed.
+To have an action after the change of a job status, we can subscribe a function to a scenario. This function will be called each time a job has its status changed.
 
 ```python
 def callback_scenario(scenario, job):
