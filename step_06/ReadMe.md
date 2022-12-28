@@ -135,7 +135,7 @@ Results:
     Value 849
 ```
 
-When the second scenario is being executed, the first task will be skipped. Indeed, the two scenarios shares the same data nodes for this task and no input data nodes have been changed. node
+When the second scenario is being executed, the first task will be skipped. Indeed, the two scenarios shares the same input Data Nodes for this task and it hasn't been changed.
 
 
 ```python
@@ -153,7 +153,6 @@ Results:
 ```
 
 Resubmitting the same scenario without any change will just skip every task.
-
 
 ```python
 # every task has already been executed so everything will be skipped
@@ -180,6 +179,7 @@ scenario_3.month.write(9)
 scenario_3.submit()
 print("Value", scenario_3.nb_of_values.read())
 ```
+
 Results:
 ```
     Scenario 3: submit
@@ -188,7 +188,7 @@ Results:
     Value 1012
 ```  
 
-Here, we change the input data node of the pipeline so Taipy will re run the correct tasks to make sure that everything is up-to-date.
+Here, we change the input Data Node of the pipeline so Taipy will re run the correct tasks to make sure that everything is up-to-date.
 
 
 ```python
@@ -198,6 +198,7 @@ scenario_3.historical_data.write(pd.read_csv('time_series_2.csv'))
 scenario_3.submit()
 print("Value", scenario_3.nb_of_values.read())
 ```
+
 Results:
 ```
     Scenario 3: change in historical data
