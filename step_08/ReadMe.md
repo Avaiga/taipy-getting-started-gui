@@ -82,13 +82,7 @@ print(tp.compare_scenarios(scenario_1, scenario_2))
 
 ## Taipy Rest
 
-Taipy Rest allows the user to navigate through the entities of the application but also create and submit scenarios. Try the following commands:
-
-- 
-- 
-- 
-- 
-
+Taipy Rest allows the user to navigate through the entities of the application but also create and submit scenarios. Commands that can be used with Taipy Rest are referenced [here](https://docs.taipy.io/en/latest/manuals/rest/).
 
 ```python
 tp.Rest().run()
