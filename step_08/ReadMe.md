@@ -49,16 +49,16 @@ The Data Node that will be compared here is the 'month' Data Node. It is indicat
 
 
 
-    ```python
-    scenario_cfg = Config.configure_scenario("multiply_scenario",
-                                            [pipeline_cfg],
-                                            comparators={month_cfg.id: compare_function},
-                                            frequency=Frequency.MONTHLY)
+```python
+scenario_cfg = Config.configure_scenario("multiply_scenario",
+                                        [pipeline_cfg],
+                                        comparators={month_cfg.id: compare_function},
+                                        frequency=Frequency.MONTHLY)
 
-    #scenario_cfg = Config.configure_scenario_from_tasks(id="my_scenario",
-    #                                                    task_configs=[task_filter_by_month_cfg,
-    #                                                                  task_count_values_cfg])
-    ```
+#scenario_cfg = Config.configure_scenario_from_tasks(id="my_scenario",
+#                                                    task_configs=[task_filter_by_month_cfg,
+#                                                                  task_count_values_cfg])
+```
 
 
 ```python
