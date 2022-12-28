@@ -19,7 +19,7 @@ def count_values(df):
     return len(df)
 ```
 
-- **Pipeline** scope: two pipelines can reference different Data Nodes even if their names are the same. For example, we can have a _prediction_ Data Node of an ARIMA model (ARIMA pipeline) and a _prediction_ Data Node of a RandomForest model (RandomForest pipeline). 
+- **Pipeline** scope: two pipelines can reference different Data Nodes even if their names are the same. For example, we can have a _prediction_ Data Node of an ARIMA model (ARIMA pipeline) and a _prediction_ Data Node of a RandomForest model (RandomForest pipeline). A scenario can contain multiple pipelines.
 
 - **Scenario** scope: pipelines share the same Data Node within a scenario. 
 
