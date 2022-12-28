@@ -23,9 +23,9 @@ def count_values(df):
 
 - **Scenario** scope: pipelines share the same Data Node within a scenario. 
 
-- **Cycle** scope: scenarios from the same cycle share the same Data Node
+- **Cycle** scope: scenarios from the same cycle share the same Data Node.
 
-- **Global** scope: unique Data Node for all the scenarios/pipelines/cycles
+- **Global** scope: unique Data Node for all the scenarios/pipelines/cycles.
 
 === "Taipy Studio/TOML configuration"
 
