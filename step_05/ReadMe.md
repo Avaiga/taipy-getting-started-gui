@@ -164,7 +164,7 @@ print("Value", scenario_3.nb_of_values.read())
 ```
 
 Results:
-``` 
+```
     Scenario 3: submit
     [2022-12-22 16:20:07,404][Taipy][INFO] job JOB_filter_by_month_d0eefd6f-af96-46b8-b916-7cb94303ae4d is completed.
     [2022-12-22 16:20:07,578][Taipy][INFO] job JOB_count_values_469f6ae3-7a8a-4b65-9175-899399013f60 is completed.
