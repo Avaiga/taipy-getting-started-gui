@@ -100,7 +100,7 @@ def create_introduction(notebook, execution_count):
 
 
 def create_steps(notebook, execution_count):
-    steps = ['step_0' + str(i) for i in range(1, 7)]
+    steps = ['step_0' + str(i) for i in range(1, 6)]
     source = []
 
     for step in steps:
