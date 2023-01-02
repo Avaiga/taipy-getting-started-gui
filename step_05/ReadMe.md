@@ -162,6 +162,7 @@ scenario_3.month.write(9)
 scenario_3.submit()
 print("Value", scenario_3.nb_of_values.read())
 ```
+
 Results:
 ``` 
     Scenario 3: submit
