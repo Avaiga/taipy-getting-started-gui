@@ -15,7 +15,7 @@ The execution graph used to explain the different concepts is quite simple.
 
 1) Three Data Nodes:
 - _historical data_: initial CSV DataFrame
-- _month_data_: DataFrame after the filtering on the month (pd.DataFrame as a Pickle file)
+- _month_data_: DataFrame after the filtering on the month (a _Pandas.DataFrame_ as a Pickle file)
 - _nb_of_values_: number of values in this month (int as a Pickle file)
 
 2) Two tasks linking these Data Nodes:
