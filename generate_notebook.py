@@ -10,10 +10,10 @@ def add_line(source, line, step):
 
 
     if line.startswith('!['):
-        if step != 'index':
-            line = line.replace('(', '(https://github.com/Avaiga/taipy-getting-started-core/blob/develop/' + step + '/')
-        else:
-            line = line.replace('(', '(https://github.com/Avaiga/taipy-getting-started-core/blob/develop/')
+        #if step != 'index':
+        #    line = line.replace('(', '(https://github.com/Avaiga/taipy-getting-started-core/blob/develop/' + step + '/')
+        #else:
+        #    line = line.replace('(', '(https://github.com/Avaiga/taipy-getting-started-core/blob/develop/')
 
         # conversion of Markdown image to HTML
         img_src = line.split('](')[1].split(')')[0]
