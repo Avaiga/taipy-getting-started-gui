@@ -78,7 +78,7 @@ Results:
 scenario = tp.get(scenario.id)
 ```
 
-- delete an entity though its id/ Example: how to delete a scenario.
+- delete an entity though its id. Example: how to delete a scenario.
 
 ```python
 tp.delete(scenario.id)
