@@ -60,37 +60,37 @@ def count_values(df):
 
 === "Python configuration"
 
-        ```python
-        historical_data_cfg = Config.configure_csv_data_node(id="historical_data",
-                                                             default_path="time_series.csv")
-        month_cfg =  Config.configure_data_node(id="month")
-        month_values_cfg =  Config.configure_data_node(id="month_data")
-        nb_of_values_cfg = Config.configure_data_node(id="nb_of_values")
+    ```python
+    historical_data_cfg = Config.configure_csv_data_node(id="historical_data",
+                                                         default_path="time_series.csv")
+    month_cfg =  Config.configure_data_node(id="month")
+    month_values_cfg =  Config.configure_data_node(id="month_data")
+    nb_of_values_cfg = Config.configure_data_node(id="nb_of_values")
 
 
-        task_filter_by_month_cfg = Config.configure_task(id="filter_by_month",
-                                                         function=filter_by_month,
-                                                         input=[historical_data_cfg, month_cfg],
-                                                         output=month_values_cfg)
+    task_filter_by_month_cfg = Config.configure_task(id="filter_by_month",
+                                                     function=filter_by_month,
+                                                     input=[historical_data_cfg, month_cfg],
+                                                     output=month_values_cfg)
 
-        task_count_values_cfg = Config.configure_task(id="count_values",
-                                                         function=count_values,
-                                                         input=month_values_cfg,
-                                                         output=nb_of_values_cfg)
+    task_count_values_cfg = Config.configure_task(id="count_values",
+                                                  function=count_values,
+                                                  input=month_values_cfg,
+                                                  output=nb_of_values_cfg)
 
-        pipeline_cfg = Config.configure_pipeline(id="my_pipeline",
-                                                 task_configs=[task_filter_by_month_cfg,
-                                                               task_count_values_cfg])
+    pipeline_cfg = Config.configure_pipeline(id="my_pipeline",
+                                             task_configs=[task_filter_by_month_cfg,
+                                                           task_count_values_cfg])
 
-        scenario_cfg = Config.configure_scenario(id="my_scenario",
-                                                 pipeline_configs=[pipeline_cfg],
-                                                 frequency=Frequency.MONTHLY)
+    scenario_cfg = Config.configure_scenario(id="my_scenario",
+                                             pipeline_configs=[pipeline_cfg],
+                                             frequency=Frequency.MONTHLY)
 
 
-        #scenario_cfg = Config.configure_scenario_from_tasks(id="my_scenario",
-        #                                                    task_configs=[task_filter_by_month_cfg,
-        #                                                    task_count_values_cfg])
-        ```
+    #scenario_cfg = Config.configure_scenario_from_tasks(id="my_scenario",
+    #                                                    task_configs=[task_filter_by_month_cfg,
+    #                                                                  task_count_values_cfg])
+    ```
 
 
 

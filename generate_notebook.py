@@ -5,8 +5,8 @@ def add_line(source, line, step):
 
     line = line.replace('Getting Started with Taipy Core', 'Getting Started with Taipy Core on Notebooks')
     line = line.replace('(../src/', '(https://docs.taipy.io/en/latest/getting_started/src/')
-    line = line.replace('(time_series.csv)', '(https://docs.taipy.io/en/latest/getting_started/step_01/time_series.csv)') #!!!!!
-    line = line.replace('(time_series_2.csv)', '(https://docs.taipy.io/en/latest/getting_started/step_01/time_series_2.csv)')
+    line = line.replace('(time_series.csv)', '(https://docs.taipy.io/en/latest/getting_started/src/time_series.csv)') #!!!!!
+    line = line.replace('(time_series_2.csv)', '(https://docs.taipy.io/en/latest/getting_started/src/time_series_2.csv)')
 
 
     if line.startswith('!['):
