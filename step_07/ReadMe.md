@@ -65,7 +65,7 @@ def add(nb):
 
     # Configuration of Data Nodes
     input_data_node_cfg = Config.configure_data_node("input", default_data=21)
-    intermediate_data_node_cfg = Config.configure_data_node("intermediate", default_data=21)
+    intermediate_data_node_cfg = Config.configure_data_node("intermediate")
     output_data_node_cfg = Config.configure_data_node("output")
 
     # Configuration of tasks
