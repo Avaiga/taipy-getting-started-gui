@@ -9,9 +9,9 @@
 
 Now, the page has several visual elements:
 
-- A slider that is connected to the Python variable *n_week* ;
+- A text that is connected to the Python variable *text* ;
 
-- A chart and a table controls that represent the DataFrame content.
+- An input that changes the value *text* automatically.
 
 Taipy GUI manages everything. To go further into Taipy GUI, let's consider the concept of **state**.
 
@@ -39,29 +39,37 @@ In *Taipy*, the `on_change()` function is a "special" function. **Taipy** will c
 
 - Its value.
 
-Here, `on_change()` will be called whenever the slider's value (*state.n_week*) changes. Each time this happens, *state.dataset_week* will be updated according to the new value of the selected week. Then, Taipy will propagate this change automatically to the associated chart.
+Here, `on_change()` will be called whenever the text's value (*state.text*) changes. If a variable is changed in this function, Taipy will propagate this change automatically to the associated chart. This is what happens with the button. When the button is pressed, Taipy will call the function referenced in the _on_action_ property.
 
 ```python
-# Select the week based on the slider value
-dataset_week = dataset[dataset["Date"].dt.isocalendar().week == n_week]
+from taipy.gui import Gui, notify
 
+text = "Orginal text"
+
+# Definition of the page
 page = """
-# Getting started with Taipy
+# Getting started with Taipy GUI
 
-Select week: *<|{n_week}|>*
+My text: <|{text}|>
 
-<|{n_week}|slider|min=1|max=52|>
+Enter a word:
 
-<|{dataset_week}|chart|type=bar|x=Date|y=Value|height=100%|width=100%|>
+<|{text}|input|>
+
+<|Run local|button|on_action=local_callback|>
 """
 
-# on_change is the function that is called when any variable is changed
-def on_change(state, var_name: str, var_value):
-    if var_name == "n_week":
-        # Update the dataset when the slider is moved
-        state.dataset_week = dataset[dataset["Date"].dt.isocalendar().week == var_value]
+def local_callback(state):
+    print(state.text)
+    notify(state, 'info', f'The text is: {state.text}')
 
-Gui(page=page).run(dark_mode=False)
+def on_change(state, var_name, var_value):
+    print(var_name, var_value, state.text)
+    if var_name == "text":
+        ...
+
+
+Gui(page).run()
 ```
 
 ![Interactive GUI](result.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
