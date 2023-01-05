@@ -1,52 +1,69 @@
-from taipy.core.config import Config
-import taipy as tp
-import datetime as dt
-import pandas as pd
-import time
+from transformers import AutoTokenizer
+from transformers import AutoModelForSequenceClassification
+from scipy.special import softmax
 
-# Normal function used by Taipy
-def double(nb):
-    return nb * 2
+import numpy as np
+import pandas as pd 
+from taipy.gui import Gui, notify
 
-def add(nb):
-    print("Wait 10 seconds in add function")
-    time.sleep(10)
-    return nb + 10
+text = "Orginal text"
 
-Config.configure_job_executions(mode="standalone", max_nb_of_workers=2)
+page = """
+# Getting started with Taipy GUI
 
-# Configuration of Data Nodes
-input_data_node_cfg = Config.configure_data_node("input", default_data=21)
-intermediate_data_node_cfg = Config.configure_data_node("intermediate", default_data=21)
-output_data_node_cfg = Config.configure_data_node("output")
+My text: <|{text}|>
 
-# Configuration of tasks
-first_task_cfg = Config.configure_task("double",
-                                    double,
-                                    input_data_node_cfg,
-                                    intermediate_data_node_cfg)
+Enter a word:
 
-second_task_cfg = Config.configure_task("add",
-                                    add,
-                                    intermediate_data_node_cfg,
-                                    output_data_node_cfg)
+<|{text}|input|>
 
-# Configuration of the pipeline and scenario
-pipeline_cfg = Config.configure_pipeline("my_pipeline", [first_task_cfg, second_task_cfg])
-scenario_cfg = Config.configure_scenario("my_scenario", [pipeline_cfg])
+<|Run|button|on_action=local_callback|>
 
-Config.export("src/config_07.toml")
+<|layout|columns=1 1 1|
+Positive
+<|{np.mean(dataframe['Score Pos'])}|>
 
-if __name__=="__main__":
-    tp.Core().run()
-    scenario_1 = tp.create_scenario(scenario_cfg)
-    scenario_1.submit()
-    scenario_1.submit()
+Neutral
+<|{np.mean(dataframe['Score Neu'])}|>
+
+Negative
+<|{np.mean(dataframe['Score Neg'])}|>
+|>
+
+<|Table|expandable|
+<|{dataframe}|table|>
+|>
+
+<|{dataframe}|chart|type=bar|x=Text|y=Score Pos|>
+"""
+
+MODEL = f"cardiffnlp/twitter-roberta-base-sentiment"
+tokenizer = AutoTokenizer.from_pretrained(MODEL)
+model = AutoModelForSequenceClassification.from_pretrained(MODEL)
+
+dataframe = pd.DataFrame({"Text":[''],
+                          "Score Pos":[0],
+                          "Score Neu":[0],
+                          "Score Neg":[0]})
+
+
+def local_callback(state):
+    print(state.text)
+    notify(state, 'Info', f'The text is: {state.text}', True)
+    
+    # Run for Roberta Model
+    encoded_text = tokenizer(state.text, return_tensors='pt')
+    output = model(**encoded_text)
+    scores = output[0][0].detach().numpy()
+    scores = softmax(scores)
+    
+    temp = state.dataframe.copy()
+    state.dataframe = temp.append({"Text":state.text,
+                                   "Score Pos":scores[2],
+                                   "Score Neu":scores[1],
+                                   "Score Neg":scores[0]}, ignore_index=True)
+    state.text = ""
 
 
 
-if __name__=="__main__":
-    tp.Core().run()
-    scenario_1 = tp.create_scenario(scenario_cfg)
-    scenario_1.submit(wait=True)
-    scenario_1.submit(wait=True, timeout=5)
+Gui(page).run()

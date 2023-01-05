@@ -1,90 +1,57 @@
-#  Taipy Core Data nodes - CSV, pickle
-from taipy.core.config import Config, Frequency, Scope
-import taipy as tp
-import datetime as dt
-import pandas as pd
+
+from transformers import AutoTokenizer
+from transformers import AutoModelForSequenceClassification
+from scipy.special import softmax
+
+import numpy as np
+import pandas as pd 
+from taipy.gui import Gui, notify
+
+text = "Orginal text"
+
+MODEL = f"cardiffnlp/twitter-roberta-base-sentiment"
+tokenizer = AutoTokenizer.from_pretrained(MODEL)
+model = AutoModelForSequenceClassification.from_pretrained(MODEL)
+
+dataframe = pd.DataFrame({"Text":[''],
+                          "Score Pos":[0],
+                          "Score Neu":[0],
+                          "Score Neg":[0]})
 
 
-def filter_by_month(df, month):
-    df['Date'] = pd.to_datetime(df['Date']) 
-    df = df[df['Date'].dt.month == month]
-    return df
-
-def count_values(df):
-    return len(df)
-
-
-historical_data_cfg = Config.configure_csv_data_node(id="historical_data",
-                                                 default_path="time_series.csv",
-                                                 scope=Scope.GLOBAL)
-month_cfg =  Config.configure_data_node(id="month", scope=Scope.CYCLE)
-
-month_values_cfg = Config.configure_data_node(id="month_data",
-                                               scope=Scope.CYCLE)
-nb_of_values_cfg = Config.configure_data_node(id="nb_of_values")
-
-
-task_filter_by_month_cfg = Config.configure_task(id="filter_by_month",
-                                                 function=filter_by_month,
-                                                 input=[historical_data_cfg,month_cfg],
-                                                 output=month_values_cfg)
-
-task_count_values_cfg = Config.configure_task(id="count_values",
-                                                 function=count_values,
-                                                 input=month_values_cfg,
-                                                 output=nb_of_values_cfg)
-
-pipeline_cfg = Config.configure_pipeline(id="my_pipeline",
-                                         task_configs=[task_filter_by_month_cfg,
-                                                       task_count_values_cfg])
-
-scenario_cfg = Config.configure_scenario(id="my_scenario",
-                                         pipeline_configs=[pipeline_cfg],
-                                         frequency=Frequency.MONTHLY)
+def local_callback(state):
+    print(state.text)
+    notify(state, 'Info', f'The text is: {state.text}', True)
+    
+    # Run for Roberta Model
+    encoded_text = tokenizer(state.text, return_tensors='pt')
+    output = model(**encoded_text)
+    scores = output[0][0].detach().numpy()
+    scores = softmax(scores)
+    
+    temp = state.dataframe.copy()
+    state.dataframe = temp.append({"Text":state.text,
+                                   "Score Pos":scores[2],
+                                   "Score Neu":scores[1],
+                                   "Score Neg":scores[0]}, ignore_index=True)
+    state.text = ""
 
 
-#scenario_cfg = Config.configure_scenario_from_tasks(id="my_scenario",
-#                                                    task_configs=[task_filter_by_month_cfg,
-#                                                                  task_count_values_cfg])
 
+page = """
+# Getting started with Taipy GUI
 
-tp.Core().run()
+My text: <|{text}|>
 
-scenario_1 = tp.create_scenario(scenario_cfg,
-                                creation_date=dt.datetime(2022,10,7),
-                                name="Scenario 2022/10/7")
-scenario_2 = tp.create_scenario(scenario_cfg,
-                               creation_date=dt.datetime(2022,10,5),
-                               name="Scenario 2022/10/5")
-scenario_3 = tp.create_scenario(scenario_cfg,
-                                creation_date=dt.datetime(2021,9,1),
-                                name="Scenario 2021/9/1")
+Enter a word:
 
+<|{text}|input|>
 
-scenario_1.month.write(10)
-print("Scenario 1: month", scenario_1.month.read())
-print("Scenario 2: month", scenario_2.month.read())
+<|Run|button|on_action=local_callback|>
 
-print("\nScenario 1: submit")
-scenario_1.submit()
-print("Value", scenario_1.nb_of_values.read())
+<|{dataframe}|table|>
 
+<|{dataframe}|chart|type=bar|x=Text|y=Score Pos|>
+"""
 
-print("\nScenario 2: first submit")
-scenario_2.submit()
-print("Value", scenario_2.nb_of_values.read())
-print("Scenario 2: second submit")
-scenario_2.submit()
-print("Value", scenario_2.nb_of_values.read())
-
-
-print("\nScenario 3: submit")
-scenario_3.month.write(9)
-scenario_3.submit()
-print("Value", scenario_3.nb_of_values.read())
-
-
-print("Scenario 3: change in historical data")
-scenario_3.historical_data.write(pd.read_csv('time_series_2.csv'))
-scenario_3.submit()
-print("Value", scenario_3.nb_of_values.read())
+Gui(page).run()

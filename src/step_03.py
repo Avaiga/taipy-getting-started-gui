@@ -1,52 +1,28 @@
-#  Taipy Core Data nodes - CSV, pickle
-from taipy.core.config import Config
-import taipy as tp
-import datetime as dt
-import pandas as pd
+from taipy.gui import Gui, notify
+
+text = "Orginal text"
+
+# Definition of the page
+page = """
+# Getting started with Taipy GUI
+
+My text: <|{text}|>
+
+Enter a word:
+
+<|{text}|input|>
+
+<|Run local|button|on_action=local_callback|>
+"""
+
+def local_callback(state):
+    print(state.text)
+    notify(state, 'info', f'The text is: {state.text}')
+
+def on_change(state, var_name, var_value):
+    print(var_name, var_value, state.text)
+    if var_name == "text":
+        ...
 
 
-def filter_current(df):
-    current_month = dt.datetime.now().month
-    df['Date'] = pd.to_datetime(df['Date']) 
-    df = df[df['Date'].dt.month == current_month]
-    return df
-
-def count_values(df):
-    return len(df)
-
-
-historical_data_cfg = Config.configure_csv_data_node(id="historical_data",
-                                                     default_path="time_series.csv")
-month_values_cfg =  Config.configure_data_node(id="month_data")
-nb_of_values_cfg = Config.configure_data_node(id="nb_of_values")
-
-
-task_filter_current_cfg = Config.configure_task(id="filter_current",
-                                                 function=filter_current,
-                                                 input=historical_data_cfg,
-                                                 output=month_values_cfg)
-
-task_count_values_cfg = Config.configure_task(id="count_values",
-                                                 function=count_values,
-                                                 input=month_values_cfg,
-                                                 output=nb_of_values_cfg)
-
-pipeline_cfg = Config.configure_pipeline(id="my_pipeline",
-                                         task_configs=[task_filter_current_cfg,
-                                                       task_count_values_cfg])
-
-scenario_cfg = Config.configure_scenario(id="my_scenario",
-                                         pipeline_configs=[pipeline_cfg])
-
-#scenario_cfg = Config.configure_scenario_from_tasks(id="my_scenario",
-#                                                    task_configs=[task_filter_current_cfg,
-#                                                    task_count_values_cfg])
-
-tp.Core().run()
-
-scenario_1 = tp.create_scenario(scenario_cfg, creation_date=dt.datetime(2022,10,7), name="Scenario 2022/10/7")
-scenario_1.submit()
-
-scenario_2 = tp.create_scenario(scenario_cfg, creation_date=dt.datetime(2022,10,7), name="Scenario 2022/10/7")
-scenario_2.submit()
-
+Gui(page).run()

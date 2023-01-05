@@ -1,86 +1,65 @@
-# Basic functions
+> You can download the code of this step [here](../src/step_01.py) or all the steps [here](https://github.com/Avaiga/taipy-getting-started/tree/develop/src).
 
-Let's discuss the basic functions that come along with Taipy.
+!!! warning "For Notebooks"
 
-- `<Data Node>.write(<new value>)`: this is how data can be changed through Taipy. _write_ will change the _last_edit_date_ of the data node, which will influence if a task can be skipped or not.
+    The "Getting Started" Notebook is available [here](https://docs.taipy.io/en/latest/getting_started/getting_started.ipynb). In Taipy GUI, the process to execute a Jupyter Notebook is different from executing a Python Script.
+    It is important to check the [Notebook](https://docs.taipy.io/en/latest/getting_started/getting_started.ipynb) content and see the [documentation](https://docs.taipy.io/en/latest/manuals/gui/notebooks/).
 
--`tp.get_scenarios()`: this function returns a list of all the scenarios
+# Step 1: Visual elements
 
--`tp.get(<Taipy object ID>)`: this function returns an entity based on the id of the entity
+Many visual elements can be added to the basic code viewed in Step 0. This Step shows how to use visual elements 
+like charts, sliders and tables and implement them in the GUI.
 
--`tp.delete(<Taipy object ID>)`: this function deletes the entity and nested elements based on the id of the entity
+## Visual elements
 
-## Utility of having scenarios
+Taipy GUI can be considered as an **augmented** Markdown; it adds the concept of 
+**[Visual elements](https://docs.taipy.io/en/latest/manuals/gui/viselements/)** on top of all the Markdown syntax. A visual 
+element is a Taipy graphical object displayed on the client. It can be a 
+[slider](https://docs.taipy.io/en/latest/manuals/gui/viselements/slider/), a 
+[chart](https://docs.taipy.io/en/latest/manuals/gui/viselements/chart/), a 
+[table](https://docs.taipy.io/en/latest/manuals/gui/viselements/table/), an 
+[input](https://docs.taipy.io/en/latest/manuals/gui/viselements/input/), a 
+[menu](https://docs.taipy.io/en/latest/manuals/gui/viselements/menu/), etc. Check the list 
+[here](https://docs.taipy.io/en/latest/manuals/gui/controls/).
 
-Taipy lets the user create multiple instances of the same configuration. Data can differ between instances and can be used to compare different scenarios.
+Every visual element follows a similar syntax:
 
-Data can naturally differ depending on the input Data Nodes or the randomness of functions. Moreover, the user can change them with the _write_ function.
+`<|{variable}|visual_element_name|param_1=param_1|param_2=param_2| ... |>`.
 
-![](config_02.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+For example, a [slider](https://docs.taipy.io/en/latest/manuals/gui/viselements/slider/) is written this way :
+
+`<|{variable}|slider|min=min_value|max=max_value|>`.
+
+For each visual element you wish to add to your web page, you must include the syntax above inside your markdown 
+string (representing your page). For example, at the beginning of the page, let's display:
+
+- a Python variable *text*;
+
+- an input that will "visually" modify the value of __text__.
+
+Here is the overall syntax:
+
+```
+*<|{text}|>*
+<|{text}|input|>
+```
+
+Here is the combined code:
 
 ```python
-scenario = tp.create_scenario(scenario_cfg, name="Scenario")
-tp.submit(scenario)
-print("First submit", scenario.output.read())
-```
-Results:
-```
-    [2022-12-22 16:20:02,874][Taipy][INFO] job JOB_double_a5ecfa4d-1963-4776-8f68-0859d22970b9 is completed.
-    First submit 42
-```
+from taipy.gui import Gui
 
-## _write_ function
+text = "Orginal text"
 
-Using _write_, data of a Data Node can be changed. The syntax is `<Scenario>.<Pipeline>.<Data Node>.write(value)`. If there is just one pipeline, we can just write `<Scenario>.<Data Node>.write(value)`.
+# Definition of the page
+page = """
+# Getting started with Taipy GUI
 
-
-```python
-print("Before write", scenario.input.read())
-scenario.input.write(54)
-print("After write",scenario.input.read())
+My text: <|{text}|>
+"""
+if __name__ == "__main__":
+    # Create a Gui object with our page content
+    Gui(page=page).run(dark_mode=False)
 ```
 
-Results:
-```
-    Before write 21
-    After write 54
-```
-
-The submission of the scenario will update the output values.
-
-
-```python
-tp.submit(scenario)
-print("Second submit",scenario.output.read())
-```
-Results:
-```
-    [2022-12-22 16:20:03,011][Taipy][INFO] job JOB_double_7eee213f-062c-4d67-b0f8-4b54c04e45e7 is completed.
-    Second submit 108
-```
-    
-## Other useful functions
-
-- how to access all the scenarios
-
-```python
-print([s.input.read() for s in tp.get_scenarios()])
-```
-
-Results:
-```
-    [21, 54]
-```
-
-- get an entity from its id
-
-```python
-scenario = tp.get(scenario.id)
-```
-
-- delete an entity though its id. Example: how to delete a scenario.
-
-```python
-tp.delete(scenario.id)
-```
-
+![Visual Elements](result.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }

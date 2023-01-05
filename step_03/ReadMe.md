@@ -1,133 +1,68 @@
+> You can download the code of this step [here](../src/step_02.py) or all the steps [here](https://github.com/Avaiga/taipy-getting-started/tree/develop/src).
 
-# Different types of Data Nodes:
+!!! warning "For Notebooks"
 
-- *[Pickle](https://docs.taipy.io/en/latest/manuals/core/config/data-node-config/#pickle)* (default): Taipy can store and read anykind of data that can be serializable.
+    The "Getting Started" Notebook is available [here](https://docs.taipy.io/en/latest/getting_started/getting_started.ipynb). In Taipy GUI, the process to execute a Jupyter Notebook is different from executing a Python Script.
+    It is important to check the [Notebook](https://docs.taipy.io/en/latest/getting_started/getting_started.ipynb) content and see the [documentation](https://docs.taipy.io/en/latest/manuals/gui/notebooks/).
 
-- *[CSV](https://docs.taipy.io/en/latest/manuals/core/config/data-node-config/#csv)*: Taipy can read and store any dataframe as a CSV.
+# Step 2: Interactive GUI
 
-- *[JSON](https://docs.taipy.io/en/latest/manuals/core/config/data-node-config/#json)*: Taipy can read and store any JSONable data as a JSON file.
+Now, the page has several visual elements:
 
-- *[SQL](https://docs.taipy.io/en/latest/manuals/core/config/data-node-config/#sql)*: Taipy can read and store a table or data base.
+- A slider that is connected to the Python variable *n_week* ;
 
-- *[Generic](https://docs.taipy.io/en/latest/manuals/core/config/data-node-config/#generic)*: Taipy provides a generic Data Node that can read and store any data based on the reding and writing function created by the user.
+- A chart and a table controls that represent the DataFrame content.
 
-The execution graph used to explain the different concepts is quite simple.
+Taipy GUI manages everything. To go further into Taipy GUI, let's consider the concept of **state**.
 
-1) Three Data Nodes:
-- _historical data_: initial CSV DataFrame
-- _month_data_: DataFrame after the filtering on the month (a _Pandas.DataFrame_ as a Pickle file)
-- _nb_of_values_: number of values in this month (int as a Pickle file)
+## Multi-client - state
 
-2) Two tasks linking these Data Nodes:
-- _filter_: filters on the months of the dataframe
-- _count_values_: calculates the number of elements in this month
+Try to open a few clients with the same URL. You will see that every client is independent from each other; you can change *n_week* on a client, and *n_week* will not change in other clients. This is due to the concept of **state**.
 
-3) One pipeline in a scenario gathering these two tasks.
+The state holds the value of all the variables that are used in the user interface, for one specific connection.
 
-![](config_03.svg){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+For example, at the beginning, `state.n_week = 10`. When *n_week* is modified by the slider (through a given graphical client), this is, in fact, *state.n_week* that is modified, not *n_week* (the global Python variable). Therefore, if you open 2 different clients, *n_week* will have 2 state values (*state.n_week*), one for each client.
 
-```python
-import datetime as dt
-import pandas as pd
-```
+In the code below, this concept will be used to connect a variable (*n_week*) to other variables:
 
-```python
-def filter_current(df):
-    current_month = dt.datetime.now().month
-    df['Date'] = pd.to_datetime(df['Date']) 
-    df = df[df['Date'].dt.month == current_month]
-    return df
+- We will create a chart that will only display one week of data corresponding to the selected week of the slider.
 
-def count_values(df):
-    return len(df)
-```
+- A connection has to be made between the slider's value  (*state.n_week*) and the chart data (*state.dataset_week*).
 
+## How to connect two variables - the *[on_change](https://docs.taipy.io/en/latest/manuals/gui/callbacks/)* function
 
-![](config_03.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+In *Taipy*, the `on_change()` function is a "special" function. **Taipy** will check if you created a function with this name and will use it. Whenever the state of a variable is modified, the *callback* function is called with three parameters:
 
+- state (the state object containing all the variables)
 
-=== "Taipy Studio/TOML configuration"
+- The name of the modified variable
 
-    - Create new file: 'config_03.toml'
-    - Open Taipy Studio view
-    - Go to the 'Config files' section of Taipy Studio
-    - Right click on the right configuration
-    - Choose 'Taipy: Show View'
-    - Add your first Data Node by clicking the button on the right above corner of the windows
-    - Create a name for it and change its details in the 'Details' section of Taipy Studio
-            - name: historical_data
-            - Details: default_path='xxxx/yyyy.csv', storage_type=csv
-    - Do the same for the month_data and nb_of_values
-            - name: output
-            - Details: storage_type=pickle
-    - Add a task and choose a function to associate with `<module>.<name>:function`
-            -name: filter_current
-            -Details: function=__main__.filter_current:function
-    - Do the same for count_values
-    - Link the Data Nodes and the tasks
-    - Add a pipeline and link it to the tasks
-    - Add a scenario and link to the pipeline
+- Its value.
 
-
-
-    ```python
-    Config.load('config_03.toml')
-
-    # my_scenario is the id of the scenario configured
-    scenario_cfg = Config.scenarios('my_scenario')
-    ```
-
-=== "Python configuration"
-
-    ```python
-    # here is a CSV Data Node
-    historical_data_cfg = Config.configure_csv_data_node(id="historical_data",
-                                                         default_path="time_series.csv")
-    month_values_cfg =  Config.configure_data_node(id="month_data")
-    nb_of_values_cfg = Config.configure_data_node(id="nb_of_values")
-    ```
-
-
-    ```python
-    task_filter_current_cfg = Config.configure_task(id="filter_current",
-                                                     function=filter_current,
-                                                     input=historical_data_cfg,
-                                                     output=month_values_cfg)
-
-    task_count_values_cfg = Config.configure_task(id="count_values",
-                                                     function=count_values,
-                                                     input=month_values_cfg,
-                                                     output=nb_of_values_cfg)
-    ```
-
-
-    ```python
-    pipeline_cfg = Config.configure_pipeline(id="my_pipeline",
-                                             task_configs=[task_filter_current_cfg,
-                                                           task_count_values_cfg])
-
-    scenario_cfg = Config.configure_scenario(id="my_scenario",
-                                             pipeline_configs=[pipeline_cfg])
-
-    #scenario_cfg = Config.configure_scenario_from_tasks(id="my_scenario",
-    #                                                    task_configs=[task_filter_current_cfg,
-    #                                                                  task_count_values_cfg])
-    ```
-
+Here, `on_change()` will be called whenever the slider's value (*state.n_week*) changes. Each time this happens, *state.dataset_week* will be updated according to the new value of the selected week. Then, Taipy will propagate this change automatically to the associated chart.
 
 ```python
-tp.Core().run()
+# Select the week based on the slider value
+dataset_week = dataset[dataset["Date"].dt.isocalendar().week == n_week]
 
-scenario_1 = tp.create_scenario(scenario_cfg, creation_date=dt.datetime(2022,10,7), name="Scenario 2022/10/7")
-scenario_1.submit()
+page = """
+# Getting started with Taipy
 
-scenario_2 = tp.create_scenario(scenario_cfg, creation_date=dt.datetime(2022,10,7), name="Scenario 2022/10/7")
-scenario_2.submit()
+Select week: *<|{n_week}|>*
+
+<|{n_week}|slider|min=1|max=52|>
+
+<|{dataset_week}|chart|type=bar|x=Date|y=Value|height=100%|width=100%|>
+"""
+
+# on_change is the function that is called when any variable is changed
+def on_change(state, var_name: str, var_value):
+    if var_name == "n_week":
+        # Update the dataset when the slider is moved
+        state.dataset_week = dataset[dataset["Date"].dt.isocalendar().week == var_value]
+
+Gui(page=page).run(dark_mode=False)
 ```
-Results:
-```
-    [2022-12-22 16:20:03,424][Taipy][INFO] job JOB_filter_current_257edf8d-3ca3-46f5-aec6-c8a413c86c43 is completed.
-    [2022-12-22 16:20:03,510][Taipy][INFO] job JOB_count_values_90c9b3c7-91e7-49ef-9064-69963d60f52a is completed.
-    [2022-12-22 16:20:03,755][Taipy][INFO] job JOB_filter_current_4adc91ee-cd64-4ebf-819b-8643da0282fd is completed.
-    [2022-12-22 16:20:03,901][Taipy][INFO] job JOB_count_values_968c8c34-2ed4-4f89-995c-a4137af82beb is completed.
-```
+
+![Interactive GUI](result.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+
