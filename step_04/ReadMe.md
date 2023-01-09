@@ -17,7 +17,7 @@ Here are few of the most essential properties. You can look [here]() for more in
 - x and y:
 
 ```python
-<|{pd.DataFrame({"x_col":[0,1,2], "y_col1":[4,1,2],})}|chart|x=x_col|y=y_col1|>
+<|{pd.DataFrame({"x_col":[0,1,2], "y_col1":[4,1,2]})}|chart|x=x_col|y=y_col1|>
 ```
 
 - x and y can be indexed to add more traces to the chart:
