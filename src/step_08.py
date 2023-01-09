@@ -1,4 +1,3 @@
-
 from transformers import AutoTokenizer
 from transformers import AutoModelForSequenceClassification
 from scipy.special import softmax
@@ -8,6 +7,47 @@ import pandas as pd
 from taipy.gui import Gui, notify
 
 text = "Orginal text"
+
+page = """
+# Getting started with Taipy GUI
+
+<|layout|columns=1 1|
+<|
+My text: <|{text}|>
+
+Enter a word:
+
+<|{text}|input|>
+
+<|Run|button|on_action=local_callback|>
+|>
+
+
+<|Table|expandable|
+<|{dataframe}|table|width=100%|>
+|>
+
+|>
+
+<|layout|columns=1 1 1|
+<|
+## Positive
+<|{np.mean(dataframe['Score Pos'])}|>
+|>
+
+<|
+## Neutral
+<|{np.mean(dataframe['Score Neu'])}|>
+|>
+
+<|
+## Negative
+<|{np.mean(dataframe['Score Neg'])}|>
+|>
+|>
+
+<|{dataframe}|chart|type=bar|x=Text|y[1]=Score Pos|y[2]=Score Neu|y[3]=Score Neg|y[4]=Overall|color[1]=green|color[2]=grey|color[3]=red|type[4]=line|>
+"""
 
 MODEL = f"cardiffnlp/twitter-roberta-base-sentiment"
 tokenizer = AutoTokenizer.from_pretrained(MODEL)
@@ -24,7 +64,7 @@ def local_callback(state):
     print(state.text)
     notify(state, 'Info', f'The text is: {state.text}', True)
     
-    # Run for Roberta Model - not related to Taipy
+    # Run for Roberta Model
     encoded_text = tokenizer(state.text, return_tensors='pt')
     output = model(**encoded_text)
     scores = output[0][0].detach().numpy()
@@ -38,33 +78,9 @@ def local_callback(state):
                                    "Overall":scores[2]-scores[0]}, ignore_index=True)
     state.text = ""
 
-selected_text = None
 
-page = """
-# Getting started with Taipy GUI
+pages = {"/":"<center>\n<|navbar|>\n</center>",
+         "page1":page,
+         "page2":page}
 
-My text: <|{text}|>
-
-Enter a word:
-
-<|{text}|input|>
-
-<|Run|button|on_action=local_callback|>
-
-## Positive
-<|{np.mean(dataframe['Score Pos'])}|text|format=%.2f|>
-
-## Neutral
-<|{np.mean(dataframe['Score Neu'])}|text|format=%.2f|>
-
-## Negative
-<|{np.mean(dataframe['Score Neg'])}|text|format=%.2f|>
-
-
-
-<|{dataframe}|chart|type=bar|x=Text|y[1]=Score Pos|y[2]=Score Neu|y[3]=Score Neg|y[4]=Overall|color[1]=green|color[2]=grey|color[3]=red|type[4]=line|>
-
-<|{selected_text}|selector|lov={list(dataframe['Text'])}|dropdown|>
-"""
-
-Gui(page).run()
+Gui(pages=pages).run()

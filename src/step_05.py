@@ -16,7 +16,8 @@ model = AutoModelForSequenceClassification.from_pretrained(MODEL)
 dataframe = pd.DataFrame({"Text":[''],
                           "Score Pos":[0],
                           "Score Neu":[0],
-                          "Score Neg":[0]})
+                          "Score Neg":[0],
+                          "Overall":[0]})
 
 
 def local_callback(state):
@@ -33,7 +34,8 @@ def local_callback(state):
     state.dataframe = temp.append({"Text":state.text,
                                    "Score Pos":scores[2],
                                    "Score Neu":scores[1],
-                                   "Score Neg":scores[0]}, ignore_index=True)
+                                   "Score Neg":scores[0],
+                                   "Overall":scores[2]-scores[0]}, ignore_index=True)
     state.text = ""
 
 
@@ -51,7 +53,7 @@ Enter a word:
 
 <|{dataframe}|table|>
 
-<|{dataframe}|chart|type=bar|x=Text|y=Score Pos|>
+<|{dataframe}|chart|type=bar|x=Text|y[1]=Score Pos|y[2]=Score Neu|y[3]=Score Neg|y[4]=Overall|color[1]=green|color[2]=grey|color[3]=red|type[4]=line|>
 """
 
 Gui(page).run()

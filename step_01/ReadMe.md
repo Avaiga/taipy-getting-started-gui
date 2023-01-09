@@ -10,12 +10,14 @@
 To create your first Taipy web page, you only need one line of code. Create a `Gui` object with a String and run it. 
 A client link will be displayed in the console. Enter it in a web browser to open your first Taipy web client!
 
+
 ```python
 from taipy import Gui
 
 # A dark mode is available in Taipy
 # However, we will use the light mode for the Getting Started
 Gui(page="# Getting started with *Taipy*").run(dark_mode=False)
+
 ```
 
 If you want to run multiple servers at the same time, you can change the server port number (5000 by default) in the `.run()` method. For example, `Gui(...).run(port=xxxx)`.

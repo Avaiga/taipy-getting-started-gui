@@ -51,15 +51,15 @@ from taipy.gui import Gui
 
 text = "Orginal text"
 
-# Definition of the page
 page = """
 # Getting started with Taipy GUI
 
 My text: <|{text}|>
+
+<|{text}|input|>
 """
-if __name__ == "__main__":
-    # Create a Gui object with our page content
-    Gui(page=page).run(dark_mode=False)
+
+Gui(page).run()
 ```
 
 ![Visual Elements](result.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }

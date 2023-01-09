@@ -8,8 +8,6 @@ page = """
 
 My text: <|{text}|>
 
-Enter a word:
-
 <|{text}|input|>
 
 <|Run local|button|on_action=local_callback|>

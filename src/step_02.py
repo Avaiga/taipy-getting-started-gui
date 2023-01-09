@@ -7,8 +7,6 @@ page = """
 
 My text: <|{text}|>
 
-Enter a word:
-
 <|{text}|input|>
 """
 

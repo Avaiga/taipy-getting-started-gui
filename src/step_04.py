@@ -8,22 +8,21 @@ page = """
 
 My text: <|{text}|>
 
-Enter a word:
-
 <|{text}|input|>
 
 <|Run|button|on_action=local_callback|>
 
 <|{dataframe}|table|>
 
-<|{dataframe}|chart|type=bar|x=Text|y=Score Pos|>
+<|{dataframe}|chart|type=bar|x=Text|y[1]=Score Pos|y[2]=Score Neu|y[3]=Score Neg|y[4]=Overall|color[1]=green|color[2]=grey|color[3]=red|type[4]=line|>
 """
 
 
-dataframe = pd.DataFrame({"Text":[''],
-                          "Score Pos":[0],
-                          "Score Neu":[0],
-                          "Score Neg":[0]})
+dataframe = pd.DataFrame({"Text":['Test', 'Other', 'Love'],
+                          "Score Pos":[1, 1, 4],
+                          "Score Neu":[2, 3, 1],
+                          "Score Neg":[1, 2, 0],
+                          "Overall":[0, -1, 4]})
 
 
 def local_callback(state):
@@ -34,7 +33,8 @@ def local_callback(state):
     state.dataframe = temp.append({"Text":state.text,
                                    "Score Pos":0,
                                    "Score Neu":0,
-                                   "Score Neg":0}, ignore_index=True)
+                                   "Score Neg":0,
+                                   "Overall":0}, ignore_index=True)
     state.text = ""
 
 Gui(page).run()
