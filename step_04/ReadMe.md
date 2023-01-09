@@ -156,7 +156,7 @@ Results:
 ```
     Scenario 1 before True
     Scenario 2 before False
-    Scenario 2 after False
+    Scenario 1 after False
     Scenario 2 after True
 ```
 
