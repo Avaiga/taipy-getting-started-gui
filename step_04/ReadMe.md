@@ -11,17 +11,22 @@ Here is the simplest code to create a chart:
 
 ## Different useful properties
 
+Taipy charts are based on Plotly charts. Like any other visual elements, charts have a lot of parameters that can be changed. Some of them can be indexed in order to change properties for specif traces of the chart. 
+
+Here are few of the most essential properties. You can look [here]() for more information.
 - x and y:
 
 ```python
 <|{pd.DataFrame({"x_col":[0,1,2], "y_col1":[4,1,2],})}|chart|x=x_col|y=y_col1|>
 ```
 
+- x and y can be indexed to add more traces to the chart:
+
 ```python
 <|{pd.DataFrame({"x_col":[0,1,2], "y_col_1":[4,1,2], "y_col_2":[3,1,2]})}|chart|x=x_col|y[1]=y_col_1|y[2]=y_col_2|>
 ```
 
-- color
+- color:
 
 ```python
 <|{pd.DataFrame({"x_col":[0,1,2], "y_col_1":[4,1,2], "y_col_2":[3,1,2]})}|chart|x=x_col|y[1]=y_col_1|y[2]=y_col_2|type[1]=bar|color[1]=green|>
