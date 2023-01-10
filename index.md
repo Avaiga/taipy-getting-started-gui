@@ -1,24 +1,22 @@
-# Getting Started with Taipy Core
+# Getting Started with Taipy GUI
 
 !!! important "Supported Python versions"
 
     Taipy requires **Python 3.8** or newer.
 
-Welcome to the **Getting Started** guide for Taipy Core. This tour shows you how to use Taipy Core to orchestrate pipelines. Taipy Core implements a modern backend for any data-driven application based on your business case.
+Welcome to the **Getting Started** guide for Taipy GUI. This tour shows you how to use Taipy GUI to create an interactive Web application. Taipy GUI implements a modern backend for any data-driven application based on your business case.
 
 ![Getting Started application](step_00/imd_end_interface.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
-# Taipy Core
+# Taipy GUI
 
-Taipy Core is one of the components of Taipy to facilitate pipeline orchestration. There are a lot of reasons for using Taipy Core:
+Taipy GUI is one of the components of Taipy to create easily Web application. There are a lot of reasons for using Taipy GUI:
 
-- Taipy Core efficiently manages the execution of your functions/pipelines.
+- It fastens the creation of an application.
 
-- Taipy Core manages data sources and monitors KPIs.
+- It manages easily and efficiently variables and events.
 
-- Taipy Core provides easy management of multiple pipelines and end-user scenarios, which comes in handy in the context of Machine Learning or Mathematical optimization.
-
-To apprehend the Scenario Management aspect of Taipy, you need to understand four essential concepts.
+- Easy visualization with Markdown syntax.
 
 Each step of the **"Getting Started"** will focus on basic concepts of *Taipy*. Note that every step is dependent on 
 the code of the previous one. After completing the last step, you will have the skills to develop your own Taipy 
@@ -46,26 +44,24 @@ This **Getting Started** is for Python scripts (*.py*) only. If you want to use 
 
 ## Taipy Studio
 
-There are two ways to configure Taipy Core, either by Python code or with Taipy Studio. We strongly recommend using Taipy Studio. 
-
-Taipy Studio is a VS Code extension that provides a graphical editor to describe pipelines. The configuration of Taipy Core can be done more easily and quickly through Taipy Studio.
+Taipy Studio is a VS Code extension that provides an autocompletion of Taipy visual elements. The creation of a Taipy application can be done more easily and quickly through Taipy Studio.
 
 So, without further delay, let's begin to code!
 
 ## Steps
 
-1. [Configuration and execution](step_01/ReadMe.md)
+1. [First web page](step_01/ReadMe.md)
 
-2. [Basic functions](step_02/ReadMe.md)
+2. [Visual elements](step_02/ReadMe.md)
 
-3. [Data Nodes](step_03/ReadMe.md)
+3. [Interactive GUI](step_03/ReadMe.md)
 
-4. [Cycles](step_04/ReadMe.md)
+4. [Charts](step_04/ReadMe.md)
 
-5. [Caching](step_05/ReadMe.md)
+5. [Automatic events](step_05/ReadMe.md)
 
-6. [Scoping](step_06/ReadMe.md)
+6. [Layout](step_06/ReadMe.md)
 
-7. [Execution modes](step_07/ReadMe.md)
+7. [Multi-pages](step_07/ReadMe.md)
 
 8. [Other features](step_08/ReadMe.md)
