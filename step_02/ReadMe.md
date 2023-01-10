@@ -7,7 +7,7 @@
 
 # Step 2: Visual elements
 
-Many visual elements can be added to the basic code viewed in Step 0. This Step shows how to use visual elements 
+Many visual elements can be added to the basic code viewed in Step 1. This Step shows how to use visual elements 
 like charts, sliders and tables and implement them in the GUI.
 
 ## Visual elements

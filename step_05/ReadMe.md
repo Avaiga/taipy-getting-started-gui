@@ -2,21 +2,24 @@
 
 As shown before, parameters and variables in Taipy are dynamic. The same follows for every type of object even dataframes. Therefore, operations can be done on dataframes and results will be shown in real time on the GUI. Taipy is notified of a change when variables are being assigned through `=` like `state.xxx = yyy`.
 
-Charts would be automatically reloaded through the assignment but also expression like this.
+Any expression containing `xxx` in the Markdown will be reloaded. It can be  simple charts or tables but it can also be expression like this:
 
 ```python
 ## Positive
-<|{np.mean(dataframe['Score Pos'])}|text|format=%.2f|>
+<|{np.mean(dataframe['Score Pos'])}|text|>
 
 ## Neutral
-<|{np.mean(dataframe['Score Neu'])}|text|format=%.2f|>
+<|{np.mean(dataframe['Score Neu'])}|text|>
 
 ## Negative
-<|{np.mean(dataframe['Score Neg'])}|text|format=%.2f|>
+<|{np.mean(dataframe['Score Neg'])}|text|>
 ```
+
+Using this kind of expression creates direct connection between visual elements without coding anything. I can be largely used to create an application.
 
 ## Code
 
+The code below uses this concept to create metrics on the dataframe generated. The code for NLP is here provided; it doesn't concern Taipy but is useful for the application.
 
 ```python
 from transformers import AutoTokenizer
