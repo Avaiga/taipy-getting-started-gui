@@ -1,4 +1,4 @@
-## Step 7: multi pages
+## Step 7: Multi-pages, navbar and menus
 
 The creation of a multi-page application is greatly simplified through Taipy.
 
