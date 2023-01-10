@@ -1,4 +1,4 @@
-# Step 5: Insert Python expression in Markdown
+# Step 5: Insert Python expression in Taipy GUI
 
 As shown before, parameters and variables in Taipy are dynamic. The same follows for every type of object even dataframes. Therefore, operations can be done on dataframes and results will be shown in real time on the GUI. Taipy is notified of a change when variables are being assigned through `=` like `state.xxx = yyy`.
 
