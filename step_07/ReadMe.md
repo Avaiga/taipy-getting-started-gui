@@ -127,7 +127,8 @@ def local_callback(state):
     state.dataframe = temp.append(scores, ignore_index=True)
     state.text = ""
 
-
+```
+```python
 # Second page
 
 dataframe2 = dataframe.copy()
