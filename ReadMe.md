@@ -1,4 +1,4 @@
-# Taipy Getting Started Core version:v2.0.0
+# Taipy Getting Started GUI version:v2.0.0
 
 ## License
 Copyright 2022 Avaiga Private Limited
@@ -15,13 +15,13 @@ specific language governing permissions and limitations under the License.
 
 - [License](#license)
 - [Usage](#usage)
-- [Taipy Getting Started](##what-is-taipy-getting-started-for-core)
+- [Taipy Getting Started](##what-is-taipy-getting-started-for-gui)
 - [Installation](#installation)
 - [Contributing](#contributing)
 - [Code of conduct](#code-of-conduct)
 - [Directory Structure](#directory-structure)
 
-## What is Taipy Getting started for Core
+## What is Taipy Getting started for GUI
 
 Taipy is a Python library for creating Business Applications. More information on our [website](https://www.taipy.io).
 
@@ -36,28 +36,27 @@ Want to install _Taipy Getting Started_? Check out our [`INSTALLATION.md`](INSTA
 
 ## Notebooks
 
-//To follow the **Getting Started for Core** in a Notebook environment, you must generate the notebook document using the [`generate_notebook.py`](generate_notebook.py) script. Clone the repository and run the script (`python generate_notebook.py`). A Notebook called `getting_started.ipynb` will be created in your current folder.
+//To follow the **Getting Started for GUI** in a Notebook environment, you must generate the notebook document using the [`generate_notebook.py`](generate_notebook.py) script. Clone the repository and run the script (`python generate_notebook.py`). A Notebook called `getting_started.ipynb` will be created in your current folder.
 
 ## Contributing
 
-Want to help build _Taipy Getting Started Core_? Check out our [`CONTRIBUTING.md`](CONTRIBUTING.md) file.
+Want to help build _Taipy Getting Started GUI_? Check out our [`CONTRIBUTING.md`](CONTRIBUTING.md) file.
 
 ## Code of conduct
 
-Want to be part of the _Taipy Getting Started Core_ community? Check out our [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) file.
+Want to be part of the _Taipy Getting Started GUI_ community? Check out our [`CODE_OF_CONDUCT.md`](CODE_OF_CONDUCT.md) file.
 
 ## Directory Structure
 
 - `src`: Common code shared by all the steps. For more information, on each step a README.md file is available in their
   respective folder (`step_xx/ReadMe.md`).
-- `step_01`: First simple configuration and execution
-- `step_02`: Introduction to basic functions of Taipy Core.
-- `step_03`: Broader view of Data Nodes
-- `step_04`: Explanation of the concept of Cycles.
-- `step_05`: Scoping and its utility.
-- `step_06`: Caching
-- `step_07`: Execution modes ans asynchronisity.
-- `step_08`: Other useful features of Taipy Core (comparators and callbacks)
+- `step_01`: First Web application
+- `step_02`: Introduction to visual elements.
+- `step_03`: How Taipy is interactive.
+- `step_04`: Basics for Charts.
+- `step_05`: Automatic expression.
+- `step_06`: Layout.
+- `step_07`: Multi-pages.
 - `CODE_OF_CONDUCT.md`: Code of conduct for members and contributors of _taipy-getting-started_.
 - `CONTRIBUTING.md`: Instructions to contribute to _taipy-getting-started_.
 - `index.md`: Landing page of the generated documentation. 
