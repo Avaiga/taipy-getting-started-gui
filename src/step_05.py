@@ -19,28 +19,33 @@ dataframe = pd.DataFrame({"Text":[''],
                           "Score Neg":[0],
                           "Overall":[0]})
 
-
-def local_callback(state):
-    print(state.text)
-    notify(state, 'Info', f'The text is: {state.text}', True)
-    
+def analize_text(text):
     # Run for Roberta Model
-    encoded_text = tokenizer(state.text, return_tensors='pt')
+    encoded_text = tokenizer(text, return_tensors='pt')
     output = model(**encoded_text)
     scores = output[0][0].detach().numpy()
     scores = softmax(scores)
     
+    return {"Text":text,
+            "Score Pos":scores[2],
+            "Score Neu":scores[1],
+            "Score Neg":scores[0],
+            "Overall":scores[2]-scores[0]}
+
+
+def local_callback(state):
+    print(state.text)
+    notify(state, 'Info', f'The text is: {state.text}', True)
     temp = state.dataframe.copy()
-    state.dataframe = temp.append({"Text":state.text,
-                                   "Score Pos":scores[2],
-                                   "Score Neu":scores[1],
-                                   "Score Neg":scores[0],
-                                   "Overall":scores[2]-scores[0]}, ignore_index=True)
+    scores = analize_text(state.text)
+    state.dataframe = temp.append(scores, ignore_index=True)
     state.text = ""
 
 
 
 page = """
+<|toggle|theme|>
+
 # Getting started with Taipy GUI
 
 My text: <|{text}|>
@@ -49,7 +54,16 @@ Enter a word:
 
 <|{text}|input|>
 
-<|Run|button|on_action=local_callback|>
+<|Analyze|button|on_action=local_callback|>
+
+## Positive
+<|{np.mean(dataframe['Score Pos'])}|text|format=%.2f|>
+
+## Neutral
+<|{np.mean(dataframe['Score Neu'])}|text|format=%.2f|>
+
+## Negative
+<|{np.mean(dataframe['Score Neg'])}|text|format=%.2f|>
 
 <|{dataframe}|table|>
 

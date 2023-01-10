@@ -3,14 +3,17 @@ from taipy.gui import Gui, notify
 
 text = "Orginal text"
 
+
 page = """
+<|toggle|theme|>
+
 # Getting started with Taipy GUI
 
 My text: <|{text}|>
 
 <|{text}|input|>
 
-<|Run|button|on_action=local_callback|>
+<|Analyze|button|on_action=local_callback|>
 
 <|{dataframe}|table|>
 

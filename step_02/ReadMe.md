@@ -5,7 +5,7 @@
     The "Getting Started" Notebook is available [here](https://docs.taipy.io/en/latest/getting_started/getting_started.ipynb). In Taipy GUI, the process to execute a Jupyter Notebook is different from executing a Python Script.
     It is important to check the [Notebook](https://docs.taipy.io/en/latest/getting_started/getting_started.ipynb) content and see the [documentation](https://docs.taipy.io/en/latest/manuals/gui/notebooks/).
 
-# Step 1: Visual elements
+# Step 2: Visual elements
 
 Many visual elements can be added to the basic code viewed in Step 0. This Step shows how to use visual elements 
 like charts, sliders and tables and implement them in the GUI.

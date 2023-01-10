@@ -17,7 +17,6 @@ from taipy import Gui
 # A dark mode is available in Taipy
 # However, we will use the light mode for the Getting Started
 Gui(page="# Getting started with *Taipy*").run(dark_mode=False)
-
 ```
 
 If you want to run multiple servers at the same time, you can change the server port number (5000 by default) in the `.run()` method. For example, `Gui(...).run(port=xxxx)`.

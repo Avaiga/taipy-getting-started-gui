@@ -19,7 +19,7 @@ Enter a word:
 
 <|{text}|input|>
 
-<|Run|button|on_action=local_callback|>
+<|Analyze|button|on_action=local_callback|>
 |>
 
 
@@ -59,25 +59,73 @@ dataframe = pd.DataFrame({"Text":[''],
                           "Score Neg":[0],
                           "Overall":[0]})
 
+dataframe2 = dataframe.copy()
 
-def local_callback(state):
-    print(state.text)
-    notify(state, 'Info', f'The text is: {state.text}', True)
-    
+def analize_text(text):
     # Run for Roberta Model
-    encoded_text = tokenizer(state.text, return_tensors='pt')
+    encoded_text = tokenizer(text, return_tensors='pt')
     output = model(**encoded_text)
     scores = output[0][0].detach().numpy()
     scores = softmax(scores)
     
+    return {"Text":text[:50],
+            "Score Pos":scores[2],
+            "Score Neu":scores[1],
+            "Score Neg":scores[0],
+            "Overall":scores[2]-scores[0]}
+
+
+def local_callback(state):
+    print(state.text)
+    notify(state, 'Info', f'The text is: {state.text}', True)
     temp = state.dataframe.copy()
-    state.dataframe = temp.append({"Text":state.text,
-                                   "Score Pos":scores[2],
-                                   "Score Neu":scores[1],
-                                   "Score Neg":scores[0],
-                                   "Overall":scores[2]-scores[0]}, ignore_index=True)
+    scores = analize_text(state.text)
+    state.dataframe = temp.append(scores, ignore_index=True)
     state.text = ""
 
 
+path = ""
+treatment = 0
 
-Gui(page).run()
+page_file = """
+<|{path}|file_selector|extensions=.txt|label=Upload .txt file|on_action=analyze_file|> <|{f'Downloading {treatment}%...'}|>
+
+
+<|Table|expandable|
+<|{dataframe2}|table|width=100%|>
+|>
+
+<|{dataframe2}|chart|type=bar|x=Text|y[1]=Score Pos|y[2]=Score Neu|y[3]=Score Neg|y[4]=Overall|color[1]=green|color[2]=grey|color[3]=red|type[4]=line|height=800px|>
+
+"""
+
+def analyze_file(state):
+    state.dataframe2 = dataframe2
+    state.treatment = 0
+    with open(state.path,"r", encoding='utf-8') as f:
+        print(f)
+        data = f.read()
+        
+        # split lines and eliminates duplicates
+        file_list = list(dict.fromkeys(data.replace('\n', ' ').split(".")[:-1]))
+    
+    print(file_list)
+    
+    for i in range(len(file_list)):
+        text = file_list[i]
+        state.treatment = int((i+1)*100/len(file_list))
+        print(text)
+        temp = state.dataframe2.copy()
+        scores = analize_text(text)
+        state.dataframe2 = temp.append(scores, ignore_index=True)
+        
+    print(state.dataframe2)
+    state.path = None
+    
+
+pages = {"/":"<|toggle|theme|>\n<center>\n<|navbar|>\n</center>",
+         "line":page,
+         "text":page_file}
+
+
+Gui(pages=pages).run()

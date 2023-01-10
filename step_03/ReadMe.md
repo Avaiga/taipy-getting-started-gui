@@ -5,7 +5,7 @@
     The "Getting Started" Notebook is available [here](https://docs.taipy.io/en/latest/getting_started/getting_started.ipynb). In Taipy GUI, the process to execute a Jupyter Notebook is different from executing a Python Script.
     It is important to check the [Notebook](https://docs.taipy.io/en/latest/getting_started/getting_started.ipynb) content and see the [documentation](https://docs.taipy.io/en/latest/manuals/gui/notebooks/).
 
-# Step 2: Interactive GUI
+# Step 3: Interactive GUI
 
 Now, the page has several visual elements:
 
@@ -62,11 +62,13 @@ My text: <|{text}|>
 def local_callback(state):
     print(state.text)
     notify(state, 'info', f'The text is: {state.text}')
+    state.text = "Button Pressed"
 
 def on_change(state, var_name, var_value):
     print(var_name, var_value, state.text)
-    if var_name == "text":
-        ...
+    if var_name == "text" and var_value == "Reset":
+        state.text = ""
+        return
 
 
 Gui(page).run()
