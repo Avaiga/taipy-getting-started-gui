@@ -86,3 +86,5 @@ def local_callback(state):
 
 Gui(page).run()
 ```
+
+Properties dictionnary -- diminue code for Markdown
