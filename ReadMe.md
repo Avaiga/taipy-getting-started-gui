@@ -52,7 +52,7 @@ Want to be part of the _Taipy Getting Started GUI_ community? Check out our [`CO
   respective folder (`step_xx/ReadMe.md`).
 - `step_01`: First Web application
 - `step_02`: Introduction to visual elements.
-- `step_03`: How Taipy is interactive.
+- `step_03`: User Interaction
 - `step_04`: Basics for Charts.
 - `step_05`: Automatic expression.
 - `step_06`: Layout.
