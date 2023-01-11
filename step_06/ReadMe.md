@@ -58,68 +58,49 @@ page_data_visualization = page
 Then let’s create our second page which contains the page corresponding to the creation of scenarios seen in Step 9.
 
 ```python
-# Second page: create scenarios and display results
-page_scenario_manager = """
-# Create your scenario
 
-<|layout|columns=1 1 1 1|
-<|
-**Prediction date**\n\n <|{day}|date|not with_time|>
-|>
+page = """
+<|toggle|theme|>
 
-<|
-**Max capacity**\n\n <|{max_capacity}|number|>
-|>
+# Getting started with Taipy GUI
 
-<|
-**Number of predictions**\n\n<|{n_predictions}|number|>
-|>
-
-<|
-<br/>\n <|Create new scenario|button|on_action=create_scenario|>
-|>
-|>
-
-<|part|render={len(scenario_selector) > 0}|
 <|layout|columns=1 1|
 <|
-## Scenario \n <|{selected_scenario}|selector|lov={scenario_selector}|dropdown|>
+My text: <|{text}|>
+
+Enter a word:
+
+<|{text}|input|>
+
+<|Analyze|button|on_action=local_callback|>
+|>
+
+
+<|Table|expandable|
+<|{dataframe}|table|width=100%|>
+|>
+
+|>
+
+<|layout|columns=1 1 1|
+<|
+## Positive
+<|{np.mean(dataframe['Score Pos'])}|>
 |>
 
 <|
-## Display the pipeline \n <|{selected_pipeline}|selector|lov={pipeline_selector}|dropdown|>
+## Neutral
+<|{np.mean(dataframe['Score Neu'])}|>
+|>
+
+<|
+## Negative
+<|{np.mean(dataframe['Score Neg'])}|>
 |>
 |>
 
-<|{predictions_dataset}|chart|x=Date|y[1]=Historical values|type[1]=bar|y[2]=Predicted values|type[2]=scatter|height=80%|width=100%|>
-|>
+<|{dataframe}|chart|type=bar|x=Text|y[1]=Score Pos|y[2]=Score Neu|y[3]=Score Neg|y[4]=Overall|color[1]=green|color[2]=grey|color[3]=red|type[4]=line|>
 """
-```
-
-![Scenario Manager](scenario_manager.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
-
-
-The menu combines these two pages. When a page is selected in the menu control, `on_menu()` is called and updates the 
-page.
-
-```python
-# Create a menu with our pages
-multi_pages = """
-<|menu|label=Menu|lov={["Data Visualization", "Scenario Manager"]}|on_action=on_menu|>
-
-<|part|render={page=="Data Visualization"}|""" + page_data_visualization + """|>
-<|part|render={page=="Scenario Manager"}|""" + page_scenario_manager + """|>
-"""
-
-
-# The initial page is the "Data Visualization" page
-page = "Data Visualization"
-def on_menu(state, var_name: str, fct: str, var_value: list):
-    # Change the value of the state.page variable in order to render the correct page
-    state.page = var_value["args"][0]
-
-
-Gui(page=multi_pages).run(dark_mode=False)
 ```
 
 ![Multi Pages](multi_pages.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
