@@ -5,7 +5,7 @@ The creation of a multi-page application is greatly simplified through Taipy.
 In order to create a multi-page application, a dictionnary of pages has to be specified in the definition of the GUI.
 
 
-- [menu](https://docs.taipy.io/en/latest/manuals/gui/viselements/menu/): creates a menu on the left to navigate through the pages.
+    - [menu](https://docs.taipy.io/en/latest/manuals/gui/viselements/menu/): creates a menu on the left to navigate through the pages.
 
 `<|menu|label=Menu|lov={lov_pages}|on_action=on_menu|>`. For example, this code creates a menu with two pages:
 
@@ -20,7 +20,7 @@ Gui(page="<|menu|label=Menu|lov={['Data Visualization', 'Scenario Manager']}|on_
 
 ![Menu](menu.png){ width=50 style="margin:auto;display:block" }
 
-- [navbar](): creates an element to navigate through the Taipy pages by default
+    - [navbar](): creates an element to navigate through the Taipy pages by default
 
 
 
