@@ -45,19 +45,9 @@ Taipy has a lot of different types: maps, bar charts, pie charts, line charts, 3
 A chart is added to our code to visualize the score given by our NLP algorihtm to different lines.
 
 ```python
-import pandas as pd 
-from taipy.gui import Gui, notify
-
-text = "Orginal text"
 
 page = """
-# Getting started with Taipy GUI
-
-My text: <|{text}|>
-
-<|{text}|input|>
-
-<|Run|button|on_action=local_callback|>
+... put previous Markdown page here
 
 <|{dataframe}|table|>
 
@@ -71,20 +61,30 @@ dataframe = pd.DataFrame({"Text":['Test', 'Other', 'Love'],
                           "Score Neg":[1, 2, 0],
                           "Overall":[0, -1, 4]})
 
-
-def local_callback(state):
-    print(state.text)
-    notify(state, 'info', f'The text is: {state.text}')
-    
-    temp = state.dataframe.copy()
-    state.dataframe = temp.append({"Text":state.text,
-                                   "Score Pos":0,
-                                   "Score Neu":0,
-                                   "Score Neg":0,
-                                   "Overall":0}, ignore_index=True)
-    state.text = ""
-
-Gui(page).run()
 ```
 
-Properties dictionnary -- diminue code for Markdown
+## Quick tip to write visual elements
+
+In order to simplify the creation of a visual element. Each of them has a "property" parameter where a Ptyhon dictionnary of property can ba directly passed. To replicate the graph above, we could do:
+
+```python
+property_chart = {"type":bar,
+                  "x":"Text",
+                  "y[1]":"Score Pos",
+                  "y[2]":"Score Neu",
+                  "y[3]":"Score Neg",
+                  "y[4]":"Overall",
+                  "color[1]":"green",
+                  "color[2]":"grey",
+                  "color[3]":"red",
+                  "type[4]":"line"
+                 }
+
+page = """
+...
+
+<|{dataframe}|chart|property={property_chart}|>
+...
+"""
+
+```
