@@ -84,6 +84,4 @@ def local_callback(state):
     state.dataframe = temp.append(scores, ignore_index=True)
     state.text = ""
 
-
-
 Gui(page).run()
