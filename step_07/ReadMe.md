@@ -11,10 +11,11 @@ In order to create a multi-page application, a dictionnary of pages has to be sp
 ```python
 from taipy import Gui
 
-def on_menu():
+def on_menu(XXXXXXXXXX?????):
     print('Menu function called')
+    XXXXXXXXXX???????.....
 
-Gui(page="<|menu|label=Menu|lov={['Data Visualization', 'Scenario Manager']}|on_action=on_menu|>").run()
+Gui(page="<|menu|label=Menu|lov={['Page 1', 'Page 2']}|on_action=on_menu|>").run()
 ```
 
 ![Menu](menu.png){ width=50 style="margin:auto;display:block" }
@@ -26,24 +27,16 @@ One strategy to switch from one page to another is:
 1. To create a specific Markdown string for each page;
 
 2. Use the Menu or navbar control to switch pages.
-
-This is how you can easily create multiple pages; there are many other ways to do so.
  
 First, let’s start by creating the 2 pages.
 
-The first page contains the original chart and slider defined in Step 2. Let’s use the same Markdown as the one defined in Step 2. It is named _page_ (and is also present in Step 9). 
+The first page contains the previous Markdown.It is named _page_). 
 
-
-```python
-# Our first page is the original page
-# (with the slider and the chart that displays a week of the historical data)
-page_data_visualization = page
-```
 
 ![Data Visualization](data_visualization.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 
-Then let’s create our second page which contains the page corresponding to the creation of scenarios seen in Step 9.
+Then let’s create our second page which contains the page corresponding to the analysis of an entire text.
 
 
 ```python
