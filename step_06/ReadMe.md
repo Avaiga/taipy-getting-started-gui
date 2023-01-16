@@ -38,6 +38,8 @@ Third column
 ![expendable](expendable.png){ width=500 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 
+## Back to the code
+
 ```python
 
 page = """
