@@ -6,7 +6,8 @@ Charts are an essential part of Taipy and of any Web application. A chart is jus
 Here is the simplest code to create a chart:
 
 ```python
-<|{[100/x for x in range(1, 100)]}|chart|>
+list_to_display = [100/x for x in range(1, 100)]
+"<|{list_to_display}|chart|>"
 ```
 
 ## Different useful properties
@@ -17,19 +18,22 @@ Here are few of the most essential properties. You can also look at the [documen
  - x and y are used to define the axis of the chart. Note that even if data inside columns are dynamic, the name of columns to display in a chart are not.
 
 ```python
-<|{pd.DataFrame({"x_col":[0,1,2], "y_col1":[4,1,2]})}|chart|x=x_col|y=y_col1|>
+data = pd.DataFrame({"x_col":[0,1,2], "y_col1":[4,1,2]})
+"<|{data}|chart|x=x_col|y=y_col1|>"
 ```
 
  - x and y can be indexed to add more traces to the chart:
 
 ```python
-<|{pd.DataFrame({"x_col":[0,1,2], "y_col_1":[4,1,2], "y_col_2":[3,1,2]})}|chart|x=x_col|y[1]=y_col_1|y[2]=y_col_2|>
+data = pd.DataFrame({"x_col":[0,1,2], "y_col_1":[4,1,2], "y_col_2":[3,1,2]})
+<|{data}|chart|x=x_col|y[1]=y_col_1|y[2]=y_col_2|>
 ```
 
  - A lot of different options can be sued to customized the graph. _color_ is one of them:
 
 ```python
-<|{pd.DataFrame({"x_col":[0,1,2], "y_col_1":[4,1,2], "y_col_2":[3,1,2]})}|chart|x=x_col|y[1]=y_col_1|y[2]=y_col_2|type[1]=bar|color[1]=green|>
+data = pd.DataFrame({"x_col":[0,1,2], "y_col_1":[4,1,2], "y_col_2":[3,1,2]})
+<|{data}|chart|x=x_col|y[1]=y_col_1|y[2]=y_col_2|type[1]=bar|color[1]=green|>
 ```
 
 ## Different types of charts
@@ -37,7 +41,8 @@ Here are few of the most essential properties. You can also look at the [documen
 Taipy has a lot of different types: maps, bar charts, pie charts, line charts, 3D charts, ...  If compatible, two types can also be use together like _scatter_, _line_ and _bar_ on the same chart.
 
 ```python
-<|{pd.DataFrame({"x_col":[0,1,2], "y_col_1":[4,1,2], "y_col_2":[3,1,2]})}|chart|x=x_col|y[1]=y_col_1|y[2]=y_col_2|type[1]=bar|>
+data = pd.DataFrame({"x_col":[0,1,2], "y_col_1":[4,1,2], "y_col_2":[3,1,2]})
+<|{data}|chart|x=x_col|y[1]=y_col_1|y[2]=y_col_2|type[1]=bar|>
 ```
 
 ## Code
