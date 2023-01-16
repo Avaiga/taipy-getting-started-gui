@@ -60,7 +60,6 @@ My text: <|{text}|>
 """
 
 def local_callback(state):
-    print(state.text)
     notify(state, 'info', f'The text is: {state.text}')
     state.text = "Button Pressed"
 
