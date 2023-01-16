@@ -75,3 +75,4 @@ Gui(page).run()
 
 ![Interactive GUI](result.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
+_notify()_ is a Taipy GUI function that creates a notification with a text. Multiple parameters can be passed including the _state_, the _notification_type_ and the _message_.
