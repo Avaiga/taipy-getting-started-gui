@@ -1,8 +1,24 @@
 ## Step 7: Multi-pages, navbars and menus
 
-The creation of a multi-page application is greatly simplified through Taipy.
+The creation of a multi-page application is greatly simplified through Taipy. In order to create a multi-page application, a dictionnary of pages has to be specified in the definition of the GUI. Pages 1 and 2 will share the content of the root page. Visual elements like menu or navbar are usually put in this root page to navigate between the different pages of the application.
 
-In order to create a multi-page application, a dictionnary of pages has to be specified in the definition of the GUI.
+
+```python
+from taipy import Gui
+
+root_md="# Multi-page application"
+page1_md="## This is page 1"
+page2_md="## This is page 2"
+
+pages = {
+    "/": root_md,
+    "page1": page1_md,
+    "page2": page2_md
+}
+Gui(pages=pages).run()
+```
+
+## Navigating between pages
 
 - [menu](https://docs.taipy.io/en/latest/manuals/gui/viselements/menu/): creates a menu on the left to navigate through the pages.
 
@@ -28,33 +44,15 @@ One strategy to switch from one page to another is:
 
 2. Use the Menu or navbar control to switch pages.
  
-First, let’s start by creating the 2 pages.
+## Back to the code
 
-The first page contains the previous Markdown.It is named _page_). 
+In our application, the first page contains the previous Markdown.It is named _page_). 
 
 
 ![Data Visualization](data_visualization.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 
 Then let’s create our second page which contains the page corresponding to the analysis of an entire text.
-
-
-```python
-from taipy import Gui
-
-root_md="# Multi-page application"
-page1_md="## This is page 1"
-page2_md="## This is page 2"
-
-pages = {
-    "/": root_md,
-    "page1": page1_md,
-    "page2": page2_md
-}
-Gui(pages=pages).run()
-```
-
-Pages 1 and 2 will share the content of the root page. Visual elements like menu or navbar are usually put in this root page to navigate between the different pages of the application.
 
 
 ```python
@@ -97,7 +95,7 @@ def analyze_file(state):
     state.path = None
 ```    
 
-This little code below assembles our previous page and this new page.
+This little code below assembles our previous page and this new page. The _navbar_ in the root page is present in both pages and is automatically able to switch pages through it. 
 
 ```python
 
