@@ -46,7 +46,7 @@ Other callbacks specific to visual elements exist. They are named _on_change_ or
 ```python
 from taipy.gui import Gui, notify
 
-text = "Orginal text"
+text = "Original text"
 
 # Definition of the page
 page = """
