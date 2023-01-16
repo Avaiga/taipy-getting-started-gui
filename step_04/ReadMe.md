@@ -38,7 +38,7 @@ data = pd.DataFrame({"x_col":[0,1,2], "y_col_1":[4,1,2], "y_col_2":[3,1,2]})
 
 ## Different types of charts
 
-Taipy has a lot of different types: maps, bar charts, pie charts, line charts, 3D charts, ...  If compatible, two types can also be use together like _scatter_, _line_ and _bar_ on the same chart.
+Taipy has a lot of different types: maps, bar charts, pie charts, line charts, 3D charts, ...  If compatible, two types can also be use together like _scatter_, _line_ and _bar_ on the same chart. Types are listed [here]().
 
 ```python
 data = pd.DataFrame({"x_col":[0,1,2], "y_col_1":[4,1,2], "y_col_2":[3,1,2]})
