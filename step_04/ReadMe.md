@@ -26,14 +26,14 @@ data = pd.DataFrame({"x_col":[0,1,2], "y_col1":[4,1,2]})
 
 ```python
 data = pd.DataFrame({"x_col":[0,1,2], "y_col_1":[4,1,2], "y_col_2":[3,1,2]})
-<|{data}|chart|x=x_col|y[1]=y_col_1|y[2]=y_col_2|>
+"<|{data}|chart|x=x_col|y[1]=y_col_1|y[2]=y_col_2|>"
 ```
 
  - A lot of different options can be sued to customized the graph. _color_ is one of them:
 
 ```python
 data = pd.DataFrame({"x_col":[0,1,2], "y_col_1":[4,1,2], "y_col_2":[3,1,2]})
-<|{data}|chart|x=x_col|y[1]=y_col_1|y[2]=y_col_2|type[1]=bar|color[1]=green|>
+"<|{data}|chart|x=x_col|y[1]=y_col_1|y[2]=y_col_2|type[1]=bar|color[1]=green|>"
 ```
 
 ## Different types of charts
@@ -42,7 +42,7 @@ Taipy has a lot of different types: maps, bar charts, pie charts, line charts, 3
 
 ```python
 data = pd.DataFrame({"x_col":[0,1,2], "y_col_1":[4,1,2], "y_col_2":[3,1,2]})
-<|{data}|chart|x=x_col|y[1]=y_col_1|y[2]=y_col_2|type[1]=bar|>
+"<|{data}|chart|x=x_col|y[1]=y_col_1|y[2]=y_col_2|type[1]=bar|>"
 ```
 
 ## Code
