@@ -56,10 +56,10 @@ My text: <|{text}|>
 
 <|{text}|input|>
 
-<|Run local|button|on_action=local_callback|>
+<|Run local|button|on_action=on_button_action|>
 """
 
-def local_callback(state):
+def on_button_action(state):
     notify(state, 'info', f'The text is: {state.text}')
     state.text = "Button Pressed"
 
