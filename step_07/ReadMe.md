@@ -11,9 +11,9 @@ In order to create a multi-page application, a dictionnary of pages has to be sp
 ```python
 from taipy import Gui
 
-def on_menu(XXXXXXXXXX?????):
-    print('Menu function called')
-    XXXXXXXXXX???????.....
+def on_menu(state, xxxx????):
+    navigate(state, to=state.....)???
+   
 
 Gui(page="<|menu|label=Menu|lov={['Page 1', 'Page 2']}|on_action=on_menu|>").run()
 ```
