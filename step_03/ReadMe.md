@@ -9,7 +9,7 @@
 
 Now, the page has several visual elements:
 
-- A text that is connected to the Python variable *text* ;
+- A text that is connected to the Python variable *text*;
 
 - An input that changes the value *text* automatically.
 
@@ -33,9 +33,9 @@ In the code below, this concept will be used to connect a variable (*text*) to o
 
 In *Taipy*, the `on_change()` function is a "special" function. **Taipy** will check if you created a function with this name and will use it. Whenever the state of a variable is modified, the *callback* function is called with three parameters:
 
-- state (the state object containing all the variables)
+- state (the state object containing all the variables);
 
-- The name of the modified variable
+- The name of the modified variable;
 
 - Its value.
 
