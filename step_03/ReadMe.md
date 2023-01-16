@@ -29,7 +29,7 @@ In the code below, this concept will be used to connect a variable (*text*) to o
 
 - A connection has to be made between the slider's value  (*state.text*) and the chart data (*state.dataset_week*).
 
-## How to connect two variables - the *[on_change](https://docs.taipy.io/en/latest/manuals/gui/callbacks/)* function
+## How to connect two variables - the *[on_change()](https://docs.taipy.io/en/latest/manuals/gui/callbacks/)* function
 
 In *Taipy*, the `on_change()` function is a "special" function. **Taipy** will check if you created a function with this name and will use it. Whenever the state of a variable is modified, the *callback* function is called with three parameters:
 
