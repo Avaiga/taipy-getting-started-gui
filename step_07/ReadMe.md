@@ -67,12 +67,6 @@ pages = {
 
 Gui(pages=pages).run()
 ```
-
-One strategy to switch from one page to another is:
-
-1. To create a specific Markdown string for each page;
-
-2. Use the Menu or navbar control to switch pages.
  
 ## Back to the code
 
