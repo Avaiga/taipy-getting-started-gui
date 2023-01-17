@@ -51,6 +51,23 @@ Gui(pages=pages).run()
 
 - [navbar](): creates an element to navigate through the Taipy pages by default
 
+```python
+from taipy.gui import Gui
+
+
+root_md="<|navbar|>"
+page1_md="## This is page 1"
+page2_md="## This is page 2"
+
+pages = {
+    "/": root_md,
+    "Page-1": page1_md,
+    "Page-2": page2_md
+}
+
+Gui(pages=pages).run()
+```
+
 One strategy to switch from one page to another is:
 
 1. To create a specific Markdown string for each page;
