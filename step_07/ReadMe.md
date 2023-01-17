@@ -121,7 +121,7 @@ This little code below assembles our previous page and this new page. The _navba
 ```python
 
 # One root page for common content
-# The two pages that was created
+# The two pages that were created
 pages = {"/":"<|toggle|theme|>\n<center>\n<|navbar|>\n</center>",
          "line":page,
          "text":page_file}
