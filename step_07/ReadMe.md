@@ -25,13 +25,24 @@ Gui(pages=pages).run()
 `<|menu|label=Menu|lov={lov_pages}|on_action=on_menu|>`. For example, this code creates a menu with two pages:
 
 ```python
-from taipy import Gui
+from taipy.gui import Gui, navigate
 
-def on_menu(state, xxxx????):
-    navigate(state, to=state.....)???
+root_md="<|menu|label=Menu|lov={['Page 1', 'Page 2']}|on_action=on_menu|>"
+page1_md="## This is page 1"
+page2_md="## This is page 2"
+
+def on_menu(state, var_name, function_name, info):
+    page = info['args']
+    navigate(state, to=page)
    
 
-Gui(page="<|menu|label=Menu|lov={['Page 1', 'Page 2']}|on_action=on_menu|>").run()
+pages = {
+    "/": root_md,
+    "page1": page1_md,
+    "page2": page2_md
+}
+
+Gui(pages=pages).run()
 ```
 
 ![Menu](menu.png){ width=50 style="margin:auto;display:block" }
