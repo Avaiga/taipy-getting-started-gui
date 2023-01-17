@@ -17,32 +17,24 @@ Any expression containing `xxx` in the Markdown will be propagated the changes a
 
 Using this kind of expression creates direct connection between visual elements without coding anything.
 
-## Code
 
-The code below uses this concept to create metrics on the dataframe generated. The code for NLP is here provided; it doesn't concern Taipy but is useful for the application.
+## A use case for NLP
+
+The code for NLP is here provided; it doesn't concern Taipy but is useful for the application.
+
 
 ```python
 from transformers import AutoTokenizer
 from transformers import AutoModelForSequenceClassification
 from scipy.special import softmax
 
-import numpy as np
-import pandas as pd 
-from taipy.gui import Gui, notify
 
-text = "Orginal text"
 
 MODEL = f"cardiffnlp/twitter-roberta-base-sentiment"
 tokenizer = AutoTokenizer.from_pretrained(MODEL)
 model = AutoModelForSequenceClassification.from_pretrained(MODEL)
 
-dataframe = pd.DataFrame({"Text":[''],
-                          "Score Pos":[0],
-                          "Score Neu":[0],
-                          "Score Neg":[0],
-                          "Overall":[0]})
-
-def analize_text(text):
+def analyze_text(text):
     # Run for Roberta Model
     encoded_text = tokenizer(text, return_tensors='pt')
     output = model(**encoded_text)
@@ -54,6 +46,27 @@ def analize_text(text):
             "Score Neu":scores[1],
             "Score Neg":scores[0],
             "Overall":scores[2]-scores[0]}
+
+```
+
+
+## Rest of code to implement the NLP element
+
+The code below uses this concept to create metrics on the dataframe generated. 
+
+
+```python     
+import numpy as np
+import pandas as pd 
+from taipy.gui import Gui, notify
+
+text = "Orginal text"
+
+dataframe = pd.DataFrame({"Text":[''],
+                          "Score Pos":[0],
+                          "Score Neu":[0],
+                          "Score Neg":[0],
+                          "Overall":[0]})
 
 
 def local_callback(state):
