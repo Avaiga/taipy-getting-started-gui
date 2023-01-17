@@ -89,7 +89,6 @@ property_chart = {"type":bar,
 
 page = """
 ...
-
 <|{dataframe}|chart|property={property_chart}|>
 ...
 """
