@@ -23,11 +23,11 @@ The state holds the value of all the variables that are used in the user interfa
 
 For example, at the beginning, `state.text = 'Original text'`. When *text* is modified by the input (through a given graphical client), this is, in fact, *state.text* that is modified, not *text* (the global Python variable). Therefore, if you open 2 different clients, *text* will have 2 state values (*state.text*), one for each client.
 
-In the code below, this concept will be used to connect a variable (*text*) to other variables:
+In the code below, this concept will be used to:
 
-- We will create a chart that will only display one week of data corresponding to the selected week of the slider.
+- Notify the user when th' button is pressed;
 
-- A connection has to be made between the slider's value  (*state.text*) and the chart data (*state.dataset_week*).
+- Reset the input when the text equals to "Reset".
 
 ## How to connect two variables - the *[on_change()](https://docs.taipy.io/en/latest/manuals/gui/callbacks/)* function
 
