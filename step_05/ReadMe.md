@@ -1,8 +1,8 @@
 # Step 5: Insert Python expressions in Taipy GUI
 
-As shown before, parameters and variables in Taipy are dynamic. The same follows for every type of object even dataframes. Therefore, operations can be done on dataframes and results will be shown in real time on the GUI. Taipy is notified of a change when variables are being assigned through `=` like `state.xxx = yyy`.
+As shown before, parameters and variables in Taipy are dynamic. The same follows for every type of objects even dataframes. Therefore, operations on dataframes can be done and results will be shown in real time on the GUI. These changes occurs through the `=` asignment like `state.xxx = yyy` (`state.text = "Example"`).
 
-Any expression containing `xxx` in the Markdown will be reloaded. It can be  simple charts or tables but it can also be expression like this:
+Any expression containing `xxx` in the Markdown will be propagated the changes and will reload related elements. It can be  simple charts or tables but it can also be expression like this:
 
 ```python
 ## Positive
@@ -15,7 +15,7 @@ Any expression containing `xxx` in the Markdown will be reloaded. It can be  sim
 <|{np.mean(dataframe['Score Neg'])}|text|>
 ```
 
-Using this kind of expression creates direct connection between visual elements without coding anything. I can be largely used to create an application.
+Using this kind of expression creates direct connection between visual elements without coding anything.
 
 ## Code
 
