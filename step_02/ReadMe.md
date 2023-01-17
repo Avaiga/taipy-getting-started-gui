@@ -49,7 +49,7 @@ Here is the combined code:
 ```python
 from taipy.gui import Gui
 
-text = "Orginal text"
+text = "Original text"
 
 page = """
 # Getting started with Taipy GUI
