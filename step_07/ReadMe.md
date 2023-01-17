@@ -46,14 +46,11 @@ One strategy to switch from one page to another is:
  
 ## Back to the code
 
-In our application, the first page contains the previous Markdown.It is named _page_). 
-
+In our application, the first page (named _page_) contains the previous Markdown.
 
 ![Data Visualization](data_visualization.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
-
-Then let’s create our second page which contains the page corresponding to the analysis of an entire text.
-
+Then, let’s create our second page which contains a page to analyze an entire text.
 
 ```python
 # Second page
