@@ -3,12 +3,14 @@
  
 Charts are an essential part of Taipy and of any Web application. A chart is just another visual element with a lot of property to customize it.
 
-Here is the simplest code to create a chart:
+Here is one of the simplest code to create a chart:
 
 ```python
 list_to_display = [100/x for x in range(1, 100)]
 "<|{list_to_display}|chart|>"
 ```
+
+Different formats can be passed to a chart element: a list, a Numpy array or a Pandas Dataframe.
 
 ## Different useful properties
 
