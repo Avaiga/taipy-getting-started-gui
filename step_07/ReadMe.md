@@ -27,19 +27,21 @@ Gui(pages=pages).run()
 ```python
 from taipy.gui import Gui, navigate
 
-root_md="<|menu|label=Menu|lov={['Page 1', 'Page 2']}|on_action=on_menu|>"
+
+root_md="<|menu|label=Menu|lov={[('Page-1', 'Page 1'), ('Page-2', 'Page 2')]}|on_action=on_menu|>"
 page1_md="## This is page 1"
 page2_md="## This is page 2"
 
+
 def on_menu(state, var_name, function_name, info):
     page = info['args']
-    navigate(state, to=page)
+    navigate(state, to=page[0])
    
-
+   
 pages = {
     "/": root_md,
-    "page1": page1_md,
-    "page2": page2_md
+    "Page-1": page1_md,
+    "Page-2": page2_md
 }
 
 Gui(pages=pages).run()
