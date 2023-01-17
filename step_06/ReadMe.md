@@ -33,7 +33,7 @@ Third column
 ![Layout](layout.png){ width=500 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 
-- [expendable](https://docs.taipy.io/en/latest/manuals/gui/viselements/expendable/): ....
+- [expendable](https://docs.taipy.io/en/latest/manuals/gui/viselements/expendable/): creates a block that can expand or shrink.
 
 ![expendable](expendable.png){ width=500 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
