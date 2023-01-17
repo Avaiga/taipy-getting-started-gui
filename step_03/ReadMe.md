@@ -15,7 +15,7 @@ Now, the page has several visual elements:
 
 Taipy GUI manages everything. To go further into Taipy GUI, let's consider the concept of **state**.
 
-## Multi-client - state
+## Multi-user - state
 
 Try to open a few clients with the same URL. You will see that every client is independent from each other; you can change *text* on a client, and *text* will not change in other clients. This is due to the concept of **state**.
 
