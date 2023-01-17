@@ -14,7 +14,7 @@ Different formats can be passed to a chart element: a list, a Numpy array or a P
 
 ## Different useful properties
 
-Taipy charts are based on Plotly charts. Like any other visual elements, charts have a lot of parameters that can be changed. Some of them can be indexed in order to change properties for specif traces of the chart. 
+Taipy charts are based on Plotly charts. Like any other visual elements, charts have a lot of parameters. Some of them can be indexed in order to change properties for specif traces of the chart. 
 
 Here are few of the most essential properties. You can also look at the [documentation]() for more information.
  - x and y are used to define the axis of the chart. Note that even if data inside columns are dynamic, the name of columns to display in a chart are not.
