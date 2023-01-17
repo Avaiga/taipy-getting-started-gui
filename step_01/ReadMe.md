@@ -14,8 +14,6 @@ A client link will be displayed in the console. Enter it in a web browser to ope
 ```python
 from taipy import Gui
 
-# A dark mode is available in Taipy
-# However, we will use the light mode for the Getting Started
 Gui(page="# Getting started with *Taipy*").run()
 ```
 
