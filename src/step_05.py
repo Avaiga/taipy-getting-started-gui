@@ -56,13 +56,13 @@ Enter a word:
 <|Analyze|button|on_action=local_callback|>
 
 ## Positive
-<|{np.mean(dataframe['Score Pos'])}|text|format=%.2f|>%
+<|{float(np.mean(dataframe['Score Pos']))}|text|format=%.2f|>%
 
 ## Neutral
-<|{np.mean(dataframe['Score Neu'])}|text|format=%.2f|>%
+<|{float(np.mean(dataframe['Score Neu']))}|text|format=%.2f|>%
 
 ## Negative
-<|{np.mean(dataframe['Score Neg'])}|text|format=%.2f|>%
+<|{float(np.mean(dataframe['Score Neg']))}|text|format=%.2f|>%
 
 <|{dataframe}|table|number_format=%.2f|>
 
