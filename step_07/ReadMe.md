@@ -1,6 +1,6 @@
-## Step 7: Multi-pages, navbars and menus
+## Step 7: Multi-pages, navbars, and menus
 
-The creation of a multi-page application is greatly simplified through Taipy. In order to create a multi-page application, a dictionnary of pages has to be specified in the definition of the GUI. Pages 1 and 2 will share the content of the root page. Visual elements like menu or navbar are usually put in this root page to navigate between the different pages of the application.
+The creation of a multi-page application is greatly simplified through Taipy. To create a multi-page application, a dictionary of pages has to be specified in the definition of the GUI. Pages 1 and 2 will share the content of the root page. Visual elements like a menu or navbar are usually put on this root page to navigate between the different pages of the application.
 
 
 ```python
@@ -68,13 +68,16 @@ pages = {
 Gui(pages=pages).run()
 ```
  
+![Navbar](navbar.png){ width=50 style="margin:auto;display:block" }
+
+ 
 ## Back to the code
 
 In our application, the first page (named _page_) contains the previous Markdown.
 
 ![Data Visualization](data_visualization.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
-Then, let’s create our second page which contains a page to analyze an entire text.
+Then, let’s create our second page, which contains a page to analyze an entire text.
 
 ```python
 # Second page
