@@ -32,17 +32,17 @@ Enter a word:
 <|layout|columns=1 1 1|
 <|
 ## Positive
-<|{np.mean(dataframe['Score Pos'])}|>
+<|{np.mean(dataframe['Score Pos'])}|text|format=%.2f|> %
 |>
 
 <|
 ## Neutral
-<|{np.mean(dataframe['Score Neu'])}|>
+<|{np.mean(dataframe['Score Neu'])}|text|format=%.2f|> %
 |>
 
 <|
 ## Negative
-<|{np.mean(dataframe['Score Neg'])}|>
+<|{np.mean(dataframe['Score Neg'])}|text|format=%.2f|> %
 |>
 |>
 
@@ -128,4 +128,4 @@ pages = {"/":"<|toggle|theme|>\n<center>\n<|navbar|>\n</center>",
          "text":page_file}
 
 
-Gui(pages=pages).run()
+Gui(pages=pages).run(port=5001)
