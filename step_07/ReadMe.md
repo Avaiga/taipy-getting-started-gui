@@ -47,7 +47,7 @@ pages = {
 Gui(pages=pages).run()
 ```
 
-![Navbar](navbar.png){ width=50 style="margin:auto;display:block" }
+![Menu](menu.png){ width=50 style="margin:auto;display:block" }
 
 - [navbar](): creates an element to navigate through the Taipy pages by default
 
@@ -68,7 +68,7 @@ pages = {
 Gui(pages=pages).run()
 ```
  
-![Menu](menu.png){ width=50 style="margin:auto;display:block" }
+![Navbar](navbar.png){ width=50 style="margin:auto;display:block" }
 
  
 ## Back to the code
