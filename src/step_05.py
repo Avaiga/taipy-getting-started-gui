@@ -34,7 +34,6 @@ def analize_text(text):
 
 
 def local_callback(state):
-    print(state.text)
     notify(state, 'Info', f'The text is: {state.text}', True)
     temp = state.dataframe.copy()
     scores = analize_text(state.text)

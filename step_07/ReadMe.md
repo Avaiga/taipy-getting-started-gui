@@ -99,7 +99,6 @@ def analyze_file(state):
     state.dataframe2 = dataframe2
     state.treatment = 0
     with open(state.path,"r", encoding='utf-8') as f:
-        print(f)
         data = f.read()
         # split lines and eliminates duplicates
         file_list = list(dict.fromkeys(data.replace('\n', ' ').split(".")[:-1]))
@@ -108,7 +107,6 @@ def analyze_file(state):
     for i in range(len(file_list)):
         text = file_list[i]
         state.treatment = int((i+1)*100/len(file_list))
-        print(text)
         temp = state.dataframe2.copy()
         scores = analize_text(text)
         state.dataframe2 = temp.append(scores, ignore_index=True)

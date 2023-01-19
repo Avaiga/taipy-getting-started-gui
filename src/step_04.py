@@ -28,7 +28,6 @@ dataframe = pd.DataFrame({"Text":['Test', 'Other', 'Love'],
 
 
 def local_callback(state):
-    print(state.text)
     notify(state, 'info', f'The text is: {state.text}')
     
     temp = state.dataframe.copy()

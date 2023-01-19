@@ -64,7 +64,6 @@ def on_button_action(state):
     state.text = "Button Pressed"
 
 def on_change(state, var_name, var_value):
-    print(var_name, var_value, state.text)
     if var_name == "text" and var_value == "Reset":
         state.text = ""
         return
