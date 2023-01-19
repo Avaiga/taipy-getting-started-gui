@@ -7,17 +7,17 @@ import numpy as np
 import pandas as pd 
 from taipy.gui import Gui, notify
 
-text = "Orginal text"
+text = "Original text"
 
 MODEL = f"cardiffnlp/twitter-roberta-base-sentiment"
 tokenizer = AutoTokenizer.from_pretrained(MODEL)
 model = AutoModelForSequenceClassification.from_pretrained(MODEL)
 
-dataframe = pd.DataFrame({"Text":[''],
-                          "Score Pos":[0],
-                          "Score Neu":[0],
-                          "Score Neg":[0],
-                          "Overall":[0]})
+dataframe = pd.DataFrame({"Text":pd.Series([], dtype=str),
+                          "Score Pos":pd.Series([], dtype=float),
+                          "Score Neu":pd.Series([], dtype=float),
+                          "Score Neg":pd.Series([], dtype=float),
+                          "Overall":pd.Series([], dtype=float)})
 
 def analize_text(text):
     # Run for Roberta Model
@@ -56,15 +56,15 @@ Enter a word:
 <|Analyze|button|on_action=local_callback|>
 
 ## Positive
-<|{np.mean(dataframe['Score Pos'])}|text|format=%.2f|>
+<|{np.mean(dataframe['Score Pos'])}|text|format=%.2f|>%
 
 ## Neutral
-<|{np.mean(dataframe['Score Neu'])}|text|format=%.2f|>
+<|{np.mean(dataframe['Score Neu'])}|text|format=%.2f|>%
 
 ## Negative
-<|{np.mean(dataframe['Score Neg'])}|text|format=%.2f|>
+<|{np.mean(dataframe['Score Neg'])}|text|format=%.2f|>%
 
-<|{dataframe}|table|>
+<|{dataframe}|table|number_format=%.2f|>
 
 <|{dataframe}|chart|type=bar|x=Text|y[1]=Score Pos|y[2]=Score Neu|y[3]=Score Neg|y[4]=Overall|color[1]=green|color[2]=grey|color[3]=red|type[4]=line|>
 """

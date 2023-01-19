@@ -60,7 +60,7 @@ import numpy as np
 import pandas as pd 
 from taipy.gui import Gui, notify
 
-text = "Orginal text"
+text = "Original text"
 
 dataframe = pd.DataFrame({"Text":[''],
                           "Score Pos":[0],

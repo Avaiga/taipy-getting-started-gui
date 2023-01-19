@@ -1,8 +1,8 @@
 import pandas as pd 
 from taipy.gui import Gui, notify
 
-text = "Orginal text"
 
+text = "Original text"
 
 page = """
 <|toggle|theme|>
@@ -15,7 +15,7 @@ My text: <|{text}|>
 
 <|Analyze|button|on_action=local_callback|>
 
-<|{dataframe}|table|>
+<|{dataframe}|table|number_format=%.2f|>
 
 <|{dataframe}|chart|type=bar|x=Text|y[1]=Score Pos|y[2]=Score Neu|y[3]=Score Neg|y[4]=Overall|color[1]=green|color[2]=grey|color[3]=red|type[4]=line|>
 """

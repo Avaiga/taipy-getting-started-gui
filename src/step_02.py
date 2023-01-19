@@ -1,6 +1,6 @@
 from taipy.gui import Gui
 
-text = "Orginal text"
+text = "Original text"
 
 page = """
 <|toggle|theme|>

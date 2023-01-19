@@ -1,6 +1,6 @@
 from taipy.gui import Gui, notify
 
-text = "Orginal text"
+text = "Original text"
 
 # Definition of the page
 page = """

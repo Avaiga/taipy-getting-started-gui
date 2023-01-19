@@ -6,7 +6,7 @@ import numpy as np
 import pandas as pd 
 from taipy.gui import Gui, notify
 
-text = "Orginal text"
+text = "Original text"
 
 page = """
 # Getting started with Taipy GUI
@@ -24,7 +24,7 @@ Enter a word:
 
 
 <|Table|expandable|
-<|{dataframe}|table|width=100%|>
+<|{dataframe}|table|width=100%|number_format=%.2f|>
 |>
 
 |>
@@ -53,11 +53,11 @@ MODEL = f"cardiffnlp/twitter-roberta-base-sentiment"
 tokenizer = AutoTokenizer.from_pretrained(MODEL)
 model = AutoModelForSequenceClassification.from_pretrained(MODEL)
 
-dataframe = pd.DataFrame({"Text":[''],
-                          "Score Pos":[0],
-                          "Score Neu":[0],
-                          "Score Neg":[0],
-                          "Overall":[0]})
+dataframe = pd.DataFrame({"Text":pd.Series([], dtype=str),
+                          "Score Pos":pd.Series([], dtype=float),
+                          "Score Neu":pd.Series([], dtype=float),
+                          "Score Neg":pd.Series([], dtype=float),
+                          "Overall":pd.Series([], dtype=float)})
 
 dataframe2 = dataframe.copy()
 
@@ -91,7 +91,7 @@ page_file = """
 
 
 <|Table|expandable|
-<|{dataframe2}|table|width=100%|>
+<|{dataframe2}|table|width=100%|number_format=%.2f|>
 |>
 
 <|{dataframe2}|chart|type=bar|x=Text|y[1]=Score Pos|y[2]=Score Neu|y[3]=Score Neg|y[4]=Overall|color[1]=green|color[2]=grey|color[3]=red|type[4]=line|height=800px|>
