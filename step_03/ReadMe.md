@@ -17,21 +17,21 @@ Taipy GUI manages everything. To go further into Taipy GUI, let's consider the c
 
 ## Multi-user - state
 
-Try to open a few clients with the same URL. You will see that every client is independent from each other; you can change *text* on a client, and *text* will not change in other clients. This is due to the concept of **state**.
+Try to open a few clients with the same URL. You will see that every client is independent of each other; you can change *text* on a client, and *text* will not change in other clients. This is due to the concept of **state**.
 
-The state holds the value of all the variables that are used in the user interface, for one specific connection.
+The state holds the value of all the variables used in the user interface for one specific connection.
 
-For example, at the beginning, `state.text = 'Original text'`. When *text* is modified by the input (through a given graphical client), this is, in fact, *state.text* that is modified, not *text* (the global Python variable). Therefore, if you open 2 different clients, *text* will have 2 state values (*state.text*), one for each client.
+For example, in the beginning, `state.text = 'Original text'`. When *text* is modified by the input (through a given graphical client), this is, in fact, *state.text* that is modified, not *text* (the global Python variable). Therefore, if you open two different clients, *text* will have two state values (*state.text*), one for each client.
 
 In the code below, this concept will be used to:
 
-- Notify the user when th' button is pressed;
+- Notify the user when the button is pressed;
 
-- Reset the input when the text equals to "Reset".
+- Reset the input when the text equals "Reset".
 
 ## How to connect two variables - the *[on_change()](https://docs.taipy.io/en/latest/manuals/gui/callbacks/)* function
 
-In *Taipy*, the `on_change()` function is a "special" function. **Taipy** will check if you created a function with this name and will use it. Whenever the state of a variable is modified, the *callback* function is called with three parameters:
+In *Taipy*, the `on_change()` function is a "special" function. **Taipy** will check if you created and will use a function with this name. Whenever the state of a variable is modified, the *callback* function is called with three parameters:
 
 - state (the state object containing all the variables);
 
@@ -74,4 +74,4 @@ Gui(page).run()
 
 ![Interactive GUI](result.gif){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
-_notify()_ is a Taipy GUI function that creates a notification with a text. Multiple parameters can be passed including the _state_, the _notification_type_ and the _message_.
+_notify()_ is a Taipy GUI function that creates a notification with text. The user can pass multiple parameters, including the _state_, the _notification_type_, and the _message_.
