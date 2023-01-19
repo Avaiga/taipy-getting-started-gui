@@ -12,7 +12,7 @@ My text: <|{text}|>
 
 <|{text}|input|>
 
-<|Analyze local|button|on_action=local_callback|>
+<|Analyze|button|on_action=local_callback|>
 """
 
 def local_callback(state):

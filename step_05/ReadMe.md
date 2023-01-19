@@ -63,9 +63,9 @@ from taipy.gui import Gui, notify
 text = "Original text"
 
 dataframe = pd.DataFrame({"Text":[''],
-                          "Score Pos":[0],
-                          "Score Neu":[0],
-                          "Score Neg":[0],
+                          "Score Pos":[0.33],
+                          "Score Neu":[0.33],
+                          "Score Neg":[0.33],
                           "Overall":[0]})
 
 
@@ -107,3 +107,6 @@ Enter a word:
 
 Gui(page).run()
 ```
+
+
+![Python expression](result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }

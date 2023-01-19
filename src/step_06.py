@@ -34,17 +34,17 @@ Enter a word:
 <|layout|columns=1 1 1|
 <|
 ## Positive
-<|{np.mean(dataframe['Score Pos'])}|text|format=%.2f|>%
+<|{float(np.mean(dataframe['Score Pos']))}|text|format=%.2f|>%
 |>
 
 <|
 ## Neutral
-<|{np.mean(dataframe['Score Neu'])}|text|format=%.2f|>%
+<|{float(np.mean(dataframe['Score Neu']))}|text|format=%.2f|>%
 |>
 
 <|
 ## Negative
-<|{np.mean(dataframe['Score Neg'])}|text|format=%.2f|>%
+<|{float(np.mean(dataframe['Score Neg']))}|text|format=%.2f|>%
 |>
 |>
 
@@ -55,11 +55,11 @@ MODEL = f"cardiffnlp/twitter-roberta-base-sentiment"
 tokenizer = AutoTokenizer.from_pretrained(MODEL)
 model = AutoModelForSequenceClassification.from_pretrained(MODEL)
 
-dataframe = pd.DataFrame({"Text":pd.Series([], dtype=str),
-                          "Score Pos":pd.Series([], dtype=float),
-                          "Score Neu":pd.Series([], dtype=float),
-                          "Score Neg":pd.Series([], dtype=float),
-                          "Overall":pd.Series([], dtype=float)})
+dataframe = pd.DataFrame({"Text":[''],
+                          "Score Pos":[0.33],
+                          "Score Neu":[0.33],
+                          "Score Neg":[0.33],
+                          "Overall":[0]})
 
 
 def analize_text(text):

@@ -53,11 +53,11 @@ MODEL = f"cardiffnlp/twitter-roberta-base-sentiment"
 tokenizer = AutoTokenizer.from_pretrained(MODEL)
 model = AutoModelForSequenceClassification.from_pretrained(MODEL)
 
-dataframe = pd.DataFrame({"Text":pd.Series([], dtype=str),
-                          "Score Pos":pd.Series([], dtype=float),
-                          "Score Neu":pd.Series([], dtype=float),
-                          "Score Neg":pd.Series([], dtype=float),
-                          "Overall":pd.Series([], dtype=float)})
+dataframe = pd.DataFrame({"Text":[''],
+                          "Score Pos":[0.33],
+                          "Score Neu":[0.33],
+                          "Score Neg":[0.33],
+                          "Overall":[0]})
 
 dataframe2 = dataframe.copy()
 
@@ -89,12 +89,15 @@ treatment = 0
 page_file = """
 <|{path}|file_selector|extensions=.txt|label=Upload .txt file|on_action=analyze_file|> <|{f'Downloading {treatment}%...'}|>
 
+<br/>
 
 <|Table|expandable|
 <|{dataframe2}|table|width=100%|number_format=%.2f|>
 |>
 
-<|{dataframe2}|chart|type=bar|x=Text|y[1]=Score Pos|y[2]=Score Neu|y[3]=Score Neg|y[4]=Overall|color[1]=green|color[2]=grey|color[3]=red|type[4]=line|height=800px|>
+<br/>
+
+<|{dataframe2}|chart|type=bar|x=Text|y[1]=Score Pos|y[2]=Score Neu|y[3]=Score Neg|y[4]=Overall|color[1]=green|color[2]=grey|color[3]=red|type[4]=line|height=600px|>
 
 """
 
@@ -123,4 +126,4 @@ pages = {"/":"<|toggle|theme|>\n<center>\n<|navbar|>\n</center>",
          "text":page_file}
 
 
-Gui(pages=pages).run(port=5001)
+Gui(pages=pages).run()
