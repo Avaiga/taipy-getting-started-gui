@@ -1,3 +1,5 @@
+> You can download the code of this step [here](../src/step_05.py) or all the steps [here](https://github.com/Avaiga/taipy-getting-started-gui/tree/develop/src).
+
 # Step 5: Insert Python expressions in Taipy GUI
 
 As shown before, parameters and variables in Taipy are dynamic. The same follows for every type of object, even data frames. Therefore, you can do operations on data frames, and Taipy GUI will show real-time results on the GUI. These changes occurs through the `=` asignment like `state.xxx = yyy` (`state.text = "Example"`).
