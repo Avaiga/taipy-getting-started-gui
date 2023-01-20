@@ -1,3 +1,5 @@
+> You can download the code of this step [here](../src/step_04.py) or all the steps [here](https://github.com/Avaiga/taipy-getting-started-gui/tree/develop/src).
+
 # Step 4: Charts
  
 Charts are an essential part of Taipy and any Web application. A chart is just another visual element with many properties to customize it.
