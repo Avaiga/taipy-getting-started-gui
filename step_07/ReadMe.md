@@ -1,3 +1,5 @@
+> You can download the code of this step [here](../src/step_07.py) or all the steps [here](https://github.com/Avaiga/taipy-getting-started-gui/tree/develop/src).
+
 ## Step 7: Multi-pages, navbars, and menus
 
 The creation of a multi-page application is greatly simplified through Taipy. To create a multi-page application, a dictionary of pages has to be specified in the definition of the GUI. Pages 1 and 2 will share the content of the root page. Visual elements like a menu or navbar are usually put on this root page to navigate between the different pages of the application.
