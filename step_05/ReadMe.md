@@ -7,6 +7,7 @@ As shown before, parameters and variables in Taipy are dynamic. The same follows
 Any expression containing `xxx` in the Markdown will propagate the changes and reload related elements. It can be  simple charts or tables, but it can also be an expression like this:
 
 ```python
+"""
 ## Positive
 <|{np.mean(dataframe['Score Pos'])}|text|>
 
@@ -15,6 +16,7 @@ Any expression containing `xxx` in the Markdown will propagate the changes and r
 
 ## Negative
 <|{np.mean(dataframe['Score Neg'])}|text|>
+"""
 ```
 
 This kind of expression creates direct connections between visual elements without coding anything.
@@ -74,7 +76,7 @@ dataframe = pd.DataFrame({"Text":[''],
 def local_callback(state):
     notify(state, 'Info', f'The text is: {state.text}', True)
     temp = state.dataframe.copy()
-    scores = analize_text(state.text)
+    scores = analyze_text(state.text)
     state.dataframe = temp.append(scores, ignore_index=True)
     state.text = ""
 

@@ -62,7 +62,7 @@ dataframe = pd.DataFrame({"Text":[''],
                           "Overall":[0]})
 
 
-def analize_text(text):
+def analyze_text(text):
     # Run for Roberta Model
     encoded_text = tokenizer(text, return_tensors='pt')
     output = model(**encoded_text)
@@ -79,7 +79,7 @@ def analize_text(text):
 def local_callback(state):
     notify(state, 'Info', f'The text is: {state.text}', True)
     temp = state.dataframe.copy()
-    scores = analize_text(state.text)
+    scores = analyze_text(state.text)
     state.dataframe = temp.append(scores, ignore_index=True)
     state.text = ""
 

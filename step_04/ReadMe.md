@@ -22,21 +22,21 @@ Here are a few of the essential properties. You can also look at the [documentat
 
 ```python
 data = pd.DataFrame({"x_col":[0,1,2], "y_col1":[4,1,2]})
-"<|{data}|chart|x=x_col|y=y_col1|>"
+Gui("<|{data}|chart|x=x_col|y=y_col1|>").run()
 ```
 
  - x and y can be indexed to add more traces to the chart:
 
 ```python
-data = pd.DataFrame({"x_col":[0,1,2], "y_col_1":[4,1,2], "y_col_2":[3,1,2]})
-"<|{data}|chart|x=x_col|y[1]=y_col_1|y[2]=y_col_2|>"
+data = pd.DataFrame({"x_col":[0,1,2], "y_col_1":[4,2,1], "y_col_2":[3,1,2]})
+Gui("<|{data}|chart|x=x_col|y[1]=y_col_1|y[2]=y_col_2|>").run()
 ```
 
  - Taipy provides a lot of different options to customize graphs. _color_ is one of them:
 
 ```python
-data = pd.DataFrame({"x_col":[0,1,2], "y_col_1":[4,1,2], "y_col_2":[3,1,2]})
-"<|{data}|chart|x=x_col|y[1]=y_col_1|y[2]=y_col_2|type[1]=bar|color[1]=green|>"
+data = pd.DataFrame({"x_col":[0,1,2], "y_col_1":[4,2,1], "y_col_2":[3,1,2]})
+Gui("<|{data}|chart|x=x_col|y[1]=y_col_1|y[2]=y_col_2|color[1]=green|>").run()
 ```
 
 ## Different types of charts
@@ -45,7 +45,7 @@ Different types are available: maps, bar charts, pie charts, line charts, and 3D
 
 ```python
 data = pd.DataFrame({"x_col":[0,1,2], "y_col_1":[4,1,2], "y_col_2":[3,1,2]})
-"<|{data}|chart|x=x_col|y[1]=y_col_1|y[2]=y_col_2|type[1]=bar|>"
+Gui("<|{data}|chart|x=x_col|y[1]=y_col_1|y[2]=y_col_2|type[1]=bar|>").run()
 ```
 
 ## Code
@@ -76,7 +76,7 @@ dataframe = pd.DataFrame({"Text":['Test', 'Other', 'Love'],
 To simplify the creation of a visual element. Each of them has a "property" parameter where a Python dictionary of property can be directly passed. To replicate the graph above, we could do the following:
 
 ```python
-property_chart = {"type":bar,
+property_chart = {"type":"bar",
                   "x":"Text",
                   "y[1]":"Score Pos",
                   "y[2]":"Score Neu",
@@ -90,7 +90,7 @@ property_chart = {"type":bar,
 
 page = """
 ...
-<|{dataframe}|chart|property={property_chart}|>
+<|{dataframe}|chart|properties={property_chart}|>
 ...
 """
 

@@ -40,7 +40,7 @@ string (representing your page). For example, at the beginning of the page, let'
 Here is the overall syntax:
 
 ```
-*<|{text}|>*
+<|{text}|>
 <|{text}|input|>
 ```
 

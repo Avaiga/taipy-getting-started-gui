@@ -61,7 +61,7 @@ dataframe = pd.DataFrame({"Text":[''],
 
 dataframe2 = dataframe.copy()
 
-def analize_text(text):
+def analyze_text(text):
     # Run for Roberta Model
     encoded_text = tokenizer(text, return_tensors='pt')
     output = model(**encoded_text)
@@ -78,7 +78,7 @@ def analize_text(text):
 def local_callback(state):
     notify(state, 'Info', f'The text is: {state.text}', True)
     temp = state.dataframe.copy()
-    scores = analize_text(state.text)
+    scores = analyze_text(state.text)
     state.dataframe = temp.append(scores, ignore_index=True)
     state.text = ""
 
@@ -115,7 +115,7 @@ def analyze_file(state):
         text = file_list[i]
         state.treatment = int((i+1)*100/len(file_list))
         temp = state.dataframe2.copy()
-        scores = analize_text(text)
+        scores = analyze_text(text)
         state.dataframe2 = temp.append(scores, ignore_index=True)
         
     state.path = None
