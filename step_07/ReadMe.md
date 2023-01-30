@@ -2,7 +2,7 @@
 
 ## Step 7: Multi-pages, navbars, and menus
 
-The creation of a multi-page application is greatly simplified through Taipy. To create a multi-page application, a dictionary of pages has to be specified in the definition of the GUI. Pages 1 and 2 will share the content of the root page. Visual elements like a menu or navbar are usually put on this root page to navigate between the different pages of the application.
+The creation of a multi-page application is greatly simplified with Taipy. To create a multi-page application, a dictionary of pages has to be defined. Here we will create three Pages: a Root page and two pages (page1 & page2). We will use Visual elements like a menu or navbar on this root page to navigate between page1 and page2.
 
 
 ```python
@@ -119,7 +119,7 @@ def analyze_file(state):
     state.path = None
 ```    
 
-This little code below assembles our previous page and this new page. The _navbar_ in the root page is present in both pages and is automatically able to switch pages through it. 
+This little code below assembles our previous page and this new page. The _navbar_ in the root page is also visible on both pages allowing for easy switching between pages. 
 
 ```python
 
