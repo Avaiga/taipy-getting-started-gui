@@ -8,7 +8,7 @@
 # Step 1: First web page
 
 You only need one line of code to create your first Taipy web page. Create a `Gui` object with a String and run it. 
-A client link will be displayed in the console. Please enter it in a web browser to open your first Taipy web client!
+A client link will be displayed in the console. Please cut & paste it in a web browser to open your first Taipy web client!
 
 
 ```python
