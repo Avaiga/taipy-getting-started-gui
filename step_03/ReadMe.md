@@ -13,7 +13,9 @@ Now, the page has several visual elements:
 
 - An input that changes the value *text* automatically.
 
-Taipy GUI manages everything. To go further into Taipy GUI, let's consider the concept of **state**.
+Taipy GUI manages everything in the background.
+
+To go further with Taipy GUI, let's introduce the concept of **state**. Thanks to this state concept, Taipy natively provides multi-user GUI apps.
 
 ## Multi-user - state
 
