@@ -2,9 +2,9 @@
 
 # Step 4: Charts
  
-Charts are an essential part of Taipy and any Web application. A chart is just another visual element with many properties to customize it.
+Charts are an essential part of Taipy (and of any Web application!). A chart is just another visual element with many properties to customize it.
 
-Here is one of the simplest codes to create a chart:
+Here is one of the simplest code to create a chart:
 
 ```python
 list_to_display = [100/x for x in range(1, 100)]
@@ -15,7 +15,7 @@ Different formats can be passed to a chart element: a list, a Numpy array, or a 
 
 ## Different useful properties
 
-Taipy charts are based on Plotly charts. Like any other visual element, charts have a lot of parameters. Some of them can be indexed to change properties for specific chart traces. 
+Taipy charts are based on Plotly charts. Like any other visual element, charts have a lot of parameters.
 
 Here are a few of the essential properties. You can also look at the [documentation]() for more information.
  - x and y are used to define the axis of the chart. Note that even if data inside columns are dynamic, the name of columns to display in a chart are not.
@@ -41,7 +41,7 @@ Gui("<|{data}|chart|x=x_col|y[1]=y_col_1|y[2]=y_col_2|color[1]=green|>").run()
 
 ## Different types of charts
 
-Different types are available: maps, bar charts, pie charts, line charts, and 3D charts, ... To know how to use them quickly, types are listed [here](). If compatible, two types like _scatter_, _line_, and _bar_ on the same chart can also be used together. 
+Different types are available: maps, bar charts, pie charts, line charts, and 3D charts, ... To know how to use them quickly, types are listed [here](). If compatible, two types like _scatter_, _line_, and _bar_ can also be used together on the same chart. 
 
 ```python
 data = pd.DataFrame({"x_col":[0,1,2], "y_col_1":[4,1,2], "y_col_2":[3,1,2]})
@@ -73,7 +73,7 @@ dataframe = pd.DataFrame({"Text":['Test', 'Other', 'Love'],
 
 ## Quick tip to write visual elements
 
-To simplify the creation of a visual element. Each of them has a "property" parameter where a Python dictionary of property can be directly passed. To replicate the graph above, we could do the following:
+To simplify the coding, each visual element has a "properties" parameter where a Python dictionary of property can be directly passed on. To replicate the graph above, we could do the following:
 
 ```python
 property_chart = {"type":"bar",
