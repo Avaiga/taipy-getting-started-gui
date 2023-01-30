@@ -75,7 +75,7 @@ Gui(pages=pages).run()
  
 ## Back to the code
 
-In our application, the first page (named _page_) contains the previous Markdown.
+The Markdown created in our previous steps will be the first page (named _page_) of the application. 
 
 ![Previous Markdown](first_markdown.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
