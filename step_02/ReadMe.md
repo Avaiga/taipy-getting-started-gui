@@ -8,7 +8,7 @@
 # Step 2: Visual elements
 
 Many visual elements can be added to the basic code viewed in Step 1. This Step shows how to use visual elements 
-like charts, sliders, and tables, and implement them in the GUI.
+like charts, sliders, and tables, atc., inside the graphical interface.
 
 ## Visual elements
 
@@ -30,10 +30,10 @@ For example, a [slider](https://docs.taipy.io/en/latest/manuals/gui/viselements/
 
 `<|{variable}|slider|min=min_value|max=max_value|>`.
 
-For each visual element you wish to add to your web page, you must include the syntax above inside your markdown 
-string (representing your page). For example, at the beginning of the page, let's display:
+For each visual element you wish to add to your web page, you must include the above-mentionned syntax inside your markdown 
+string (representing your page). Example: at the beginning of the page, let's display:
 
-- a Python variable *text*;
+- a Python variable *text*
 
 - an input that will "visually" modify the value of __text__.
 
