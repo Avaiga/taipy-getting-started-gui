@@ -77,7 +77,7 @@ Gui(pages=pages).run()
 
 In our application, the first page (named _page_) contains the previous Markdown.
 
-![Data Visualization](data_visualization.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Previous Markdown](first_markdown.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 Then, let’s create our second page, which contains a page to analyze an entire text.
 
