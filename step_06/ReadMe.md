@@ -7,9 +7,9 @@
 
 # Step 6: Organize the layout of your App
 
-With just a few steps, you have created a full forecasting application that predicts across multiple days with different parameters. However, the page's layout could be greatly improved. To get a more aesthetically pleasing page, three new useful controls will be used. These are:
+In just a few steps, you have created a full forecasting application that predicts across multiple days with different parameters. However, the page's layout could be greatly improved. To get a more aesthetically pleasing page, three new useful controls will be used. These are:
 
-- [part](https://docs.taipy.io/en/latest/manuals/gui/viselements/part/): creates a group of text/visual elements. A useful property of `part` is _render_. If set to False, it will not display the part. This allows the developer to display a group of visual elements dynamically or not.
+- [part](https://docs.taipy.io/en/latest/manuals/gui/viselements/part/): creates a group of text/visual elements. A useful property of `part` is _render_. If set to False, it will not display the part. This allows the developer to hide a group of visual elements dynamically.
 
 ```
 <|part|render={bool_variable}|
