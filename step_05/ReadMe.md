@@ -2,7 +2,7 @@
 
 # Step 5: Insert Python expressions in Taipy GUI
 
-As shown before, parameters and variables in Taipy are dynamic. The same follows for every type of object, even data frames. Therefore, you can do operations on data frames, and Taipy GUI will show real-time results on the GUI. These changes occurs through the `=` asignment like `state.xxx = yyy` (`state.text = "Example"`).
+As shown before, parameters and variables in Taipy are dynamic. The same applies for every type of object, even data frames. Therefore, you can perform operations on data frames, and Taipy GUI will show real-time results on the GUI. These changes occur through the `=` assignment like `state.xxx = yyy` (`state.text = "Example"`).
 
 Any expression containing `xxx` in the Markdown will propagate the changes and reload related elements. It can be  simple charts or tables, but it can also be an expression like this:
 
@@ -22,9 +22,9 @@ Any expression containing `xxx` in the Markdown will propagate the changes and r
 This kind of expression creates direct connections between visual elements without coding anything.
 
 
-## A use case for NLP
+## A use case for NLP - Part 1
 
-The code for NLP is provided here; it doesn't concern Taipy but is helpful for the application.
+The code for NLP is provided here; it doesn't concern Taipy but it will be used in Part 2 when we wrap a GUI around this NLP engine.
 
 
 ```python
@@ -54,7 +54,7 @@ def analyze_text(text):
 ```
 
 
-## Rest of code to implement the NLP element
+## A use case for NLP - Part 2
 
 The code below uses this concept to create metrics on the data frame generated. 
 
