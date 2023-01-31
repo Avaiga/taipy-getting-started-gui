@@ -6,7 +6,7 @@
 
 Welcome to the **Getting Started** guide for Taipy GUI. This tour shows you how to use Taipy GUI to create an interactive Web application. Taipy GUI implements a modern backend for any data-driven application based on your business case.
 
-![Getting Started GUI application](step_06/result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
+![Getting Started GUI application](step_07/result.png){ width=700 style="margin:auto;display:block;border: 4px solid rgb(210,210,210);border-radius:7px" }
 
 # Taipy GUI
 
