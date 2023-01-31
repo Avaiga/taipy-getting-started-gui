@@ -50,9 +50,9 @@ Want to be part of the _Taipy Getting Started GUI_ community? Check out our [`CO
 
 - `src`: Common code shared by all the steps. For more information, on each step a README.md file is available in their
   respective folder (`step_xx/ReadMe.md`).
-- `step_01`: First Web application
+- `step_01`: First Web page.
 - `step_02`: Introduction to visual elements.
-- `step_03`: Building user interaction
+- `step_03`: Building an interactive GUI.
 - `step_04`: Basics for Charts.
 - `step_05`: Automatic expression.
 - `step_06`: Layout.
