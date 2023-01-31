@@ -63,5 +63,3 @@ So, without further delay, let's begin to code!
 6. [Layout](step_06/ReadMe.md)
 
 7. [Multi-pages](step_07/ReadMe.md)
-
-8. [Other features](step_08/ReadMe.md)
