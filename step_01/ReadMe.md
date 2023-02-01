@@ -5,7 +5,7 @@
     The "Getting Started" Notebook is available [here](https://docs.taipy.io/en/latest/getting_started/getting_started.ipynb). In Taipy GUI, the process to execute a Jupyter Notebook is different from executing a Python Script.
     It is important to check the [Notebook](https://docs.taipy.io/en/latest/getting_started/getting_started.ipynb) content and see the [documentation](https://docs.taipy.io/en/latest/manuals/gui/notebooks/).
 
-# Step 1: First web page
+# Step 1: First Web page
 
 You only need one line of code to create your first Taipy web page. Create a `Gui` object with a String and run it. 
 A client link will be displayed in the console. Please cut & paste it in a web browser to open your first Taipy web client!
