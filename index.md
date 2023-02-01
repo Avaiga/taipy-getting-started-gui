@@ -50,16 +50,16 @@ So, without further delay, let's begin to code!
 
 ## Steps
 
-1. [First web page](step_01/ReadMe.md)
+1. [First Web page](step_01/ReadMe.md)
 
 2. [Visual elements](step_02/ReadMe.md)
 
-3. [Interactive GUI](step_03/ReadMe.md)
+3. [Interaction](step_03/ReadMe.md)
 
 4. [Charts](step_04/ReadMe.md)
 
-5. [Automatic events](step_05/ReadMe.md)
+5. [Python expression in properties](step_05/ReadMe.md)
 
-6. [Layout](step_06/ReadMe.md)
+6. [Page layout](step_06/ReadMe.md)
 
-7. [Multi-pages](step_07/ReadMe.md)
+7. [Multi-pages, navbars, and menus](step_07/ReadMe.md)
