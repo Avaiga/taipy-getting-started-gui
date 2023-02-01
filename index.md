@@ -40,7 +40,7 @@ $ pip install taipy
 
 ## Using Notebooks
 
-This **Getting Started** is for Python scripts (*.py*) only. If you want to use **Jupyter Notebooks**, download this [notebook](https://docs.taipy.io/en/latest/getting_started/getting_started.ipynb).
+This **Getting Started** is for Python scripts (*.py*) only. If you want to use **Jupyter Notebooks**, download this [notebook](https://docs.taipy.io/en/latest/getting_started/getting-started-gui/getting_started.ipynb).
 
 ## Taipy Studio
 
