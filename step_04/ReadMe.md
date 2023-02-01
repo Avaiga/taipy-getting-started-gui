@@ -1,6 +1,7 @@
 > You can download the code of this step [here](../src/step_04.py) or all the steps [here](https://github.com/Avaiga/taipy-getting-started-gui/tree/develop/src).
 
 !!! warning "For Notebooks"
+
     The "Getting Started" Notebook is available [here](https://docs.taipy.io/en/latest/getting_started/getting-started-gui/getting_started.ipynb). In Taipy GUI, the process to execute a Jupyter Notebook is different from executing a Python Script.
 
 # Step 4: Charts
