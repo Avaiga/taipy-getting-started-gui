@@ -29,7 +29,7 @@ For example, a [slider](https://docs.taipy.io/en/latest/manuals/gui/viselements/
 
 `<|{variable}|slider|min=min_value|max=max_value|>`.
 
-For each visual element you wish to add to your web page, you must include the above-mentionned syntax inside your markdown 
+For each visual element you wish to add to your web page, you must include the above-mentioned syntax inside your markdown 
 string (representing your page). Example: at the beginning of the page, let's display:
 
 - a Python variable *text*
