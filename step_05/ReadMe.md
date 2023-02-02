@@ -28,7 +28,7 @@ This kind of expression creates direct connections between visual elements witho
 
 ## A use case for NLP - Part 1
 
-The code for NLP is provided here; it doesn't concern Taipy but it will be used in Part 2 when we wrap a GUI around this NLP engine.
+The code for NLP is provided here; it doesn't concern Taipy but it will be used in Part 2 when we wrap a GUI around this NLP engine. You should have `pip install torch` and `pip install transformers` before executing this step. The model will be downloaded and used in this code snippet.
 
 
 ```python

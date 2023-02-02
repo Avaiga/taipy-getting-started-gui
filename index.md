@@ -24,10 +24,17 @@ application.
 
 ## Before we begin
 
-Only Taipy has to be installed. **Taipy** package requires Python 3.8 or newer;
+**Taipy** package requires Python 3.8 or newer;
 
 ``` console
 $ pip install taipy
+```
+
+After the step 5, Transformers and Torch has to be installed to create a NLP (Natural Language Processing) algorithm.
+
+``` console
+$ pip install torch
+$ pip install transformers
 ```
 
 !!! info 
