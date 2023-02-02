@@ -77,7 +77,7 @@ dataframe = pd.DataFrame({"Text":['Test', 'Other', 'Love'],
 
 ## Quick tip to write visual elements
 
-To simplify the coding, each visual element has a "properties" parameter where a Python dictionary of property can be directly passed on. To replicate the graph above, we could do the following:
+To simplify the coding, each visual element has a "properties" parameter where a Python dictionary of properties can be directly passed on. To replicate the graph above, we could do the following:
 
 ```python
 property_chart = {"type":"bar",
