@@ -10,7 +10,7 @@ Welcome to the **Getting Started** guide for Taipy GUI. This tour shows you how 
 
 # Taipy GUI
 
-Taipy GUI is one of the components of Taipy to create easily Web application. There are a lot of reasons for using Taipy GUI:
+Taipy GUI is one of the components of Taipy to create Web applications quickly. There are a lot of reasons for using Taipy GUI:
 
 - It fastens the creation of an application.
 
@@ -18,8 +18,7 @@ Taipy GUI is one of the components of Taipy to create easily Web application. Th
 
 - Easy visualization with Markdown syntax.
 
-Each step of the **"Getting Started"** will focus on basic concepts of *Taipy*. Note that every step is dependent on 
-the code of the previous one. After completing the last step, you will have the skills to develop your own Taipy 
+Each step of the **"Getting Started"** will focus on the basic concepts of *Taipy*. Note that every step is dependent on the code of the previous one. After completing the last step, you will have the skills to develop your own Taipy 
 application. 
 
 ## Before we begin
@@ -30,7 +29,7 @@ application.
 $ pip install taipy
 ```
 
-After the step 5, Transformers and Torch has to be installed to create a NLP (Natural Language Processing) algorithm.
+After step 5, Transformers and Torch have to be installed to create a NLP (Natural Language Processing) algorithm.
 
 ``` console
 $ pip install torch
@@ -51,7 +50,7 @@ This **Getting Started** is for Python scripts (*.py*) only. If you want to use 
 
 ## Taipy Studio
 
-Taipy Studio is a VS Code extension that provides an autocompletion of Taipy visual elements. The creation of a Taipy application can be done more easily and quickly through Taipy Studio.
+Taipy Studio is a VS Code extension that provides an auto-completion of Taipy visual elements. Creating a Taipy application can be done more easily and quickly through Taipy Studio.
 
 So, without further delay, let's begin to code!
 
