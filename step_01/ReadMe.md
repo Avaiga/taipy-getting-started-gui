@@ -1,4 +1,4 @@
-> You can download the code for this step [here](../src/step_01.py) or all the steps [here](https://github.com/Avaiga/taipy-getting-started/tree/develop/src).
+> You can download the code for this step [here](../src/step_01.py) or all the steps [here](https://github.com/Avaiga/taipy-getting-started-gui/tree/develop/src).
 
 !!! warning "For Notebooks"
 
@@ -13,10 +13,10 @@ A client link will be displayed in the console. Please cut & paste it into a web
 ```python
 from taipy import Gui
 
-Gui(page="# Getting started with *Taipy*").run()
+Gui(page="# Getting started with *Taipy*").run() #user_reloader=True
 ```
 
-If you want to run multiple servers simultaneously, you can change the server port number (5000 by default) in the `.run()` method. For example, `Gui(...).run(port=xxxx)`.
+After a change in the code, the page will not reload itself by default. To change this behavior, `user_reloader=True` in the `.run()` reloads the application when you modify a file in your application and save it. It can be used as a development mode. If you want to run multiple servers simultaneously, you can change the server port number (5000 by default) in the `.run()` method. For example, `Gui(...).run(port=xxxx)`.
 
 
 Note that you can style the text. Taipy uses the Markdown syntax to style your text and more. Therefore, `#` creates 
