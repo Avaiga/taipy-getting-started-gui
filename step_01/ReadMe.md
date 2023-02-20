@@ -16,7 +16,7 @@ from taipy import Gui
 Gui(page="# Getting started with *Taipy*").run() #user_reloader=True
 ```
 
-After a change in the code, the page will not reload itself by default. To change this behavior, `user_reloader=True` in the `.run()` reloads the application when you modify a file in your application and save it. It can be used as a development mode. If you want to run multiple servers simultaneously, you can change the server port number (5000 by default) in the `.run()` method. For example, `Gui(...).run(port=xxxx)`.
+After a change in the code, the page will not reload itself by default. To change this behavior, putting `user_reloader=True` in the `.run()` will reload the application when you modify a file in your application and save it. It can be used as a development mode. If you want to run multiple servers simultaneously, you can change the server port number (5000 by default) in the `.run()` method. For example, `Gui(...).run(port=xxxx)`. Other options of the `.run()` can be found [here](https://docs.taipy.io/en/latest/manuals/gui/configuration/#configuring-the-gui-instance).
 
 
 Note that you can style the text. Taipy uses the Markdown syntax to style your text and more. Therefore, `#` creates 
