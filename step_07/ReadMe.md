@@ -13,7 +13,10 @@ The creation of a multi-page application is greatly simplified with Taipy. A dic
 from taipy import Gui
 
 # Add a navbar to switch from one page to the other
-root_md = "<|navbar|>\n" + "# Multi-page application"
+root_md = """
+<|navbar|>
+# Multi-page application
+"""
 page1_md = "## This is page 1"
 page2_md = "## This is page 2"
 

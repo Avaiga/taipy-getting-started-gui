@@ -3,14 +3,14 @@ import json
 
 def add_line(source, line, step):
 
-    line = line.replace('Getting Started with Taipy Gui', 'Getting Started with Taipy Gui on Notebooks')
+    line = line.replace('Getting Started with Taipy GUI', 'Getting Started with Taipy GUI on Notebooks')
     line = line.replace('(../src/', '(https://docs.taipy.io/en/latest/getting_started/src/')
 
     if line.startswith('!['):
         if step != 'index':
-            line = line.replace('(', '(https://github.com/Avaiga/taipy-getting-started-gui/blob/develop/' + step + '/')
+            line = line.replace('(', '(https://github.com/Avaiga/taipy-getting-started-gui/blob/latest/' + step + '/')
         else:
-            line = line.replace('(', '(https://github.com/Avaiga/taipy-getting-started-gui/blob/develop/')
+            line = line.replace('(', '(https://github.com/Avaiga/taipy-getting-started-gui/blob/latest/')
 
         # conversion of Markdown image to HTML
         img_src = line.split('](')[1].split(')')[0]
