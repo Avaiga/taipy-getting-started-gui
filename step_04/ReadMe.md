@@ -12,7 +12,7 @@ Here is one of the simplest code to create a chart:
 
 ```python
 list_to_display = [100/x for x in range(1, 100)]
-"<|{list_to_display}|chart|>"
+Gui("<|{list_to_display}|chart|>").run()
 ```
 
 Different formats can be passed to a chart element: a list, a Numpy array, or a Pandas Dataframe.
