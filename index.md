@@ -29,7 +29,7 @@ application.
 $ pip install taipy
 ```
 
-After step 5, Transformers and Torch have to be installed to create a NLP (Natural Language Processing) algorithm.
+After step 5, Taipy will use an NLP (Natural Language Processing) algorithm with only a Python version between 3.8 and 3.10. It is just an example of a Taipy application. Transformers and Torch will have to be installed to create this NLP algorithm. You can still follow the Getting Started without it by not using the algorithm provided.
 
 ``` console
 $ pip install torch

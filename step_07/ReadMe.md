@@ -12,9 +12,13 @@ The creation of a multi-page application is greatly simplified with Taipy. A dic
 ```python
 from taipy import Gui
 
-root_md="# Multi-page application"
-page1_md="## This is page 1"
-page2_md="## This is page 2"
+# Add a navbar to switch from one page to the other
+root_md = """
+<|navbar|>
+# Multi-page application
+"""
+page1_md = "## This is page 1"
+page2_md = "## This is page 2"
 
 pages = {
     "/": root_md,
