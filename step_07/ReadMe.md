@@ -4,7 +4,7 @@
 
     The "Getting Started" Notebook is available [here](https://docs.taipy.io/en/latest/getting_started/getting-started-gui/getting_started.ipynb). In Taipy GUI, the process to execute a Jupyter Notebook is different from executing a Python Script.
 
-## Step 7: Multi-pages, navbars, and menus
+# Step 7: Multi-pages, navbars, and menus
 
 The creation of a multi-page application is greatly simplified with Taipy. A dictionary of pages must be defined to create a multi-page application. Here we will create three Pages: a Root page and two pages (page1 & page2). We will use Visual elements like a menu or navbar on this root page to navigate between page1 and page2.
 
