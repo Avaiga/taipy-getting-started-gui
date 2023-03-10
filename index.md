@@ -50,7 +50,7 @@ This **Getting Started** is for Python scripts (*.py*) only. If you want to use 
 
 ## Taipy Studio
 
-Taipy Studio is a VS Code extension that provides an auto-completion of Taipy visual elements. Creating a Taipy application can be done more easily and quickly through Taipy Studio.
+[Taipy Studio](https://docs.taipy.io/en/latest/manuals/studio/) is a VS Code extension that provides an auto-completion of Taipy visual elements. Creating a Taipy application can be done more easily and quickly through Taipy Studio.
 
 So, without further delay, let's begin to code!
 
