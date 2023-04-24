@@ -63,14 +63,11 @@ Enter a word:
 |>
 
 <|layout|columns=1 1 1|
-## Positive
-<|{np.mean(dataframe['Score Pos'])}|>
+## Positive <|{np.mean(dataframe['Score Pos'])}|text|format=%.2f|raw|>
 
-## Neutral
-<|{np.mean(dataframe['Score Neu'])}|>
+## Neutral <|{np.mean(dataframe['Score Neu'])}|text|format=%.2f|raw|>
 
-## Negative
-<|{np.mean(dataframe['Score Neg'])}|>
+## Negative <|{np.mean(dataframe['Score Neg'])}|text|format=%.2f|raw|>
 |>
 
 <|{dataframe}|chart|type=bar|x=Text|y[1]=Score Pos|y[2]=Score Neu|y[3]=Score Neg|y[4]=Overall|color[1]=green|color[2]=grey|color[3]=red|type[4]=line|>
