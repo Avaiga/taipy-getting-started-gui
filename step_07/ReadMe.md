@@ -105,7 +105,6 @@ page_file = """
 |>
 
 <|{dataframe2}|chart|type=bar|x=Text|y[1]=Score Pos|y[2]=Score Neu|y[3]=Score Neg|y[4]=Overall|color[1]=green|color[2]=grey|color[3]=red|type[4]=line|height=800px|>
-
 """
 
 def analyze_file(state):
@@ -121,7 +120,7 @@ def analyze_file(state):
         text = file_list[i]
         state.treatment = int((i+1)*100/len(file_list))
         temp = state.dataframe2.copy()
-        scores = analize_text(text)
+        scores = analyze_text(text)
         state.dataframe2 = temp.append(scores, ignore_index=True)
         
     state.path = None
