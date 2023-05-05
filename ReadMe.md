@@ -1,4 +1,4 @@
-# Taipy Getting Started GUI version:v2.2.1
+# Taipy Getting Started GUI
 
 ## License
 Copyright 2022 Avaiga Private Limited
