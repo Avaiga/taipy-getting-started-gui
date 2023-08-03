@@ -121,7 +121,8 @@ def analyze_file(state):
         state.treatment = int((i+1)*100/len(file_list))
         temp = state.dataframe2.copy()
         scores = analyze_text(text)
-        state.dataframe2 = temp.append(scores, ignore_index=True)
+        temp.loc[len(temp)] = scores
+        state.dataframe2 = temp
         
     state.path = None
 ```    

@@ -68,7 +68,8 @@ def local_callback(state):
     notify(state, 'Info', f'The text is: {state.text}', True)
     temp = state.dataframe.copy()
     scores = analyze_text(state.text)
-    state.dataframe = temp.append(scores, ignore_index=True)
+    temp.loc[len(temp)] = scores
+    state.dataframe = temp
     state.text = ""
 
 Gui(page).run()
